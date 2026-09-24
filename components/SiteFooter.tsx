@@ -16,9 +16,8 @@ export default function SiteFooter() {
 
         <div className="site-footer__grid">
           <div className="site-footer__brandcol">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="site-footer__logo" src="/brand/otown-logo-solid.png" alt="O’Town Watersports" width={900} height={302} />
-            <p className="site-footer__tag">Wakeboard &amp; wakesurf coaching with Glen Fletcher.</p>
+            <p className="eyebrow">O’Town Watersports</p>
+            <p className="site-footer__tag">Wakeboard &amp; wakesurf coaching with Glen Fletcher on Lake Barton, Orlando.</p>
             <div className="site-footer__quick">
               <a className="btn btn--ink btn--pill" href={contact.phone.href}>Call</a>
               <a className="btn btn--outline btn--pill" href={`mailto:${contact.email}`}>Email</a>
