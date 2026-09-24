@@ -74,9 +74,9 @@ export default function HeroSlider() {
       <div className="hero__slides">
         {heroSlides.map((sl, n) => (
           <div key={sl.key} className={`hero__slide${n === i ? " is-active" : n === prev ? " is-prev" : ""}`} aria-hidden={n !== i}
-            style={{ ["--pos" as string]: sl.position, ["--pos-m" as string]: sl.mobilePosition, ["--zoom" as string]: sl.zoom, ["--origin" as string]: sl.origin }}>
+            style={{ ["--pos" as string]: sl.position, ["--pos-m" as string]: sl.mobilePosition, ["--zoom-d" as string]: sl.zoom, ["--origin-d" as string]: sl.origin, ["--zoom-m" as string]: sl.mobileZoom ?? 1, ["--origin-m" as string]: sl.mobileOrigin ?? "50% 50%" }}>
             <div className="hero__plate">
-              <Image src={sl.image} alt={sl.alt} fill priority={n === 0} quality={85}
+              <Image src={sl.image} alt={sl.alt} fill priority={n === 0} loading="eager" quality={85}
                 sizes={sl.portrait ? "(orientation: portrait) max(100vw, 75vh), 130vw" : "(orientation: portrait) 150vh, 100vw"} />
             </div>
           </div>

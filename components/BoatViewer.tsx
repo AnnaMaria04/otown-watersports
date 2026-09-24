@@ -36,24 +36,22 @@ export default function BoatViewer({ frames, label }: { frames: number; label: s
 
   const wrap = useCallback((f: number) => ((f % frames) + frames) % frames, [frames]);
 
+  // Always draw one real captured view — no blending, so nothing ghosts or trails while turning
+  const last = useRef(-1);
   const draw = useCallback((f: number) => {
     const c = canvasRef.current;
-    const n = wrap(f);
-    const i0 = Math.floor(n);
-    const a = imgs.current[i0], b = imgs.current[(i0 + 1) % frames];
-    if (!c || !a) return;
+    const i = Math.round(wrap(f)) % frames;
+    const img = imgs.current[i];
+    if (!c || !img) return;
+    if (i === last.current && c.dataset.w === String(c.width)) return;
+    last.current = i; c.dataset.w = String(c.width);
     const ctx = c.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, c.width, c.height);
-    const r = Math.min(c.width / a.naturalWidth, c.height / a.naturalHeight);
-    const w = a.naturalWidth * r, h = a.naturalHeight * r;
-    const x = (c.width - w) / 2, y = (c.height - h) / 2;
+    const r = Math.min(c.width / img.naturalWidth, c.height / img.naturalHeight);
+    const w = img.naturalWidth * r, h = img.naturalHeight * r;
     ctx.imageSmoothingQuality = "high";
-    // Hold each captured view crisp and blend only briefly around the midpoint to the next one
-    const mix = smooth(0.3, 0.7, n - i0);
-    ctx.globalAlpha = 1;
-    ctx.drawImage(a, x, y, w, h);
-    if (b && mix > 0.01) { ctx.globalAlpha = mix; ctx.drawImage(b, x, y, w, h); ctx.globalAlpha = 1; }
+    ctx.drawImage(img, (c.width - w) / 2, (c.height - h) / 2, w, h);
   }, [frames, wrap]);
 
   const tick = useCallback(() => {
@@ -66,7 +64,7 @@ export default function BoatViewer({ frames, label }: { frames: number; label: s
         if (snap !== target.current && !isDragging.current) { target.current = snap; setValue(wrap(snap)); raf.current = requestAnimationFrame(step); return; }
         shown.current = target.current; draw(shown.current); return;
       }
-      shown.current += d * 0.14;
+      shown.current += d * 0.25;
       draw(shown.current);
       raf.current = requestAnimationFrame(step);
     };
@@ -76,7 +74,7 @@ export default function BoatViewer({ frames, label }: { frames: number; label: s
   const goTo = useCallback((f: number) => {
     target.current = f;
     setValue(wrap(f));
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { shown.current = f; draw(f); }
+    if (isDragging.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { cancelAnimationFrame(raf.current); shown.current = f; draw(f); }
     else tick();
   }, [wrap, tick, draw]);
 
@@ -97,6 +95,7 @@ export default function BoatViewer({ frames, label }: { frames: number; label: s
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       c.width = Math.round(s.clientWidth * dpr);
       c.height = Math.round(s.clientHeight * dpr);
+      last.current = -1;
       draw(shown.current);
     });
     ro.observe(s);
@@ -122,7 +121,7 @@ export default function BoatViewer({ frames, label }: { frames: number; label: s
         img.decode().catch(() => {}).finally(() => {
           done++;
           setProgress(done / frames);
-          if (done === frames) { imgs.current = list; setReady(true); draw(shown.current); }
+          if (done === frames) { imgs.current = list; setReady(true); last.current = -1; draw(shown.current); }
         });
       }
     }, { rootMargin: "800px 0px" });
