@@ -2,6 +2,12 @@
 
 Next.js (App Router) site for O'Town Watersports, Glen Fletcher's wakeboard & wakesurf coaching on Lake Barton, Orlando.
 
+## Pages
+- `/` — Hero (rotating Learn/Ride/Progress photos + Glen film), statement, Glen, rider spotlight, experiences, 360° boat, life at O'Town, Instagram, closing CTA
+- `/coaching` — Glen, how a session works, rider spotlight, full rider list
+- `/rates` — prices, booking policy, FAQ
+- `/plan` — inquiry form (chips), contact, map & directions
+
 ## Structure
 - `content/site.ts` — **all facts** (contact, Glen bio, riders + sources, experiences, boat model, rates). Edit here, not in components.
 - `app/page.tsx` — homepage: Hero · Meet Glen · History · Experiences · Boat · Life at O'Town · Inquiry
@@ -11,12 +17,12 @@ Next.js (App Router) site for O'Town Watersports, Glen Fletcher's wakeboard & wa
 - `ASSETS.md` — asset register with sources and publication permission
 
 ## Design system
-- Colour: Pearl `#F2F1ED` (surface) · Charcoal `#11191C` (type, boat section) · Turquoise `#16A8AD` (primary action, focus, fine detail) · Silver `#B8C2C5` (rules, text on dark)
-- Type: Manrope (self-hosted via @fontsource-variable), sentence case, medium weight headlines
-- Primary buttons are turquoise with **charcoal** text (≈6:1 contrast)
+- Colour: from the O'Town neon sign — Ink `#0B1116`, Neon cyan `#22C7E8`, Electric blue `#2B7DE9`, Pearl `#F4F2EE`, Stone `#E9E5DD`
+- Type: Archivo condensed (display) + Manrope (text), both self-hosted via @fontsource
+- Primary buttons are cyan with **ink** text (≈10:1 contrast)
 
 ## Boat viewer
-72 captured views (desktop 1440w, mobile 820w WebP with transparent background) in `public/boat/`. Poster loads first; the sequence loads when the section approaches; drag/swipe horizontally, arrow keys, buttons, optional auto-rotate (paused offscreen and under reduced motion). Set `boat.model` in `content/site.ts` once confirmed.
+72 captured views (desktop 1440w, mobile 820w WebP, transparent background) in `public/boat/`. Controlled by the rotation bar and horizontal drag — it never plays on its own. Poster loads first; the sequence loads as the section approaches.
 
 ## Inquiry form
 No backend is configured — the form opens the visitor's email app with a pre-filled message to info@otownwatersports.com and says so. To use a real endpoint (e.g. Formspree, Resend), replace `onSubmit` in `components/InquiryForm.tsx` and show real success/error states.

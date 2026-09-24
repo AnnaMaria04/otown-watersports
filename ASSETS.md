@@ -1,31 +1,32 @@
 # Asset register
 
-Every image and video on the site, where it came from, where it's used, and whether it's cleared to publish.
-**Publication permission must be confirmed with Glen Fletcher / O'Town before public launch.**
-All photos had their location/EXIF metadata removed.
+Every image and video on the site, its source, where it is used, and publication status.
+**Confirm publication permission with Glen Fletcher / O'Town before public launch.** All photos had EXIF/location metadata removed.
 
-| File | Subject | Source | Used in | Permission |
+| File | Subject | Source | Used on | Permission |
 |---|---|---|---|---|
-| `public/images/hero-dock-start.jpg` | Rider starting from the O'Town dock, boat pulling away | otownwatersports.com/wp-content/uploads/IMG_2770-1-scaled.jpg | Hero | O'Town-owned — confirm |
-| `public/images/glen-helm.jpg` | Glen at the helm holding the handle | otownwatersports.com …/IMG_2770-scaled.jpg | Meet Glen (main) | O'Town-owned — confirm |
-| `public/images/glen-driving.jpg` | Glen driving, bandana | otownwatersports.com …/IMG_2926-scaled.jpg | Meet Glen (inset, desktop) | O'Town-owned — confirm |
-| `public/images/glen-tower.jpg` | Glen under the tower | otownwatersports.com …/IMG_2908-scaled.jpg | History ("Now") | O'Town-owned — confirm |
-| `public/images/archive-header.jpg` | Early O'Town banner: Glen + rider | otownwatersports.com …/2010/11/Otown_header.jpg | History ("Then") | O'Town-owned — confirm; low resolution (950×200) |
-| `public/images/big-air.jpg` | Rider big air (unnamed) | otownwatersports.com …/image3.jpg | History | O'Town-owned — confirm rider consent; 1200×800 |
-| `public/images/sophia-wakesurf.jpg` | Wakesurfer (file name: Sophia Fletcher) | otownwatersports.com …/sophia-fletcher-wakesurfing-scaled.jpg | Experiences — first session | Confirm with family |
-| `public/images/trampoline.jpg` | Trampoline flips on the dock | otownwatersports.com …/IMG_3199-1-scaled.jpg | Experiences — develop | O'Town-owned — confirm |
-| `public/images/stay-bedroom.jpg` | Bedroom with lake view | otownwatersports.com …/otown-bedroom-scaled.jpg | Experiences — training stay | O'Town-owned; confirm accommodation still offered |
-| `public/images/dock-bougainvillea.jpg` | Dock, trampoline, riders, boat | otownwatersports.com …/IMG_1662-scaled.jpg | Life at O'Town (main) | O'Town-owned — confirm people shown |
-| `public/images/tubing.jpg` | Two people tubing | otownwatersports.com …/tubing-at-lake-scaled.jpg | Life at O'Town | Confirm consent of people shown |
-| `public/images/games-room.jpg` | Downstairs lounge / table tennis | otownwatersports.com …/otown-downstairs-scaled.jpg | Life at O'Town | O'Town-owned — confirm |
-| `public/video/glen-film.mp4` | Glen feature film (boat/engine promo, has sponsor graphics) | otownwatersports.com/wp-content/uploads/fletcherotown.mp4 | "Watch Glen on the water" dialog | Confirm rights with producer/sponsors |
-| `public/video/clip-riding-1.mp4`, `clip-riding-2.mp4` | Riding cut-downs from the film above | same | Life — "From the lake" | As above |
-| `public/video/clip-dock.mp4` | Pan from backyard to dock and lake | otownwatersports.com …/Location.mp4 | Life — "From the lake" | O'Town-owned — confirm |
-| `public/boat/d/*.webp`, `public/boat/m/*.webp` | 72-view rotation of the turquoise/white Supra | Screen recording of Supra's online configurator, supplied by Anna-Maria; cursor removed, background keyed out | Boat viewer | **Supra render — confirm use with Supra/dealer.** Model designation unresolved (owner says 2027 Supra SL; renders carry an SV badge) |
+| `public/brand/otown-logo-neon.png`, `otown-logo-solid.png` | O'TOWN wordmark (neon + solid versions) | Redrawn at high resolution from the O'Town neon sign logo (@fletcherotown avatar) | Header, footer | **Interim recreation — ask Glen for the original logo file** |
+| `images/hero-dock-start.jpg` | Rider starting from the dock | otownwatersports.com (original, 3024×4032) | Home hero ("Learn") | O'Town-owned — confirm |
+| `images/sophia-wakesurf.jpg` | Sophia Fletcher wakesurfing | otownwatersports.com (original) | Hero ("Ride"), riders spotlight, coaching | Confirm with family |
+| `images/trampoline.jpg` | Trampoline flip on the dock | otownwatersports.com (original) | Hero ("Progress"), coaching | O'Town-owned — confirm |
+| `images/glen-helm.jpg` | Glen at the helm | otownwatersports.com (original) | Home + coaching (Glen) | O'Town-owned — confirm |
+| `images/glen-driving.jpg` | Glen driving | otownwatersports.com (original) | Home inset, coaching | O'Town-owned — confirm |
+| `images/glen-tower.jpg` | Glen under the tower | otownwatersports.com (original) | Coaching hero | O'Town-owned — confirm |
+| `images/dock-guitar.jpg` | Guitar on the dock at sunrise | O'Town Facebook page (profile photo, 720px) | Life bento, coaching inset | O'Town-owned — confirm |
+| `images/fb-cover.jpg` | Big air on Lake Barton | O'Town Facebook page (cover, 961px) | Home CTA, coaching CTA, rates hero | O'Town-owned — confirm rider/photographer |
+| `images/big-air.jpg` | Big air (unnamed rider) | otownwatersports.com | Experiences — develop | Confirm rider/photographer |
+| `images/dock-boat-tube.jpg` | Boat and tube at the dock | otownwatersports.com (original) | Experiences — first session | O'Town-owned — confirm |
+| `images/stay-bedroom.jpg` | Bedroom with lake view | otownwatersports.com (original) | Experiences — training stay | Confirm accommodation still offered |
+| `images/dock-bougainvillea.jpg` | Dock, trampoline, riders, boat | otownwatersports.com (original) | Life bento | Confirm people shown |
+| `images/tubing.jpg` | Two people tubing | otownwatersports.com (original) | Life bento | Confirm people shown |
+| `images/games-room.jpg` | Downstairs lounge | otownwatersports.com (original) | Life bento | O'Town-owned — confirm |
+| `ig/*.jpg` | Six recent reel covers | @fletcherotown on Instagram (360×640) | Home "Latest from the lake" (links to each reel) | O'Town-owned |
+| `video/glen-film.mp4` | Glen feature film (sponsor graphics) | otownwatersports.com | Hero "Watch Glen" | Confirm rights with producer/sponsors |
+| `video/clip-riding-1/2.mp4` | Riding cut-downs of the film | same | Life bento | As above |
+| `video/clip-dock.mp4` | Backyard-to-dock pan | otownwatersports.com | Life bento | O'Town-owned |
+| `boat/d|m/*.webp` | 72-view rotation of the turquoise/white Supra | Screen recording of Supra's online configurator (supplied by Anna-Maria), cursor removed, background keyed out, stabilised | Boat viewer | **Supra render — confirm with Supra/dealer. The render carries an SV badge; O'Town's boat is an SL — re-record an SL build.** |
 
-## Not available / to shoot
-- 4K footage for a moving hero (existing video is 720×720 — too soft for full-bleed)
-- Glen coaching a beginner (candid), rider prep on the dock, golden-hour lake
-- Archival photos of the listed pro riders at O'Town (only use with permission; do not substitute unrelated athlete photos)
-- Interior view of the boat (the recording has no complete interior view)
-- Original O'Town logo file (the site currently uses a text lockup)
+## Still wanted
+- Original logo file (vector) from Glen
+- Photos of the featured riders at O'Town (rider panels fall back to a typographic design until supplied — set `photo` in `content/site.ts`)
+- 4K lake/riding footage for a moving hero

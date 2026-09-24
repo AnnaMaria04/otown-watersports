@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { contact, rates } from "@/content/site";
+import Accordion from "@/components/Accordion";
+import { contact, faqs, rates } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Rates & booking — O’Town Watersports",
@@ -9,55 +11,51 @@ export const metadata: Metadata = {
 
 export default function RatesPage() {
   return (
-    <div className="rates-page">
-      <section className="section section--first">
-        <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">Rates</p>
-            <h1 className="h1">Rates and booking.</h1>
-            <p className="lede lede--narrow">{rates.note} Every session includes coaching on and off the water.</p>
-          </div>
-
-          <ul className="rate-list">
-            {rates.items.map((r) => (
-              <li key={r.name} className="rate">
-                <h2 className="rate__name">{r.name}</h2>
-                <p className="rate__price">
-                  {r.price}
-                  {r.price.startsWith("$") && <span> {r.unit}</span>}
-                </p>
-                <ul className="rate__includes">
-                  {r.includes.map((i) => <li key={i}>{i}</li>)}
-                </ul>
-              </li>
-            ))}
-          </ul>
-
-          <div className="policy">
-            <div>
-              <h2 className="h3">Making a reservation</h2>
-              <p>Contact us by email or phone on <a href={contact.phone.href}>{contact.phone.label}</a>. We’ll need:</p>
-              <ul className="policy__list">
-                {rates.reservations.map((r) => <li key={r}>{r}</li>)}
-              </ul>
-              <p><a className="text-link" href={contact.waiver} target="_blank" rel="noreferrer">Read and sign the waiver</a></p>
-            </div>
-            <div>
-              <h2 className="h3">Payment</h2>
-              <p>{rates.payment}</p>
-              <h2 className="h3">Cancellations</h2>
-              <p>{rates.cancellation}</p>
-              <h2 className="h3">On the day</h2>
-              <p>{rates.conditions}</p>
-            </div>
-          </div>
-
-          <div className="rates-cta">
-            <p className="h3">Ready to plan your time on the water?</p>
-            <Link href="/#plan" className="btn btn--primary">Plan your session</Link>
-          </div>
+    <>
+      <section className="page-hero">
+        <Image src="/images/fb-cover.jpg" alt="A rider high above the wake on Lake Barton" fill priority quality={85} sizes="100vw" style={{ objectPosition: "30% 35%" }} />
+        <div className="wrap page-hero__inner page-hero__inner--rates">
+          <p className="eyebrow eyebrow--cyan">Rates</p>
+          <h1 className="display display--hero">Rates &amp; booking.</h1>
+          <p>{rates.note} Every session includes coaching on and off the water.</p>
         </div>
       </section>
-    </div>
+
+      <div className="wrap">
+        <ul className="price-grid">
+          {rates.items.map((r) => (
+            <li key={r.name} className={`price${r.featured ? " price--featured" : ""}`}>
+              {r.featured && <span className="price__tag">Most booked</span>}
+              <h2 className="price__name">{r.name}</h2>
+              <p className="price__amount">{r.price}</p>
+              <p className="price__unit">{r.unit}</p>
+              <ul>{r.includes.map((i) => <li key={i}>{i}</li>)}</ul>
+              <Link href={`/plan?activity=${r.name === "Camps" ? "training-stay" : r.name === "Full day" ? "coaching" : "first-session"}`}
+                className={`btn btn--pill ${r.featured ? "btn--primary" : "btn--ink"}`}>
+                {r.name === "Camps" ? "Ask about camps" : "Request a time"}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="rates-body">
+          <div>
+            <p className="eyebrow eyebrow--dark">Booking policy</p>
+            <h2 className="display display--lg display--ink">The small<br />print.</h2>
+            <p className="lede" style={{ marginTop: 20 }}>Questions? Call <a href={contact.phone.href}>{contact.phone.label}</a>.</p>
+            <p style={{ marginTop: 16 }}><a className="u-link" href={contact.waiver} target="_blank" rel="noreferrer">Read the waiver</a></p>
+          </div>
+          <Accordion items={rates.policies} />
+        </div>
+
+        <div className="rates-body rates-body--faq">
+          <div>
+            <p className="eyebrow eyebrow--dark">Good to know</p>
+            <h2 className="display display--lg display--ink">Before your<br />first set.</h2>
+          </div>
+          <Accordion items={faqs} />
+        </div>
+      </div>
+    </>
   );
 }

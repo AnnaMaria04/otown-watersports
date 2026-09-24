@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/manrope";
+import "@fontsource-variable/archivo/wdth.css";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#F2F1ED" };
+export const viewport: Viewport = { themeColor: "#0B1116" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

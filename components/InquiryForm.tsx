@@ -5,23 +5,21 @@ import { useSearchParams } from "next/navigation";
 import { contact } from "@/content/site";
 
 const activities = [
-  { value: "first-session", label: "A first session (wakeboard or wakesurf)" },
-  { value: "coaching", label: "Coaching to develop my riding" },
-  { value: "training-stay", label: "A training stay / camp" },
-  { value: "wakesurf", label: "Wakesurf coaching" },
-  { value: "other", label: "Something else — groups, tubing, events" },
+  { value: "first-session", label: "First session" },
+  { value: "coaching", label: "Coaching" },
+  { value: "wakesurf", label: "Wakesurf" },
+  { value: "training-stay", label: "Training stay" },
+  { value: "other", label: "Group / other" },
 ];
-const levels = ["Never ridden", "Beginner — getting up and riding", "Intermediate — crossing the wake", "Advanced — working on inverts and spins", "Pro / competitive"];
+const levels = ["Never ridden", "Beginner", "Intermediate", "Advanced", "Pro"];
 
-/**
- * No backend is configured, so this form composes an email to O'Town in the visitor's own mail app.
- * It never reports a successful submission it cannot confirm.
- */
+/** No backend is configured: the form composes an email in the visitor's own mail app and says so. */
 export default function InquiryForm() {
   const [activity, setActivity] = useState("first-session");
+  const [level, setLevel] = useState("Beginner");
   const [status, setStatus] = useState<"idle" | "invalid" | "opened">("idle");
-
   const params = useSearchParams();
+
   useEffect(() => {
     const a = params.get("activity");
     if (a && activities.some((x) => x.value === a)) setActivity(a);
@@ -30,75 +28,63 @@ export default function InquiryForm() {
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    if (!form.checkValidity()) {
-      setStatus("invalid");
-      form.reportValidity();
-      return;
-    }
+    if (!form.checkValidity()) { setStatus("invalid"); form.reportValidity(); return; }
     const f = new FormData(form);
-    const act = activities.find((x) => x.value === f.get("activity"))?.label ?? "";
     const lines = [
       `Name: ${f.get("name")}`,
       `Email: ${f.get("email")}`,
-      `Interested in: ${act}`,
-      `Riding level: ${f.get("level")}`,
+      `Interested in: ${activities.find((a) => a.value === activity)?.label}`,
+      `Riding level: ${level}`,
       `Preferred dates: ${f.get("dates")}`,
-      f.get("riders") ? `Number of riders: ${f.get("riders")}` : "",
       f.get("message") ? `\nWhat I'd like to work on:\n${f.get("message")}` : "",
     ].filter(Boolean);
-    const href = `mailto:${contact.email}?subject=${encodeURIComponent(`Session inquiry — ${f.get("name")}`)}&body=${encodeURIComponent(lines.join("\n"))}`;
-    window.location.href = href;
+    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(`Session inquiry — ${f.get("name")}`)}&body=${encodeURIComponent(lines.join("\n"))}`;
     setStatus("opened");
   }
 
   return (
     <form className="inquiry" onSubmit={onSubmit} noValidate>
-      <div className="field">
-        <label htmlFor="q-name">Name</label>
-        <input id="q-name" name="name" autoComplete="name" required />
-      </div>
-      <div className="field">
-        <label htmlFor="q-email">Email</label>
-        <input id="q-email" name="email" type="email" autoComplete="email" required />
-      </div>
-      <div className="field">
-        <label htmlFor="q-activity">Activity</label>
-        <select id="q-activity" name="activity" value={activity} onChange={(e) => setActivity(e.target.value)}>
-          {activities.map((a) => <option key={a.value} value={a.value}>{a.label}</option>)}
-        </select>
-      </div>
-      <div className="field">
-        <label htmlFor="q-level">Riding level</label>
-        <select id="q-level" name="level" defaultValue={levels[1]}>
-          {levels.map((l) => <option key={l}>{l}</option>)}
-        </select>
-      </div>
-      <div className="field">
-        <label htmlFor="q-dates">Preferred dates</label>
-        <input id="q-dates" name="dates" placeholder="e.g. 12–14 March, mornings" required />
-      </div>
-      <div className="field">
-        <label htmlFor="q-riders">Number of riders <span className="optional">optional</span></label>
-        <input id="q-riders" name="riders" inputMode="numeric" />
-      </div>
-      <div className="field field--full">
-        <label htmlFor="q-message">What would you like to work on? <span className="optional">optional</span></label>
-        <textarea id="q-message" name="message" rows={4} />
+      <fieldset className="chips">
+        <legend>I’m interested in</legend>
+        <div className="chips__row">
+          {activities.map((a) => (
+            <label key={a.value} className="chip">
+              <input type="radio" name="activity" value={a.value} checked={activity === a.value} onChange={() => setActivity(a.value)} />
+              <span>{a.label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset className="chips">
+        <legend>My riding level</legend>
+        <div className="chips__row">
+          {levels.map((l) => (
+            <label key={l} className="chip">
+              <input type="radio" name="level" value={l} checked={level === l} onChange={() => setLevel(l)} />
+              <span>{l}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div className="inquiry__grid">
+        <label className="field"><span>Name</span><input name="name" autoComplete="name" required placeholder="Your name" /></label>
+        <label className="field"><span>Email</span><input name="email" type="email" autoComplete="email" required placeholder="you@email.com" /></label>
+        <label className="field field--full"><span>Preferred dates</span><input name="dates" required placeholder="e.g. 12–14 March, mornings" /></label>
+        <label className="field field--full"><span>What are you working on? <em>optional</em></span><textarea name="message" rows={3} placeholder="Getting up for the first time, a 180, your first invert…" /></label>
       </div>
 
-      <div className="inquiry__foot field--full">
-        <button type="submit" className="btn btn--primary">Send inquiry</button>
-        <p className="inquiry__note">
-          Opens your email app with these details filled in — nothing is sent until you press send there.
-          An inquiry asks about availability; it isn’t a confirmed booking.
-        </p>
+      <div className="inquiry__foot">
+        <button type="submit" className="btn btn--primary btn--pill btn--lg">
+          Send inquiry
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" /></svg>
+        </button>
+        <p className="inquiry__note">Opens your email app. We’ll confirm availability.</p>
       </div>
-
-      <p className="inquiry__status field--full" role="status" aria-live="polite">
+      <p className="inquiry__status" role="status" aria-live="polite">
         {status === "invalid" && "Please add your name, a valid email and your preferred dates."}
-        {status === "opened" && (
-          <>Your email app should now be open with your inquiry. If nothing happened, email us at <a href={`mailto:${contact.email}`}>{contact.email}</a>.</>
-        )}
+        {status === "opened" && <>Your email app should now be open. Nothing happened? Email <a href={`mailto:${contact.email}`}>{contact.email}</a>.</>}
       </p>
     </form>
   );
