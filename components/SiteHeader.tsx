@@ -7,9 +7,9 @@ import Magnetic from "./Magnetic";
 
 const links = [
   { label: "Coaching", href: "/coaching" },
+  { label: "Rates", href: "/rates" },
   { label: "Experiences", href: "/#experiences" },
   { label: "Life at O’Town", href: "/#life" },
-  { label: "Rates", href: "/rates" },
 ];
 
 /** Text that rolls to a duplicate on hover (21st.dev "flip links", adapted). */

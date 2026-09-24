@@ -97,14 +97,17 @@ export default function Home() {
         <div className="wrap">
           <div className="boat__head" data-reveal>
             <div>
-              <p className="eyebrow eyebrow--cyan">The boat</p>
+              <p className="eyebrow eyebrow--cyan">The boat · {boat.make} {boat.model}</p>
               <h2 id="boat-title" className="display display--lg">Good equipment.<br />Experienced hands.</h2>
             </div>
             <p className="boat__copy">
-              A well set-up {boat.make} throws a clean, consistent wake to learn and progress on. What matters just as much is who’s driving: speed, line length and timing, tuned to the rider behind the boat.
+              A well set-up {boat.make} {boat.model} throws a clean, consistent wake to learn and progress on. What matters just as much is who’s driving: speed, line length and timing, tuned to the rider behind the boat.
             </p>
           </div>
-          <BoatViewer frames={boat.frames} label={boatLabel} />
+          <div className="boat__viewer">
+            <span className="boat__model" aria-hidden>{boat.model}</span>
+            <BoatViewer frames={boat.frames} label={boatLabel} />
+          </div>
           <div className="boat__foot">
             <p>Proudly riding behind a {boat.make}{boat.model ? ` ${boat.model}` : ""}.</p>
             <a className="btn btn--glass btn--pill" href={boat.link} target="_blank" rel="noreferrer">
@@ -126,11 +129,11 @@ export default function Home() {
           </div>
           <div className="bento">
             <Lightbox className="bento__a" src="/images/dock-bougainvillea.jpg" alt="Bougainvillea over the trampoline and dock, riders sitting at the water’s edge, the boat moored" caption="The dock and the trampoline" sizes="(max-width: 900px) 100vw, 50vw" position="50% 62%" />
-            <VideoDialog src="/video/clip-riding-1.mp4" title="Wakesurfing behind the boat" className="tile bento__b" muted>
+            <VideoDialog src="/video/clip-riding-1.mp4" title="On the boat with Glen" className="tile bento__b" muted>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/clip-riding-1-poster.jpg" alt="A rider wakesurfing" loading="lazy" />
+              <img src="/video/clip-riding-1-poster.jpg" alt="Glen at the wheel of the Supra" loading="lazy" style={{ objectPosition: "38% 50%" }} />
               <span className="tile__play"><Play /></span>
-              <span className="tile__cap">Wakesurf session</span>
+              <span className="tile__cap">On the boat with Glen</span>
             </VideoDialog>
             <Lightbox className="bento__c" src="/images/tubing.jpg" alt="Two friends laughing on a tube on the lake" caption="Tubing off the back of the boat" sizes="(max-width: 900px) 50vw, 25vw" position="50% 45%" />
             <Lightbox className="bento__d" src="/images/games-room.jpg" alt="The downstairs lounge with a table-tennis table and board racks" caption="Downstairs lounge" sizes="(max-width: 900px) 50vw, 25vw" />
@@ -143,7 +146,7 @@ export default function Home() {
             <Lightbox className="bento__f" src="/images/dock-guitar.jpg" alt="An acoustic guitar on the dock at sunrise, the trampoline and boat beyond" caption="Mornings on the dock" sizes="(max-width: 900px) 50vw, 25vw" position="50% 50%" />
             <VideoDialog src="/video/clip-riding-2.mp4" title="Another set" className="tile bento__g" muted>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/clip-riding-2-poster.jpg" alt="A rider launching off the wake" loading="lazy" />
+              <img src="/video/clip-riding-2-poster.jpg" alt="A rider grabbing the board high above the wake" loading="lazy" style={{ objectPosition: "50% 70%" }} />
               <span className="tile__play"><Play /></span>
               <span className="tile__cap">Another set</span>
             </VideoDialog>
@@ -172,7 +175,7 @@ export default function Home() {
 
       {/* Closing call to action */}
       <section className="cta-band" aria-labelledby="cta-title">
-        <Image src="/images/fb-cover.jpg" alt="" fill sizes="100vw" quality={85} />
+        <Image src="/images/bg-bec-boat.jpg" alt="" fill sizes="(orientation: portrait) 160vh, 100vw" quality={85} style={{ objectPosition: "50% 30%" }} />
         <div className="wrap cta-band__inner">
           <h2 id="cta-title" className="display display--xl">Your next set<br />starts here.</h2>
           <div className="actions">

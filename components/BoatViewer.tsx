@@ -23,14 +23,20 @@ export default function BoatViewer({ frames, label }: Props) {
 
   const draw = useCallback((f: number) => {
     const c = canvasRef.current;
-    const img = imgs.current[((Math.round(f) % frames) + frames) % frames];
-    if (!c || !img) return;
+    const n = ((f % frames) + frames) % frames;
+    const i0 = Math.floor(n), t = n - i0;
+    const a = imgs.current[i0], b = imgs.current[(i0 + 1) % frames];
+    if (!c || !a) return;
     const ctx = c.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, c.width, c.height);
-    const r = Math.min(c.width / img.naturalWidth, c.height / img.naturalHeight);
-    const w = img.naturalWidth * r, h = img.naturalHeight * r;
-    ctx.drawImage(img, (c.width - w) / 2, (c.height - h) / 2, w, h);
+    const r = Math.min(c.width / a.naturalWidth, c.height / a.naturalHeight);
+    const w = a.naturalWidth * r, h = a.naturalHeight * r;
+    const x = (c.width - w) / 2, y = (c.height - h) / 2;
+    // Crossfade neighbouring views so the turn reads as continuous rather than stepped
+    ctx.globalAlpha = 1;
+    ctx.drawImage(a, x, y, w, h);
+    if (b && t > 0.02) { ctx.globalAlpha = t; ctx.drawImage(b, x, y, w, h); ctx.globalAlpha = 1; }
   }, [frames]);
 
   // Ease the displayed frame toward the target for a calm, steady turn
@@ -123,7 +129,7 @@ export default function BoatViewer({ frames, label }: Props) {
       <div ref={stageRef} className={`boat-stage${ready ? " is-ready" : ""}`} aria-hidden>
         <picture>
           <source media="(max-width: 700px)" srcSet="/boat/m/00.webp" />
-          <img className="boat-poster" src="/boat/d/00.webp" alt="" width={1440} height={771} />
+          <img className="boat-poster" src="/boat/d/00.webp" alt="" width={1800} height={841} />
         </picture>
         <canvas ref={canvasRef} className="boat-canvas" />
         <div className="boat-floor" />
@@ -136,7 +142,7 @@ export default function BoatViewer({ frames, label }: Props) {
         <div className="boat-range" style={{ ["--pct" as string]: `${pct}%` }}>
           <span className="boat-range__track" aria-hidden />
           <input
-            type="range" min={0} max={frames - 1} step={1} value={Math.round(value)} disabled={!ready}
+            type="range" min={0} max={frames - 1} step={0.05} value={value} disabled={!ready}
             aria-label={`Rotate ${label}`} aria-valuetext={`${deg} degrees`}
             onChange={(e) => goTo(Number(e.target.value))}
           />

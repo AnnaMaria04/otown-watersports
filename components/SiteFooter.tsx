@@ -25,7 +25,7 @@ export default function SiteFooter() {
           </div>
           <div>
             <p className="eyebrow">More</p>
-            <p><Link href="/coaching">Coaching</Link> · <Link href="/rates">Rates</Link> · <Link href="/plan">Plan</Link></p>
+            <p><Link href="/coaching">Coaching</Link> · <Link href="/rates">Rates</Link> · <Link href="/athletes">Athletes</Link> · <Link href="/plan">Plan</Link></p>
             <p><a href={contact.waiver} target="_blank" rel="noreferrer">Waiver</a></p>
             <p><a href={contact.instagram.href} target="_blank" rel="noreferrer">Instagram</a> · <a href={contact.facebook.href} target="_blank" rel="noreferrer">Facebook</a></p>
           </div>

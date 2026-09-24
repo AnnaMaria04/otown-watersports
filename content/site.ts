@@ -25,29 +25,38 @@ export const heroSlides = [
   {
     key: "learn",
     label: "Learn",
-    caption: "Dock starts on Lake Barton",
-    image: "/images/hero-dock-start.jpg",
-    alt: "A rider starts from the O’Town dock as the boat pulls away across Lake Barton",
-    position: "50% 74%",
-    mobilePosition: "40% 70%",
+    caption: "Alizé Piana, from Glen’s rider list",
+    image: "/images/hero-alize-air.jpg",
+    alt: "Alizé Piana tucked mid-air through a curtain of spray",
+    portrait: false,
+    position: "50% 32%",
+    mobilePosition: "40% 30%",
+    zoom: 1,
+    origin: "50% 50%",
   },
   {
     key: "ride",
     label: "Ride",
-    caption: "Wakesurfing behind the boat",
-    image: "/images/sophia-wakesurf.jpg",
-    alt: "A rider wakesurfing on the wave behind the boat",
-    position: "50% 58%",
-    mobilePosition: "50% 55%",
+    caption: "Bec Gange, from Glen’s rider list",
+    image: "/images/hero-bec-invert.jpg",
+    alt: "Bec Gange fully inverted high above the boat",
+    portrait: false,
+    position: "50% 18%",
+    mobilePosition: "50% 20%",
+    zoom: 1,
+    origin: "50% 50%",
   },
   {
     key: "progress",
     label: "Progress",
-    caption: "Air awareness on the trampoline",
-    image: "/images/trampoline.jpg",
-    alt: "A rider flips on the lakeside trampoline while friends watch from the dock",
-    position: "50% 38%",
-    mobilePosition: "55% 40%",
+    caption: "Big air at sunset",
+    image: "/images/bg-sunset-air.jpg",
+    alt: "A rider inverted high above the wake at sunset",
+    portrait: false,
+    position: "42% 30%",
+    mobilePosition: "42% 30%",
+    zoom: 1,
+    origin: "50% 50%",
   },
 ];
 
@@ -72,7 +81,27 @@ export type Rider = {
   photo?: string;
   photoAlt?: string;
   photoPosition?: string;
+  thumb?: string;
+  /** Second image for the floating card — a portrait or podium shot. */
+  card?: string;
+  cardCaption?: string;
 };
+
+/** Wider athlete list for /athletes — photos from public web sources (see ASSETS.md). */
+export const athletes: { name: string; country: string; note: string; photo?: string; position?: string }[] = [
+  { name: "Raimi Merritt", country: "USA", note: "Female Rider of the Year, 2009–2013.", photo: "/athletes/raimi.jpg", position: "50% 22%" },
+  { name: "Dallas Friday", country: "USA", note: "Four-time X Games gold; 2009 World Champion.", photo: "/athletes/dallas.jpg", position: "50% 35%" },
+  { name: "Rusty Malinoski", country: "Canada", note: "Credited with the first 1080 in pro competition.", photo: "/athletes/rusty.jpg", position: "50% 30%" },
+  { name: "Aaron Rathy", country: "Canada", note: "2009 World Champion and King of Wake.", photo: "/athletes/aaron.jpg", position: "60% 30%" },
+  { name: "Meagan Ethell", country: "USA", note: "Best Female Rider, 2019 Wake Awards.", photo: "/athletes/meagan-2.jpg", position: "50% 40%" },
+  { name: "Steel Lafferty", country: "USA", note: "2017 X Games gold and Wakeboarder of the Year.", photo: "/athletes/steel.jpg", position: "55% 35%" },
+  { name: "Erika Lang", country: "USA", note: "2017 World Games silver; 2023 world champion in water-ski tricks.", photo: "/athletes/erika.jpg", position: "62% 45%" },
+  { name: "Shota Tezuka", country: "Japan", note: "First Japanese-born rider to win a Junior Pro Tour stop.", photo: "/athletes/shota.jpg", position: "45% 40%" },
+  { name: "Bec Gange", country: "Australia", note: "Two-time wakeboard world champion.", photo: "/athletes/bec.jpg", position: "50% 25%" },
+  { name: "Alizé Piana", country: "Italy", note: "2022 Junior Women world champion.", photo: "/athletes/alize.jpg", position: "40% 30%" },
+  { name: "Mary Morgan Howell", country: "USA", note: "On O’Town’s pro women list.", photo: "/athletes/marymorgan.jpg", position: "62% 40%" },
+  { name: "Austin Hair", country: "USA", note: "3rd overall, 2013 Pro Wakeboard Tour.", photo: "/athletes/austin.jpg", position: "70% 45%" },
+];
 
 /** Riders listed on the official O'Town coaching page. Historical relationships — not current students or endorsers. */
 export const spotlight: Rider[] = [
@@ -82,6 +111,11 @@ export const spotlight: Rider[] = [
     country: "USA",
     points: ["Moved to Orlando at 15 to train with Glen.", "Named female Rider of the Year five years running, 2009–2013."],
     source: "https://en.wikipedia.org/wiki/Raimi_Merritt",
+    photo: "/athletes/raimi.jpg",
+    photoAlt: "Raimi Merritt inverted above the wake",
+    photoPosition: "50% 22%",
+    card: "/athletes/raimi-card.jpg",
+    cardCaption: "On the World Cup podium",
   },
   {
     key: "dallas",
@@ -89,6 +123,11 @@ export const spotlight: Rider[] = [
     country: "USA",
     points: ["Four-time X Games gold medalist.", "2009 WWA Wakeboard World Champion."],
     source: "https://usa-wwf.org/IWWF-Hall-of-Fame/dallas-friday",
+    photo: "/athletes/dallas.jpg",
+    photoAlt: "Dallas Friday riding",
+    photoPosition: "50% 40%",
+    card: "/athletes/dallas-card.jpg",
+    cardCaption: "WWA World Championships podium",
   },
   {
     key: "rusty",
@@ -96,6 +135,11 @@ export const spotlight: Rider[] = [
     country: "Canada",
     points: ["Credited with the first 1080 landed in professional competition."],
     source: "https://en.wikipedia.org/wiki/Rusty_Malinoski",
+    photo: "/athletes/rusty.jpg",
+    photoAlt: "Rusty Malinoski inverted, his signature board overhead",
+    photoPosition: "50% 34%",
+    card: "/athletes/rusty-card.jpg",
+    cardCaption: "Off the water",
   },
   {
     key: "aaron",
@@ -103,6 +147,11 @@ export const spotlight: Rider[] = [
     country: "Canada",
     points: ["2009 WWA Wakeboard World Champion.", "2009 King of Wake."],
     source: "https://www.wakeboardingmag.com/blog/events/2009/08/30/rathy-friday-win-worlds-and-king-of-wake-crowns/",
+    photo: "/athletes/aaron.jpg",
+    photoAlt: "Aaron Rathy high above the lake under a stormy sky",
+    photoPosition: "60% 32%",
+    card: "/athletes/aaron-card.jpg",
+    cardCaption: "Off the water",
   },
   {
     key: "meagan",
@@ -110,6 +159,11 @@ export const spotlight: Rider[] = [
     country: "USA",
     points: ["Best Female Rider at the 2019 Wake Awards."],
     source: "https://www.wakeboardingmag.com/story/photos/2019-wake-awards-winners/",
+    photo: "/athletes/meagan.jpg",
+    photoAlt: "Meagan Ethell in the air in front of red canyon walls",
+    photoPosition: "45% 40%",
+    card: "/athletes/meagan-card.jpg",
+    cardCaption: "Off the water",
   },
   {
     key: "sophia",
@@ -136,10 +190,8 @@ export const method = [
 ];
 
 export const moreRiders = [
-  "Steel Lafferty", "Mary Morgan Howell", "Erika Lang", "Sian Hurst", "Bec Gange", "Andrew Adkison",
-  "Tony Carroll", "Austin Hair", "Jacob Valdez", "Eddie Valdez", "Damian Adam", "Shota Tezuka",
-  "Deco Rondi", "Lorenzo Soprani", "Carolina Goldenberg", "Luna Cassart", "Alizé Piana", "Otoha Kawahara",
-  "Taylor McCullough", "Hollie Waldrop", "Bethany Henderson",
+  "Sian Hurst", "Andrew Adkison",
+  "Tony Carroll", "Jacob Valdez", "Eddie Valdez", "Damian Adam", "Deco Rondi", "Lorenzo Soprani", "Carolina Goldenberg", "Luna Cassart", "Taylor McCullough", "Hollie Waldrop", "Bethany Henderson", "Otoha Kawahara",
 ];
 
 export type ActivityKey = "first-session" | "coaching" | "training-stay" | "wakesurf" | "other";
@@ -183,7 +235,7 @@ export const boat = {
   model: "SL" as string | null,
   make: "Supra",
   link: "https://www.supraboats.com/boats/sl",
-  frames: 72,
+  frames: 36,
 };
 
 /** Latest posts from @fletcherotown (covers downloaded Sept 2026). */

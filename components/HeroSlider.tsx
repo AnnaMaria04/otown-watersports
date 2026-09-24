@@ -10,15 +10,40 @@ import Magnetic from "./Magnetic";
 const DURATION = 6500;
 
 /**
- * Full-bleed hero with a rotating set of real O'Town photographs.
- * Learn · Ride · Progress tabs double as the slide controls, with a progress bar on the active one.
- * Auto-advance pauses on hover/focus, when the tab is hidden, and never runs under reduced motion.
+ * Full-bleed hero with rotating real photographs.
+ * The brand line — Learn. Ride. Progress. — is set huge along the bottom and each word is the control for its photo:
+ * the active word is solid with a neon progress line, the others are outlined.
+ * Auto-advance pauses on hover/focus and when the tab is hidden, and never runs under reduced motion.
  */
 export default function HeroSlider() {
   const [i, setI] = useState(0);
+  const [prev, setPrev] = useState(-1);
   const [paused, setPaused] = useState(false);
   const [auto, setAuto] = useState(true);
   const ref = useRef<HTMLElement>(null);
+
+  const go = (n: number) => {
+    if (n === i) return;
+    setPrev(i);
+    setI(n);
+  };
+
+  // Gentle pointer parallax on the photo (desktop pointers only, never under reduced motion)
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches || !window.matchMedia("(pointer: fine)").matches) return;
+    let raf = 0;
+    const move = (e: PointerEvent) => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+        el.style.setProperty("--my", ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+      });
+    };
+    el.addEventListener("pointermove", move);
+    return () => { el.removeEventListener("pointermove", move); cancelAnimationFrame(raf); };
+  }, []);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) setAuto(false);
@@ -29,9 +54,11 @@ export default function HeroSlider() {
 
   useEffect(() => {
     if (!auto || paused) return;
-    const t = setTimeout(() => setI((v) => (v + 1) % heroSlides.length), DURATION);
+    const t = setTimeout(() => go((i + 1) % heroSlides.length), DURATION);
     return () => clearTimeout(t);
   }, [i, auto, paused]);
+
+  const s = heroSlides[i];
 
   return (
     <section
@@ -45,48 +72,60 @@ export default function HeroSlider() {
       onBlurCapture={() => setPaused(false)}
     >
       <div className="hero__slides">
-        {heroSlides.map((s, n) => (
-          <div key={s.key} className={`hero__slide${n === i ? " is-active" : ""}`} aria-hidden={n !== i}
-            style={{ ["--pos" as string]: s.position, ["--pos-m" as string]: s.mobilePosition }}>
-            <Image src={s.image} alt={s.alt} fill priority={n === 0} quality={85} sizes="100vw" />
+        {heroSlides.map((sl, n) => (
+          <div key={sl.key} className={`hero__slide${n === i ? " is-active" : n === prev ? " is-prev" : ""}`} aria-hidden={n !== i}
+            style={{ ["--pos" as string]: sl.position, ["--pos-m" as string]: sl.mobilePosition, ["--zoom" as string]: sl.zoom, ["--origin" as string]: sl.origin }}>
+            <div className="hero__plate">
+              <Image src={sl.image} alt={sl.alt} fill priority={n === 0} quality={85}
+                sizes={sl.portrait ? "(orientation: portrait) max(100vw, 75vh), 130vw" : "(orientation: portrait) 150vh, 100vw"} />
+            </div>
           </div>
         ))}
         <div className="hero__shade" aria-hidden />
       </div>
 
       <div className="hero__inner wrap">
-        <div className="hero__copy">
-          <p className="eyebrow eyebrow--light">{contact.location}</p>
-          <h1 className="display display--hero">Your next set<br />starts here.</h1>
-          <p className="hero__lede">
-            Wakeboard and wakesurf coaching with Glen Fletcher. From your first ride to the trick you’ve been working toward.
+        <div className="hero__top">
+          <p className="hero__loc"><span className="hero__dot" aria-hidden />{contact.location}</p>
+          <p className="hero__count" aria-hidden>
+            <span key={i} className="hero__count-n">0{i + 1}</span> / 0{heroSlides.length}
+            <span key={`c-${i}`} className="hero__count-cap">{s.caption}</span>
           </p>
-          <div className="actions">
-            <Magnetic><Link href="/plan" className="btn btn--primary btn--pill btn--lg">Plan your session</Link></Magnetic>
-            <Link href="#glen" className="btn btn--glass btn--pill btn--lg">Meet Glen</Link>
-          </div>
         </div>
 
-        <VideoDialog src="/video/glen-film.mp4" title="Glen on the water" className="film-card">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/video/glen-film-poster.jpg" alt="" className="film-card__img" width={720} height={720} />
-          <span className="film-card__play" aria-hidden>
-            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor" /></svg>
-          </span>
-          <span className="film-card__text">
-            <span className="film-card__title">Watch Glen on the water</span>
-            <span className="film-card__meta">1 min film</span>
-          </span>
-        </VideoDialog>
+        <div className="hero__mid">
+          <div className="hero__copy">
+            <h1 className="hero__title">Wakeboard &amp; wakesurf coaching with <em>Glen&nbsp;Fletcher.</em></h1>
+            <p className="hero__lede">From your first ride to the trick you’ve been working toward — on Lake Barton, every week of the year.</p>
+            <div className="actions">
+              <Magnetic><Link href="/plan" className="btn btn--primary btn--pill btn--lg">Plan your session <span aria-hidden>→</span></Link></Magnetic>
+              <Link href="/rates" className="hero__rates u-link u-link--light">See rates</Link>
+            </div>
+          </div>
 
-        <div className="hero__tabs" role="tablist" aria-label="Choose a photo">
-          {heroSlides.map((s, n) => (
-            <button key={s.key} type="button" role="tab" aria-selected={n === i} className={`hero__tab${n === i ? " is-active" : ""}`}
-              onClick={() => setI(n)}>
-              <span className="hero__tab-bar" aria-hidden><span key={`${i}-${n}`} className="hero__tab-fill" style={{ animationDuration: `${DURATION}ms` }} /></span>
-              <span className="hero__tab-num">0{n + 1}</span>
-              <span className="hero__tab-label">{s.label}.</span>
-              <span className="hero__tab-cap">{s.caption}</span>
+          <VideoDialog src="/video/glen-film.mp4" title="Glen on the water" className="film-chip">
+            <span className="film-chip__media">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/video/glen-film-poster.jpg" alt="" width={720} height={720} />
+              <span className="film-chip__play" aria-hidden>
+                <svg viewBox="0 0 24 24" width="14" height="14"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor" /></svg>
+              </span>
+            </span>
+            <span className="film-chip__text">
+              <span className="film-chip__title">Watch Glen on the water</span>
+              <span className="film-chip__meta">1 min film</span>
+            </span>
+          </VideoDialog>
+        </div>
+
+        <div className="hero__words" role="tablist" aria-label="Learn, ride, progress — choose a photo">
+          {heroSlides.map((sl, n) => (
+            <button key={sl.key} type="button" role="tab" aria-selected={n === i} aria-label={`${sl.label}: ${sl.caption}`}
+              className={`hero__word${n === i ? " is-active" : ""}`} onClick={() => go(n)}>
+              <span className="hero__word-text" key={n === i ? `on-${i}` : `off-${n}`} aria-hidden>
+                {`${sl.label}.`.split("").map((ch, k) => <span key={k} className="hero__ch" style={{ ["--k" as string]: k }}>{ch}</span>)}
+              </span>
+              <span className="hero__word-bar" aria-hidden><span key={`${i}-${n}`} className="hero__word-fill" style={{ animationDuration: `${DURATION}ms` }} /></span>
             </button>
           ))}
         </div>

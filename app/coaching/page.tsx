@@ -73,6 +73,7 @@ export default function CoachingPage() {
             <p className="eyebrow eyebrow--cyan">The list</p>
             <h2 id="roster-title" className="display display--lg">Riders Glen<br />has worked with.</h2>
             <p className="roster__foot">From the rider list on O’Town’s coaching page, covering many years of coaching — not a list of current students or sponsors.</p>
+            <p style={{ marginTop: 28 }}><Link href="/athletes" className="btn btn--primary btn--pill">Meet the athletes</Link></p>
           </div>
           <div>
             <h3>Featured above</h3>
@@ -86,7 +87,7 @@ export default function CoachingPage() {
       </section>
 
       <section className="cta-band cta-band--short" aria-labelledby="cta-title">
-        <Image src="/images/fb-cover.jpg" alt="" fill sizes="100vw" quality={85} />
+        <Image src="/images/trampoline.jpg" alt="" fill sizes="100vw" quality={85} style={{ objectPosition: "50% 35%" }} />
         <div className="wrap cta-band__inner">
           <h2 id="cta-title" className="display display--xl">Your turn.</h2>
           <div className="actions">

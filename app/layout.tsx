@@ -4,6 +4,7 @@ import "@fontsource-variable/archivo/wdth.css";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import SmoothAnchors from "@/components/SmoothAnchors";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "O’Town Watersports",
     description: "Wakeboard and wakesurf coaching on Lake Barton, Orlando.",
-    images: ["/images/hero-dock-start.jpg"],
+    images: ["/images/hero-alize-air.jpg"],
   },
 };
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <SmoothAnchors />
         <Reveal />
       </body>
     </html>
