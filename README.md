@@ -1,23 +1,29 @@
-# O'Town Watersports — website redesign
+# O'Town Watersports — website
 
-Next.js (App Router) site for O'Town Watersports, Glen Fletcher's private wakeboard & wakesurf coaching school on Lake Barton, Orlando.
+Next.js (App Router) site for O'Town Watersports, Glen Fletcher's wakeboard & wakesurf coaching on Lake Barton, Orlando.
 
-## Design direction
-- **Mood:** quiet luxury, yacht-club editorial — ink + ivory, one neon-cyan accent taken from the O'Town neon sign.
-- **Type:** Fraunces (display serif, italics for emphasis) + Inter Tight (UI, tracked uppercase labels).
-- **Tokens:** `--ink #0A1015` · `--deep #0F1A21` · `--lake #1D3845` · `--ivory #F4F1EA` · `--neon #3FD6F0`
-- **Voice:** "Beginners welcomed. Pros challenged." · "Learn. Ride. Progress."
+## Structure
+- `content/site.ts` — **all facts** (contact, Glen bio, riders + sources, experiences, boat model, rates). Edit here, not in components.
+- `app/page.tsx` — homepage: Hero · Meet Glen · History · Experiences · Boat · Life at O'Town · Inquiry
+- `app/rates/page.tsx` — rates and booking policy
+- `components/` — `SiteHeader` (accessible mobile menu), `BoatViewer` (360° drag viewer), `VideoDialog`, `InquiryForm`, `Reveal`
+- `app/globals.css` — design tokens and components
+- `ASSETS.md` — asset register with sources and publication permission
 
-## Sections
-Hero · Approach · Glen Fletcher · The Roster (pros coached) · The Lake · Sessions & rates · Reserve form (mailto)
+## Design system
+- Colour: Pearl `#F2F1ED` (surface) · Charcoal `#11191C` (type, boat section) · Turquoise `#16A8AD` (primary action, focus, fine detail) · Silver `#B8C2C5` (rules, text on dark)
+- Type: Manrope (self-hosted via @fontsource-variable), sentence case, medium weight headlines
+- Primary buttons are turquoise with **charcoal** text (≈6:1 contrast)
 
-## To do
-- Replace `.frame` image slots with real O'Town photography / video
-- Hook the reserve form to a real inbox or booking tool
+## Boat viewer
+72 captured views (desktop 1440w, mobile 820w WebP with transparent background) in `public/boat/`. Poster loads first; the sequence loads when the section approaches; drag/swipe horizontally, arrow keys, buttons, optional auto-rotate (paused offscreen and under reduced motion). Set `boat.model` in `content/site.ts` once confirmed.
+
+## Inquiry form
+No backend is configured — the form opens the visitor's email app with a pre-filled message to info@otownwatersports.com and says so. To use a real endpoint (e.g. Formspree, Resend), replace `onSubmit` in `components/InquiryForm.tsx` and show real success/error states.
 
 ## Dev
 ```bash
 npm install
 npm run dev
 ```
-Deploy: import this repo in Vercel (framework auto-detected).
+Deploy: import the repo in Vercel (framework auto-detected).
