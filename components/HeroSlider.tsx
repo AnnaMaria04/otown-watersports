@@ -70,8 +70,11 @@ export default function HeroSlider() {
       <div className="hero__slides">
         {heroSlides.map((sl, n) => (
           <div key={sl.key} className={`hero__slide${n === i ? " is-active" : n === prev ? " is-prev" : ""}`} aria-hidden={n !== i}
-            style={{ ["--pos" as string]: sl.position, ["--pos-m" as string]: sl.mobilePosition, ["--zoom-d" as string]: sl.zoom, ["--origin-d" as string]: sl.origin, ["--zoom-m" as string]: sl.mobileZoom ?? 1, ["--origin-m" as string]: sl.mobileOrigin ?? "50% 50%" }}>
-            <div className="hero__plate">
+            style={{ ["--pos" as string]: sl.position, ["--pos-m" as string]: sl.mobilePosition, ["--zoom-d" as string]: sl.zoom, ["--origin-d" as string]: sl.origin, ["--zoom-m" as string]: (sl.mobileZoom ?? 1) < 1 ? 1 : (sl.mobileZoom ?? 1), ["--origin-m" as string]: sl.mobileOrigin ?? "50% 50%" }}>
+            <div className={`hero__plate${(sl.mobileZoom ?? 1) < 1 ? " hero__plate--fit" : ""}`}>
+              {(sl.mobileZoom ?? 1) < 1 && (
+                <Image className="hero__backfill" src={sl.image} alt="" aria-hidden fill quality={40} sizes="100vw" loading="eager" />
+              )}
               <Image src={sl.image} alt={sl.alt} fill priority={n === 0} loading="eager" quality={85}
                 sizes={sl.portrait ? "(orientation: portrait) max(100vw, 75vh), 130vw" : "(orientation: portrait) 150vh, 100vw"} />
             </div>

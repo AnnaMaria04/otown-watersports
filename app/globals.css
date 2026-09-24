@@ -688,3 +688,10 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 .hero__loc-arrow { opacity: 0; transform: translate(-4px, 2px); transition: opacity .3s, transform .3s; font-size: 12px; }
 .hero__loc:hover .hero__loc-arrow, .hero__loc:focus-visible .hero__loc-arrow { opacity: 1; transform: none; }
 .hero__loc:hover { opacity: .85; }
+
+/* Phones: show a wider frame of photos whose subject fills the shot; blurred copy fills the edges */
+.hero__backfill { display: none; }
+@media (max-width: 900px) {
+  .hero__plate--fit .hero__backfill { display: block; object-fit: cover; object-position: var(--pos-m); filter: blur(22px) brightness(.85) saturate(1.1); transform: scale(1.25) !important; transition: none !important; }
+  .hero__plate--fit img:not(.hero__backfill) { top: 7% !important; height: 76% !important; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%); }
+}
