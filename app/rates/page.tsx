@@ -13,7 +13,7 @@ export default function RatesPage() {
   return (
     <>
       <section className="page-hero">
-        <Image src="/images/bg-sunset-air.jpg" alt="A rider inverted high above the wake at sunset" fill priority quality={85} sizes="(orientation: portrait) 150vh, 100vw" style={{ objectPosition: "42% 30%" }} />
+        <Image src="/images/bg-sunset-air.jpg" alt="A rider inverted high above the wake at sunset" fill priority quality={85} sizes="(orientation: portrait) 150vh, 100vw" style={{ objectPosition: "28% 16%" }} />
         <div className="wrap page-hero__inner page-hero__inner--rates">
           <p className="eyebrow eyebrow--cyan">Rates</p>
           <h1 className="display display--hero">Rates &amp; booking.</h1>

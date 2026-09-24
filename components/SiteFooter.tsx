@@ -31,7 +31,7 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="site-footer__base">
-          <span>© O’Town Watersports · Lake Barton, Orlando</span>
+          <span>© {new Date().getFullYear()} O’Town Watersports · Lake Barton, Orlando</span>
           <span>Open every week of the year</span>
         </div>
       </div>

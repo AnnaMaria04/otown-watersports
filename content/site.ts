@@ -207,7 +207,7 @@ export const experiences = [
     body: "Start behind the boat with a coach who has taught every kind of rider — from standing up for the first time to riding comfortably across the wake.",
     image: "/images/dock-boat-tube.jpg",
     alt: "The boat at the O’Town dock, ready for the next rider",
-    position: "50% 60%",
+    position: "50% 70%",
   },
   {
     key: "coaching" as ActivityKey,

@@ -36,8 +36,7 @@ export default function RiderSpotlight() {
 
   return (
     <section className="riders" id="riders" aria-labelledby="riders-title"
-      onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
+>
       <div className="riders__stage">
         <div className="riders__copy wrap-left">
           <p className="eyebrow eyebrow--cyan" id="riders-title">Riders Glen has worked with</p>
@@ -78,7 +77,7 @@ export default function RiderSpotlight() {
             <span className="up-next__text"><span>Up next</span>{nx.name}</span>
           </button>
 
-          <div className="pill-tabs" role="tablist" aria-label="Riders" ref={tabsRef}>
+          <div className="pill-tabs" role="tablist" aria-label="Riders" ref={tabsRef} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
             {spotlight.map((s, n) => (
               <button key={s.key} type="button" role="tab" aria-selected={n === i} className={`pill-tab${n === i ? " is-active" : ""}`} onClick={() => setI(n)}>
                 {s.name.split(" ")[0]}

@@ -59,7 +59,7 @@ export default function AthletesPage() {
       </section>
 
       <section className="cta-band cta-band--short" aria-labelledby="cta-title">
-        <Image src="/images/bg-sunset-air.jpg" alt="" fill sizes="(orientation: portrait) 150vh, 100vw" quality={85} style={{ objectPosition: "42% 30%" }} />
+        <Image src="/images/bg-sunset-air.jpg" alt="" fill sizes="(orientation: portrait) 150vh, 100vw" quality={85} style={{ objectPosition: "28% 14%" }} />
         <div className="wrap cta-band__inner">
           <h2 id="cta-title" className="display display--xl">Next on the list?</h2>
           <div className="actions">

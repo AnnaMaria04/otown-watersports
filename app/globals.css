@@ -500,7 +500,7 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
   .hero__title { font-size: 24px; margin-bottom: 18px; }
   .hero__shade { background: linear-gradient(0deg, rgba(11,17,22,.94) 0%, rgba(11,17,22,.78) 30%, rgba(11,17,22,.25) 55%, rgba(11,17,22,0) 70%, rgba(11,17,22,.45) 100%) !important; }
   .hero__top { display: none; }
-  .glen__media > img { object-position: 50% 78% !important; }
+  .glen__media > img:not(.only-mob) { object-position: 50% 78% !important; }
   .site-footer a { display: inline-block; padding: 6px 0; }
   .u-link { padding-top: 8px; padding-bottom: 8px; background-position: 0 calc(100% - 4px); }
   .film-chip { padding: 6px 16px 6px 6px; gap: 10px; }
@@ -638,3 +638,24 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 @media (max-width: 1100px) { .ath-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .ath-grid { grid-template-columns: 1fr; } .ath-card__media { aspect-ratio: 4 / 4.6; } }
 .boat__viewer { position: relative; isolation: isolate; }
+.page-hero--full { min-height: 100svh; }
+
+/* Phones held sideways: keep the hero to one screen */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero__inner { padding-top: calc(var(--header-h) + 4px); padding-bottom: 12px; }
+  .hero__top, .hero__lede, .film-chip { display: none; }
+  .hero__mid { flex-direction: row; align-items: flex-end; padding-bottom: 12px; }
+  .hero__title { font-size: 22px; margin-bottom: 12px; max-width: 26ch; }
+  .hero__word { font-size: min(9cqi, 64px); padding-bottom: 8px; }
+  .hero__shade { background: linear-gradient(0deg, rgba(11,17,22,.9) 0%, rgba(11,17,22,.5) 45%, rgba(11,17,22,.1) 75%, rgba(11,17,22,.4) 100%) !important; }
+  .page-hero { min-height: 100svh; }
+  .mobile-menu__link { font-size: 30px; padding: 6px 0; }
+}
+/* Notched phones in landscape */
+.wrap, .site-header__bar { padding-left: max(var(--gutter), env(safe-area-inset-left)); padding-right: max(var(--gutter), env(safe-area-inset-right)); }
+
+.only-mob { display: none; }
+@media (max-width: 700px) { .only-desk { display: none; } .only-mob { display: block; } }
+.page-hero .eyebrow { text-shadow: 0 1px 10px rgba(0,0,0,.6); }
+.glen__media > img.only-mob { display: none; }
+@media (max-width: 700px) { .glen__media > img.only-desk { display: none; } .glen__media > img.only-mob { display: block; } }

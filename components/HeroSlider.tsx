@@ -66,10 +66,6 @@ export default function HeroSlider() {
       className={`hero${auto && !paused ? " is-playing" : ""}`}
       aria-roledescription="carousel"
       aria-label="O’Town on Lake Barton"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={() => setPaused(false)}
     >
       <div className="hero__slides">
         {heroSlides.map((sl, n) => (
@@ -118,7 +114,7 @@ export default function HeroSlider() {
           </VideoDialog>
         </div>
 
-        <div className="hero__words" role="tablist" aria-label="Learn, ride, progress — choose a photo">
+        <div className="hero__words" role="tablist" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)} aria-label="Learn, ride, progress — choose a photo">
           {heroSlides.map((sl, n) => (
             <button key={sl.key} type="button" role="tab" aria-selected={n === i} aria-label={`${sl.label}: ${sl.caption}`}
               className={`hero__word${n === i ? " is-active" : ""}`} onClick={() => go(n)}>

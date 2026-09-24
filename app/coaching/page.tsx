@@ -13,7 +13,8 @@ export default function CoachingPage() {
   return (
     <>
       <section className="page-hero">
-        <Image src="/images/glen-tower.jpg" alt="Glen on the boat under the tower, Lake Barton" fill priority quality={85} sizes="100vw" style={{ objectPosition: "60% 45%" }} />
+        <Image className="only-desk" src="/images/glen-tower.jpg" alt="Glen at the wheel under the tower, Lake Barton" fill priority quality={85} sizes="100vw" style={{ objectPosition: "86% 72%" }} />
+        <Image className="only-mob" src="/images/glen-helm.jpg" alt="" fill quality={85} sizes="100vw" style={{ objectPosition: "50% 18%" }} />
         <div className="wrap page-hero__inner">
           <p className="eyebrow eyebrow--cyan">Coaching</p>
           <h1 className="display display--hero">Coached by Glen.</h1>
@@ -35,7 +36,8 @@ export default function CoachingPage() {
           </div>
         </div>
         <div className="glen__media">
-          <Image src="/images/glen-helm.jpg" alt="Glen Fletcher at the helm, handle in hand" fill quality={85} sizes="(max-width: 900px) 100vw, 55vw" />
+          <Image className="only-desk" src="/images/glen-helm.jpg" alt="Glen Fletcher at the helm, handle in hand" fill quality={85} sizes="(max-width: 900px) 100vw, 55vw" />
+          <Image className="only-mob" src="/images/glen-driving.jpg" alt="Glen Fletcher driving the boat" fill quality={85} sizes="100vw" style={{ objectPosition: "40% 55%" }} />
           <figure className="glen__inset">
             <Image src="/images/dock-guitar.jpg" alt="An acoustic guitar on the O’Town dock at sunrise" fill quality={85} sizes="280px" />
             <figcaption>The dock, most mornings.</figcaption>
@@ -87,7 +89,7 @@ export default function CoachingPage() {
       </section>
 
       <section className="cta-band cta-band--short" aria-labelledby="cta-title">
-        <Image src="/images/trampoline.jpg" alt="" fill sizes="100vw" quality={85} style={{ objectPosition: "50% 35%" }} />
+        <Image src="/images/hero-bec-invert.jpg" alt="" fill sizes="(orientation: portrait) 150vh, 100vw" quality={85} style={{ objectPosition: "52% 28%" }} />
         <div className="wrap cta-band__inner">
           <h2 id="cta-title" className="display display--xl">Your turn.</h2>
           <div className="actions">

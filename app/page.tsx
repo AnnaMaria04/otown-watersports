@@ -174,7 +174,7 @@ export default function Home() {
 
       {/* Closing call to action */}
       <section className="cta-band" aria-labelledby="cta-title">
-        <Image src="/images/bg-bec-boat.jpg" alt="" fill sizes="(orientation: portrait) 160vh, 100vw" quality={85} style={{ objectPosition: "50% 30%" }} />
+        <Image src="/images/bg-bec-boat.jpg" alt="" fill sizes="(orientation: portrait) 160vh, 100vw" quality={85} style={{ objectPosition: "50% 62%" }} />
         <div className="wrap cta-band__inner">
           <h2 id="cta-title" className="display display--xl">Your next set<br />starts here.</h2>
           <div className="actions">
