@@ -22,7 +22,7 @@ export default function VideoDialog({ src, title, className, children, muted = f
             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="1.8" /></svg>
           </button>
         </div>
-        {active && <video className="media-dialog__video" src={src} controls autoPlay playsInline muted={muted} preload="auto" />}
+        {active && <video className="media-dialog__video" src={src} poster={src.replace(/\.mp4$/, "-poster.jpg")} controls autoPlay playsInline muted={muted} preload="auto" />}
       </dialog>
     </>
   );

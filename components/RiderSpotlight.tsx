@@ -90,7 +90,7 @@ export default function RiderSpotlight() {
         {r.card && (
           <figure className="float-card" key={`card-${r.key}`}>
             <span className="float-card__media">
-              <Image src={r.card} alt={`${r.name} — ${r.cardCaption ?? ""}`} fill sizes="(max-width: 900px) 150px, 260px" />
+              <Image src={r.card} alt={`${r.name}, ${(r.cardCaption ?? "").toLowerCase()}`} fill sizes="(max-width: 900px) 150px, 260px" />
             </span>
             <figcaption><span>{r.name}</span>{r.cardCaption}</figcaption>
           </figure>

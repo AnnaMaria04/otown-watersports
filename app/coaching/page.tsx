@@ -5,8 +5,9 @@ import RiderSpotlight from "@/components/RiderSpotlight";
 import { glen, juniorRiders, method, moreRiders, spotlight } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Coaching with Glen Fletcher — O’Town Watersports",
-  description: "One-to-one wakeboard and wakesurf coaching with Glen Fletcher on Lake Barton, Orlando — on the water, on the trampoline and in video review.",
+  title: "Wakeboard Coaching with Glen Fletcher | O’Town Watersports Orlando",
+  description: "One-to-one wakeboard and wakesurf coaching with Glen Fletcher on Lake Barton, Orlando: on the water, on the trampoline and in video review.",
+  alternates: { canonical: "/coaching" },
 };
 
 export default function CoachingPage() {
@@ -52,7 +53,7 @@ export default function CoachingPage() {
               <p className="eyebrow eyebrow--dark">How a session works</p>
               <h2 id="method-title" className="display display--lg display--ink">On the water.<br />Off the water.</h2>
             </div>
-            <p className="lede lede--narrow">Every session is one-to-one and by appointment — built around your level and the next thing you want to learn.</p>
+            <p className="lede lede--narrow">Every session is one-to-one and by appointment, built around your level and the next thing you want to learn.</p>
           </div>
           <ol className="method">
             {method.map((m) => (
@@ -74,7 +75,7 @@ export default function CoachingPage() {
           <div>
             <p className="eyebrow eyebrow--cyan">The list</p>
             <h2 id="roster-title" className="display display--lg">Riders Glen<br />has worked with.</h2>
-            <p className="roster__foot">From the rider list on O’Town’s coaching page, covering many years of coaching — not a list of current students or sponsors.</p>
+            <p className="roster__foot">From the rider list on O’Town’s coaching page, covering many years of coaching. Not a list of current students or sponsors.</p>
             <p style={{ marginTop: 28 }}><Link href="/athletes" className="btn btn--primary btn--pill">Meet the athletes</Link></p>
           </div>
           <div>

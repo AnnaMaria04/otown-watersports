@@ -38,7 +38,7 @@ export default function InquiryForm() {
       `Preferred dates: ${f.get("dates")}`,
       f.get("message") ? `\nWhat I'd like to work on:\n${f.get("message")}` : "",
     ].filter(Boolean);
-    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(`Session inquiry — ${f.get("name")}`)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(`Session inquiry: ${f.get("name")}`)}&body=${encodeURIComponent(lines.join("\n"))}`;
     setStatus("opened");
   }
 
@@ -71,7 +71,7 @@ export default function InquiryForm() {
       <div className="inquiry__grid">
         <label className="field"><span>Name</span><input name="name" autoComplete="name" required placeholder="Your name" /></label>
         <label className="field"><span>Email</span><input name="email" type="email" autoComplete="email" required placeholder="you@email.com" /></label>
-        <label className="field field--full"><span>Preferred dates</span><input name="dates" required placeholder="e.g. 12–14 March, mornings" /></label>
+        <label className="field field--full"><span>Preferred dates</span><input name="dates" required placeholder="e.g. 12 to 14 March, mornings" /></label>
         <label className="field field--full"><span>What are you working on? <em>optional</em></span><textarea name="message" rows={3} placeholder="Getting up for the first time, a 180, your first invert…" /></label>
       </div>
 

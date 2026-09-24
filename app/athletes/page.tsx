@@ -4,8 +4,9 @@ import Link from "next/link";
 import { athletes, juniorRiders, moreRiders } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Athletes — O’Town Watersports",
+  title: "Pro Riders Coached by Glen Fletcher | O’Town Watersports",
   description: "World champions, X Games medalists and junior pros from the rider list Glen Fletcher has coached over more than twenty years on Lake Barton, Orlando.",
+  alternates: { canonical: "/athletes" },
 };
 
 export default function AthletesPage() {
@@ -15,7 +16,7 @@ export default function AthletesPage() {
         <div className="wrap">
           <p className="eyebrow eyebrow--cyan">Athletes</p>
           <h1 id="ath-title" className="display display--hero">The riders<br />Glen has <span className="ath-hero__neon">coached.</span></h1>
-          <p className="ath-hero__lede">World champions, X Games medalists and junior pros — all from the rider list on O’Town’s coaching page, across more than twenty years behind the boat.</p>
+          <p className="ath-hero__lede">World champions, X Games medalists and junior pros, all from the rider list on O’Town’s coaching page, across more than twenty years behind the boat.</p>
         </div>
       </section>
 
@@ -47,7 +48,7 @@ export default function AthletesPage() {
           <div>
             <p className="eyebrow eyebrow--cyan">The full list</p>
             <h2 id="roster-title" className="display display--lg">Also on<br />Glen’s list.</h2>
-            <p className="roster__foot">Historical coaching relationships from O’Town’s rider list — not current students or sponsors.</p>
+            <p className="roster__foot">Historical coaching relationships from O’Town’s rider list. Not current students or sponsors.</p>
           </div>
           <div>
             <h3>Pro riders</h3>

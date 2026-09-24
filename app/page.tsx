@@ -27,7 +27,7 @@ export default function Home() {
           <h2 className="display display--xl" data-reveal>Beginners welcomed.<br /><span className="accent">Pros challenged.</span></h2>
           <div className="statement__side" data-reveal>
             <p className="lede">
-              O’Town is a private coaching school on Lake Barton in downtown Orlando. One boat, one coach, one rider at a time — on the water, on the trampoline and in video review.
+              O’Town is a private coaching school on Lake Barton in downtown Orlando. One boat, one coach, one rider at a time: on the water, on the trampoline and in video review.
             </p>
             <dl className="facts">
               <div><dt>20+</dt><dd>years of coaching</dd></div>
@@ -124,7 +124,7 @@ export default function Home() {
               <p className="eyebrow eyebrow--dark">Life at O’Town</p>
               <h2 id="life-title" className="display display--lg display--ink">Between sets.</h2>
             </div>
-            <p className="lede lede--narrow">The dock, the trampoline, the house on the lake — and whoever’s riding next.</p>
+            <p className="lede lede--narrow">The dock, the trampoline, the house on the lake, and whoever’s riding next.</p>
           </div>
           <div className="bento">
             <Lightbox className="bento__a" src="/images/dock-bougainvillea.jpg" alt="Bougainvillea over the trampoline and dock, riders sitting at the water’s edge, the boat moored" caption="The dock and the trampoline" sizes="(max-width: 900px) 100vw, 50vw" position="50% 62%" />

@@ -4,8 +4,9 @@ import InquiryForm from "@/components/InquiryForm";
 import { contact } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Plan your session — O’Town Watersports",
-  description: "Ask about wakeboard and wakesurf coaching with Glen Fletcher on Lake Barton, Orlando. 5220 E Colonial Dr, Orlando, FL 32807.",
+  title: "Book a Wakeboard Lesson | O’Town Watersports Orlando",
+  description: "Book a wakeboard or wakesurf lesson with Glen Fletcher in Orlando. Pick your level and dates, or call 407 380 0734. 5220 E Colonial Dr, Orlando, FL 32807.",
+  alternates: { canonical: "/plan" },
 };
 
 export default function PlanPage() {
@@ -27,7 +28,7 @@ export default function PlanPage() {
         </div>
       </section>
 
-      <section className="visit" aria-labelledby="visit-title">
+      <section className="visit" id="visit" aria-labelledby="visit-title">
         <div className="wrap visit__grid">
           <div className="visit__info">
             <p className="eyebrow eyebrow--dark">Find us</p>
@@ -35,7 +36,7 @@ export default function PlanPage() {
             <dl>
               <div><dt>Address</dt><dd>{contact.address}</dd></div>
               <div><dt>Look for</dt><dd>The two-story building with the big blue “O” on the front.</dd></div>
-              <div><dt>Getting here</dt><dd>About 15–20 minutes from Orlando International Airport.</dd></div>
+              <div><dt>Getting here</dt><dd>About 15 to 20 minutes from Orlando International Airport.</dd></div>
               <div><dt>Hours</dt><dd>{contact.hours}</dd></div>
             </dl>
             <div className="actions">

@@ -66,7 +66,7 @@ export const glen = {
   role: "Head coach",
   // From otownwatersports.com/about/glen-fletcher-2/, @fletcherotown bio and Wakeboarding Mag.
   points: [
-    "New Zealand–born former pro rider, coaching wakeboarding for more than twenty years.",
+    "New Zealand-born former pro rider, coaching wakeboarding for more than twenty years.",
     "Has worked with first-timers, juniors and some of the best-known riders in the sport.",
     "Beginners welcomed. Pros challenged.",
   ],
@@ -91,7 +91,7 @@ export type Rider = {
 
 /** Wider athlete list for /athletes — photos from public web sources (see ASSETS.md). */
 export const athletes: { name: string; country: string; note: string; photo?: string; position?: string }[] = [
-  { name: "Raimi Merritt", country: "USA", note: "Female Rider of the Year, 2009–2013.", photo: "/athletes/raimi.jpg", position: "50% 22%" },
+  { name: "Raimi Merritt", country: "USA", note: "Female Rider of the Year, 2009 to 2013.", photo: "/athletes/raimi.jpg", position: "50% 22%" },
   { name: "Dallas Friday", country: "USA", note: "Four-time X Games gold; 2009 World Champion.", photo: "/athletes/dallas.jpg", position: "50% 35%" },
   { name: "Rusty Malinoski", country: "Canada", note: "Credited with the first 1080 in pro competition.", photo: "/athletes/rusty.jpg", position: "50% 30%" },
   { name: "Aaron Rathy", country: "Canada", note: "2009 World Champion and King of Wake.", photo: "/athletes/aaron.jpg", position: "60% 30%" },
@@ -111,7 +111,7 @@ export const spotlight: Rider[] = [
     key: "raimi",
     name: "Raimi Merritt",
     country: "USA",
-    points: ["Moved to Orlando at 15 to train with Glen.", "Named female Rider of the Year five years running, 2009–2013."],
+    points: ["Moved to Orlando at 15 to train with Glen.", "Named female Rider of the Year five years running, 2009 to 2013."],
     source: "https://en.wikipedia.org/wiki/Raimi_Merritt",
     photo: "/athletes/raimi.jpg",
     photoAlt: "Raimi Merritt inverted above the wake",
@@ -186,9 +186,9 @@ export const juniorRiders = [
 
 /** How a session works — from the rates page (training on and off the water, trampoline, video review). */
 export const method = [
-  { n: "01", title: "On the water", body: "One-to-one sets behind the boat, with Glen driving and coaching every pass — speed, line length and timing tuned to you.", image: "/images/sophia-wakesurf.jpg", alt: "A rider wakesurfing behind the boat on Lake Barton", position: "50% 55%" },
+  { n: "01", title: "On the water", body: "One-to-one sets behind the boat, with Glen driving and coaching every pass: speed, line length and timing tuned to you.", image: "/images/sophia-wakesurf.jpg", alt: "A rider wakesurfing behind the boat on Lake Barton", position: "50% 55%" },
   { n: "02", title: "On the trampoline", body: "Air awareness and trick progressions on the lakeside trampoline, so the movement is familiar before you try it behind the boat.", image: "/images/trampoline.jpg", alt: "A rider flips on the lakeside trampoline", position: "50% 35%" },
-  { n: "03", title: "In video review", body: "Full days include video review of your sessions — see what you felt, and know exactly what to change on the next set.", image: "/images/glen-driving.jpg", alt: "Glen driving the boat, looking back toward the rider", position: "35% 40%" },
+  { n: "03", title: "In video review", body: "Full days include video review of your sessions. See what you felt, and know exactly what to change on the next set.", image: "/images/glen-driving.jpg", alt: "Glen driving the boat, looking back toward the rider", position: "35% 40%" },
 ];
 
 export const moreRiders = [
@@ -204,7 +204,7 @@ export const experiences = [
     index: "01",
     title: "Your first session",
     who: "For people learning to wakeboard or wakesurf.",
-    body: "Start behind the boat with a coach who has taught every kind of rider — from standing up for the first time to riding comfortably across the wake.",
+    body: "Start behind the boat with a coach who has taught every kind of rider, from standing up for the first time to riding comfortably across the wake.",
     image: "/images/dock-boat-tube.jpg",
     alt: "The boat at the O’Town dock, ready for the next rider",
     position: "50% 70%",
@@ -243,7 +243,7 @@ export const boat = {
 /** Latest posts from @fletcherotown (covers downloaded Sept 2026). */
 export const igPosts = [
   { id: "DVM2FoiATjD", caption: "Dock start, French style", image: "/ig/DVM2FoiATjD.jpg" },
-  { id: "DPkBb_gEgYb", caption: "Wipeout Wednesday — with redemption", image: "/ig/DPkBb_gEgYb.jpg" },
+  { id: "DPkBb_gEgYb", caption: "Wipeout Wednesday, with redemption", image: "/ig/DPkBb_gEgYb.jpg" },
   { id: "DZ2ndOUhbpu", caption: "What spin is this?", image: "/ig/DZ2ndOUhbpu.jpg" },
   { id: "DS8A6e7AZeI", caption: "End of 2025", image: "/ig/DS8A6e7AZeI.jpg" },
   { id: "DaYLopoBBOZ", caption: "The KGB, and why it got loose", image: "/ig/DaYLopoBBOZ.jpg" },
@@ -251,12 +251,12 @@ export const igPosts = [
 ];
 
 export const faqs = [
-  { q: "Do I need any experience?", a: "No. Beginners are welcomed and pros are challenged — every session is built around the rider on the end of the rope." },
+  { q: "Do I need any experience?", a: "No. Beginners are welcomed and pros are challenged. Every session is built around the rider on the end of the rope." },
   { q: "What happens if the weather turns?", a: "O’Town is open year-round and lessons run rain or shine, wind or no wind." },
   { q: "How do I reserve a session?", a: "Send an inquiry or call. A 50% deposit holds your time, and the balance is due on arrival." },
-  { q: "Is there a waiver?", a: "Yes — every rider signs the O’Town waiver. Riders under 18 need it signed before they arrive." },
+  { q: "Is there a waiver?", a: "Yes. Every rider signs the O’Town waiver. Riders under 18 need it signed before they arrive." },
   { q: "Can I stay on site?", a: "Camps can include meals and accommodation. Ask with your dates and we’ll confirm availability." },
-  { q: "Where are you?", a: "5220 E Colonial Dr, Orlando — on private Lake Barton, about 15–20 minutes from Orlando International Airport. Look for the two-story building with the big blue “O”." },
+  { q: "Where are you?", a: "5220 E Colonial Dr, Orlando, on private Lake Barton, about 15 to 20 minutes from Orlando International Airport. Look for the two-story building with the big blue “O”." },
 ];
 
 export const rates = {
@@ -276,11 +276,11 @@ export const rates = {
     { q: "Payment", a: "Visa, MasterCard, AMEX, check, traveler’s check or cash. A 3% fee is added to card transactions. Full payment is due on arrival." },
     {
       q: "Cancellations",
-      a: "Cancel 30 days ahead in season or 14 days ahead off-season, with a 50% charge. No-shows and later cancellations are charged in full — there’s a waiting list and limited availability.",
+      a: "Cancel 30 days ahead in season or 14 days ahead off-season, with a 50% charge. No-shows and later cancellations are charged in full, as there’s a waiting list and limited availability.",
     },
     {
       q: "On the day",
-      a: "Open year-round; lessons run rain or shine, wind or no wind. Be on the dock with your equipment on at your start time. Once you’ve booked the time, it’s yours — no refunds for sore muscles.",
+      a: "Open year-round; lessons run rain or shine, wind or no wind. Be on the dock with your equipment on at your start time. Once you’ve booked the time, it’s yours. No refunds for sore muscles.",
     },
   ],
 };

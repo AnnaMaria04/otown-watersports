@@ -82,7 +82,7 @@ export default function HeroSlider() {
 
       <div className="hero__inner wrap">
         <div className="hero__top">
-          <p className="hero__loc"><span className="hero__dot" aria-hidden />{contact.location}</p>
+          <Link href="/plan#visit" className="hero__loc" aria-label="Lake Barton, Orlando, Florida: see the map"><span className="hero__dot" aria-hidden />{contact.location}<span className="hero__loc-arrow" aria-hidden>↗</span></Link>
           <p className="hero__count" aria-hidden>
             <span key={i} className="hero__count-n">0{i + 1}</span> / 0{heroSlides.length}
             <span key={`c-${i}`} className="hero__count-cap">{s.caption}</span>
@@ -92,7 +92,7 @@ export default function HeroSlider() {
         <div className="hero__mid">
           <div className="hero__copy">
             <h1 className="hero__title">Wakeboard &amp; wakesurf coaching with <em>Glen&nbsp;Fletcher.</em></h1>
-            <p className="hero__lede">From your first ride to the trick you’ve been working toward — on Lake Barton, every week of the year.</p>
+            <p className="hero__lede">From your first ride to the trick you’ve been working toward. On Lake Barton, every week of the year.</p>
             <div className="actions">
               <Magnetic><Link href="/plan" className="btn btn--primary btn--pill btn--lg">Plan your session <span aria-hidden>→</span></Link></Magnetic>
               <Link href="/rates" className="hero__rates u-link u-link--light">See rates</Link>
@@ -114,7 +114,7 @@ export default function HeroSlider() {
           </VideoDialog>
         </div>
 
-        <div className="hero__words" role="tablist" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)} aria-label="Learn, ride, progress — choose a photo">
+        <div className="hero__words" role="tablist" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)} aria-label="Learn, ride, progress: choose a photo">
           {heroSlides.map((sl, n) => (
             <button key={sl.key} type="button" role="tab" aria-selected={n === i} aria-label={`${sl.label}: ${sl.caption}`}
               className={`hero__word${n === i ? " is-active" : ""}`} onClick={() => go(n)}>

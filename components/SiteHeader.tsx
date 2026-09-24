@@ -71,7 +71,7 @@ export default function SiteHeader() {
   return (
     <header className={`site-header${solid ? " is-solid" : ""}${open ? " is-open" : ""}`}>
       <div className="site-header__bar">
-        <Link href="/" className="brand" aria-label="O’Town Watersports — home" onClick={close}>
+        <Link href="/" className="brand" aria-label="O’Town Watersports home" onClick={close}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="brand__logo brand__logo--neon" src="/brand/otown-logo-neon.png" alt="" width={900} height={302} />
           {/* eslint-disable-next-line @next/next/no-img-element */}

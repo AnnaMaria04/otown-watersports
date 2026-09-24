@@ -659,3 +659,32 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 .page-hero .eyebrow { text-shadow: 0 1px 10px rgba(0,0,0,.6); }
 .glen__media > img.only-mob { display: none; }
 @media (max-width: 700px) { .glen__media > img.only-desk { display: none; } .glen__media > img.only-mob { display: block; } }
+
+/* ---------- Footer (structured) ---------- */
+.site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.site-footer address { font-style: normal; margin-bottom: 8px; max-width: 26ch; }
+.site-footer .muted { color: var(--text-soft); font-size: .9em; }
+.site-footer__quick { display: flex; gap: 10px; margin-top: 20px; }
+.site-footer__quick .btn { padding: 10px 22px; }
+.btn--outline { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
+.btn--outline:hover { border-color: var(--ink); }
+.site-footer__follow { margin-top: 22px; }
+.site-footer__social { grid-auto-flow: column; justify-content: start; gap: 18px !important; }
+@media (max-width: 640px) {
+  .site-footer { padding-top: 64px; }
+  .site-footer__big { margin-bottom: 36px; }
+  .site-footer__grid { grid-template-columns: 1fr 1fr !important; gap: 32px 20px !important; padding-top: 32px; }
+  .site-footer__brandcol { grid-column: 1 / -1; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
+  .site-footer__quick .btn { flex: 1; }
+  .site-footer__col:last-child { grid-column: 1 / -1; padding-top: 28px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; }
+  .site-footer__col:last-child > .eyebrow:first-child, .site-footer__col:last-child > address, .site-footer__col:last-child > ul:first-of-type { grid-column: 1; }
+  .site-footer__follow { grid-column: 2; grid-row: 1; margin-top: 0; }
+  .site-footer__social { grid-column: 2; grid-row: 2 / span 2; grid-auto-flow: row; align-content: start; gap: 6px !important; }
+  .site-footer a { padding: 5px 0; }
+  .site-footer__base { flex-direction: column; gap: 4px; margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--rule); }
+}
+
+.hero__loc { color: #fff; text-decoration: none; transition: opacity .3s; }
+.hero__loc-arrow { opacity: 0; transform: translate(-4px, 2px); transition: opacity .3s, transform .3s; font-size: 12px; }
+.hero__loc:hover .hero__loc-arrow, .hero__loc:focus-visible .hero__loc-arrow { opacity: 1; transform: none; }
+.hero__loc:hover { opacity: .85; }

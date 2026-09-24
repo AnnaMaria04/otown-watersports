@@ -5,8 +5,9 @@ import Accordion from "@/components/Accordion";
 import { contact, faqs, rates } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Rates & booking — O’Town Watersports",
-  description: "Lesson, full-day and camp rates for wakeboard and wakesurf coaching at O’Town Watersports, Lake Barton, Orlando.",
+  title: "Rates & Booking | O’Town Watersports Orlando",
+  description: "Wakeboard and wakesurf lesson prices in Orlando: $160 per lesson with Glen Fletcher, $145 with staff, $425 full day. Camps on request. Lake Barton, Orlando, FL.",
+  alternates: { canonical: "/rates" },
 };
 
 export default function RatesPage() {
