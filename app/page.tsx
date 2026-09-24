@@ -105,7 +105,6 @@ export default function Home() {
             </p>
           </div>
           <div className="boat__viewer">
-            <span className="boat__model" aria-hidden>{boat.model}</span>
             <BoatViewer frames={boat.frames} label={boatLabel} />
           </div>
           <div className="boat__foot">

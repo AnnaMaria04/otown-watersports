@@ -225,7 +225,7 @@ export const experiences = [
     body: "Camps can combine coaching, video review, meals and lakeside accommodation. Tell us your dates and we’ll confirm what’s available.",
     image: "/images/stay-bedroom.jpg",
     alt: "A bright bedroom with a window looking onto the lake",
-    position: "50% 50%",
+    position: "50% 72%",
   },
 ];
 

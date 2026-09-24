@@ -60,6 +60,11 @@ export default function SiteHeader() {
     return () => { document.removeEventListener("keydown", onKey); document.documentElement.classList.remove("menu-open"); };
   }, [open]);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("menu-open", open);
+    return () => document.documentElement.classList.remove("menu-open");
+  }, [open]);
+
   const close = () => setOpen(false);
   const solid = scrolled || open;
 

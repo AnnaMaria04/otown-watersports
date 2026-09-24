@@ -2,29 +2,44 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-type Props = { frames: number; label: string };
 const pad = (n: number) => String(n).padStart(2, "0");
 
+/** Named viewpoints as a fraction of a full turn (frame 0 = three-quarter bow). */
+const VIEWS = [
+  { label: "¾ Bow", at: 0 },
+  { label: "Profile", at: 12 / 72 },
+  { label: "Stern", at: 29 / 72 },
+  { label: "Port", at: 48 / 72 },
+  { label: "Bow", at: 65 / 72 },
+];
+
+const smooth = (a: number, b: number, x: number) => {
+  const t = Math.min(1, Math.max(0, (x - a) / (b - a)));
+  return t * t * (3 - 2 * t);
+};
+
 /**
- * 360° boat viewer built from captured views (not a free-orbit 3D model).
- * Controlled by the rotation bar below (and by dragging the boat) — it never plays on its own.
- * Poster first; the sequence loads as the section approaches; vertical page scroll is untouched.
+ * 360° boat viewer built from captured views of Supra's own SL render (not a free-orbit 3D model).
+ * Controlled by the rotation bar, view shortcuts, arrow keys and horizontal drag (with gentle inertia). Never plays on its own.
  */
-export default function BoatViewer({ frames, label }: Props) {
+export default function BoatViewer({ frames, label }: { frames: number; label: string }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgs = useRef<HTMLImageElement[]>([]);
   const target = useRef(0);
   const shown = useRef(0);
   const raf = useRef(0);
-  const [value, setValue] = useState(0); // 0..frames-1 (float)
+  const isDragging = useRef(false);
+  const [value, setValue] = useState(0);
   const [ready, setReady] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const wrap = useCallback((f: number) => ((f % frames) + frames) % frames, [frames]);
+
   const draw = useCallback((f: number) => {
     const c = canvasRef.current;
-    const n = ((f % frames) + frames) % frames;
-    const i0 = Math.floor(n), t = n - i0;
+    const n = wrap(f);
+    const i0 = Math.floor(n);
     const a = imgs.current[i0], b = imgs.current[(i0 + 1) % frames];
     if (!c || !a) return;
     const ctx = c.getContext("2d");
@@ -33,32 +48,48 @@ export default function BoatViewer({ frames, label }: Props) {
     const r = Math.min(c.width / a.naturalWidth, c.height / a.naturalHeight);
     const w = a.naturalWidth * r, h = a.naturalHeight * r;
     const x = (c.width - w) / 2, y = (c.height - h) / 2;
-    // Crossfade neighbouring views so the turn reads as continuous rather than stepped
+    ctx.imageSmoothingQuality = "high";
+    // Hold each captured view crisp and blend only briefly around the midpoint to the next one
+    const mix = smooth(0.3, 0.7, n - i0);
     ctx.globalAlpha = 1;
     ctx.drawImage(a, x, y, w, h);
-    if (b && t > 0.02) { ctx.globalAlpha = t; ctx.drawImage(b, x, y, w, h); ctx.globalAlpha = 1; }
-  }, [frames]);
+    if (b && mix > 0.01) { ctx.globalAlpha = mix; ctx.drawImage(b, x, y, w, h); ctx.globalAlpha = 1; }
+  }, [frames, wrap]);
 
-  // Ease the displayed frame toward the target for a calm, steady turn
-  const animate = useCallback(() => {
+  const tick = useCallback(() => {
     cancelAnimationFrame(raf.current);
     const step = () => {
-      let d = target.current - shown.current;
-      if (Math.abs(d) < 0.02) { shown.current = target.current; draw(shown.current); return; }
-      shown.current += d * 0.18;
+      const d = target.current - shown.current;
+      if (Math.abs(d) < 0.004) {
+        // Always come to rest on a real captured view — never on a blend of two
+        const snap = Math.round(target.current);
+        if (snap !== target.current && !isDragging.current) { target.current = snap; setValue(wrap(snap)); raf.current = requestAnimationFrame(step); return; }
+        shown.current = target.current; draw(shown.current); return;
+      }
+      shown.current += d * 0.14;
       draw(shown.current);
       raf.current = requestAnimationFrame(step);
     };
     raf.current = requestAnimationFrame(step);
-  }, [draw]);
+  }, [draw, wrap]);
 
   const goTo = useCallback((f: number) => {
     target.current = f;
-    setValue(((f % frames) + frames) % frames);
+    setValue(wrap(f));
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { shown.current = f; draw(f); }
-    else animate();
-  }, [frames, animate, draw]);
+    else tick();
+  }, [wrap, tick, draw]);
 
+  /** Go to a named view by the shortest way round. */
+  const goView = (at: number) => {
+    const dest = Math.round(at * frames);
+    const cur = target.current;
+    let delta = wrap(dest - cur);
+    if (delta > frames / 2) delta -= frames;
+    goTo(cur + delta);
+  };
+
+  // Keep the canvas sharp at any size
   useEffect(() => {
     const c = canvasRef.current, s = stageRef.current;
     if (!c || !s) return;
@@ -72,6 +103,7 @@ export default function BoatViewer({ frames, label }: Props) {
     return () => ro.disconnect();
   }, [draw]);
 
+  // Load the views as the section approaches
   useEffect(() => {
     const s = stageRef.current;
     if (!s) return;
@@ -79,7 +111,7 @@ export default function BoatViewer({ frames, label }: Props) {
     const io = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting || started) return;
       started = true;
-      const size = s.clientWidth * Math.min(window.devicePixelRatio || 1, 2) > 1000 ? "d" : "m";
+      const size = s.clientWidth * Math.min(window.devicePixelRatio || 1, 2) > 1100 ? "d" : "m";
       let done = 0;
       const list: HTMLImageElement[] = [];
       for (let i = 0; i < frames; i++) {
@@ -93,68 +125,111 @@ export default function BoatViewer({ frames, label }: Props) {
           if (done === frames) { imgs.current = list; setReady(true); draw(shown.current); }
         });
       }
-    }, { rootMargin: "700px 0px" });
+    }, { rootMargin: "800px 0px" });
     io.observe(s);
     return () => { io.disconnect(); cancelAnimationFrame(raf.current); };
   }, [frames, draw]);
 
-  // Drag on the boat (horizontal only; vertical swipes scroll the page)
+  // Drag (horizontal only — vertical swipes still scroll the page), with a soft glide on release
   useEffect(() => {
     const s = stageRef.current;
     if (!s || !ready) return;
-    let down = false, dragging = false, x0 = 0, y0 = 0, f0 = 0;
-    const per = () => (s.clientWidth * 1.4) / frames; // ~1.4 widths per full turn — slow and controlled
-    const onDown = (e: PointerEvent) => { if (e.button !== 0) return; down = true; dragging = false; x0 = e.clientX; y0 = e.clientY; f0 = target.current; };
+    const dragRef = isDragging;
+    let down = false, dragging = false, x0 = 0, y0 = 0, f0 = 0, lastX = 0, lastT = 0, vel = 0, glide = 0;
+    const per = () => (s.clientWidth * 1.5) / frames; // 1.5 widths per full turn — slow and controlled
+    const stopGlide = () => { cancelAnimationFrame(glide); dragRef.current = false; };
+    const onDown = (e: PointerEvent) => {
+      if (e.button !== 0) return;
+      stopGlide();
+      down = true; dragging = false; x0 = lastX = e.clientX; y0 = e.clientY; f0 = target.current; lastT = performance.now(); vel = 0;
+    };
     const onMove = (e: PointerEvent) => {
       if (!down) return;
       const dx = e.clientX - x0, dy = e.clientY - y0;
       if (!dragging) {
         if (Math.abs(dx) < 6) return;
         if (Math.abs(dy) > Math.abs(dx)) { down = false; return; }
-        dragging = true; s.setPointerCapture(e.pointerId); s.classList.add("is-dragging");
+        dragging = true; dragRef.current = true; s.setPointerCapture(e.pointerId); s.classList.add("is-dragging");
       }
+      const now = performance.now();
+      const v = (e.clientX - lastX) / Math.max(1, now - lastT);
+      vel = vel * 0.6 + v * 0.4;
+      lastX = e.clientX; lastT = now;
       goTo(f0 - dx / per());
     };
-    const onUp = () => { down = false; s.classList.remove("is-dragging"); };
+    const onUp = () => {
+      if (!down) return;
+      down = false; s.classList.remove("is-dragging");
+      if (!dragging || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { dragRef.current = false; goTo(target.current); return; }
+      let v = -vel * 16 / per(); // frames per 16ms
+      const run = () => {
+        v *= 0.93;
+        if (Math.abs(v) < 0.004) { dragRef.current = false; goTo(target.current); return; }
+        goTo(target.current + v);
+        glide = requestAnimationFrame(run);
+      };
+      glide = requestAnimationFrame(run);
+    };
     s.addEventListener("pointerdown", onDown); s.addEventListener("pointermove", onMove);
     s.addEventListener("pointerup", onUp); s.addEventListener("pointercancel", onUp);
-    return () => { s.removeEventListener("pointerdown", onDown); s.removeEventListener("pointermove", onMove); s.removeEventListener("pointerup", onUp); s.removeEventListener("pointercancel", onUp); };
+    return () => { stopGlide(); s.removeEventListener("pointerdown", onDown); s.removeEventListener("pointermove", onMove); s.removeEventListener("pointerup", onUp); s.removeEventListener("pointercancel", onUp); };
   }, [ready, frames, goTo]);
 
   const deg = Math.round((value / frames) * 360) % 360;
-  const pct = (value / (frames - 1)) * 100;
+  const pct = (value / frames) * 100;
+  const activeView = VIEWS.reduce((best, v) => {
+    const d = Math.min(Math.abs(v.at * frames - value), frames - Math.abs(v.at * frames - value));
+    return d < best.d ? { label: v.label, d } : best;
+  }, { label: "", d: Infinity });
+  const step = frames / 24; // 15° per arrow press
 
   return (
     <div className="boat-viewer">
       <div ref={stageRef} className={`boat-stage${ready ? " is-ready" : ""}`} aria-hidden>
+        <div className="boat-floor" />
         <picture>
           <source media="(max-width: 700px)" srcSet="/boat/m/00.webp" />
-          <img className="boat-poster" src="/boat/d/00.webp" alt="" width={1800} height={841} />
+          <img className="boat-poster" src="/boat/d/00.webp" alt="" width={1800} height={915} />
         </picture>
         <canvas ref={canvasRef} className="boat-canvas" />
-        <div className="boat-floor" />
+        {!ready && <span className="boat-load" style={{ ["--p" as string]: progress }} />}
+      </div>
+
+      <div className="boat-views" role="group" aria-label="Viewpoints">
+        {VIEWS.map((v) => (
+          <button key={v.label} type="button" disabled={!ready}
+            className={`boat-view${activeView.label === v.label && activeView.d < frames / 36 ? " is-active" : ""}`}
+            onClick={() => goView(v.at)}>{v.label}</button>
+        ))}
       </div>
 
       <div className="boat-bar">
-        <button type="button" className="icon-btn icon-btn--dark" aria-label="Rotate left" disabled={!ready} onClick={() => goTo(Math.round(target.current) - 3)}>
+        <button type="button" className="icon-btn icon-btn--dark" aria-label="Rotate left" disabled={!ready} onClick={() => goTo(target.current - step)}>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg>
         </button>
         <div className="boat-range" style={{ ["--pct" as string]: `${pct}%` }}>
           <span className="boat-range__track" aria-hidden />
           <input
-            type="range" min={0} max={frames - 1} step={0.05} value={value} disabled={!ready}
+            type="range" min={0} max={frames} step={0.02} value={value} disabled={!ready}
             aria-label={`Rotate ${label}`} aria-valuetext={`${deg} degrees`}
-            onChange={(e) => goTo(Number(e.target.value))}
+            onChange={(e) => {
+              // move to the chosen angle without spinning the long way round
+              const v = Number(e.target.value);
+              const cur = target.current;
+              let d = v - wrap(cur);
+              if (d > frames / 2) d -= frames; else if (d < -frames / 2) d += frames;
+              goTo(cur + d);
+            }}
           />
           <span className="boat-range__thumb" aria-hidden />
           <div className="boat-range__ticks" aria-hidden>{Array.from({ length: 13 }, (_, n) => <span key={n} />)}</div>
         </div>
-        <button type="button" className="icon-btn icon-btn--dark" aria-label="Rotate right" disabled={!ready} onClick={() => goTo(Math.round(target.current) + 3)}>
+        <button type="button" className="icon-btn icon-btn--dark" aria-label="Rotate right" disabled={!ready} onClick={() => goTo(target.current + step)}>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg>
         </button>
         <p className="boat-deg" aria-hidden>{ready ? `${String(deg).padStart(3, "0")}°` : `${Math.round(progress * 100)}%`}</p>
       </div>
-      <p className="boat-hint">{ready ? "Slide the bar or drag the boat to turn it" : "Loading views…"}</p>
+      <p className="boat-hint">{ready ? "Drag the boat, use the bar, or jump to a view" : "Loading views…"}</p>
     </div>
   );
 }
