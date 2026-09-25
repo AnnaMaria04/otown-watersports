@@ -719,3 +719,5 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
   .site-footer__col:last-child > ul { grid-template-columns: 1fr; grid-auto-flow: row; }
   .site-footer__base { margin-top: 12px; }
 }
+#riders-title { font-size: 15px; letter-spacing: .07em; }
+@media (max-width: 700px) { #riders-title { font-size: 14px; } }
