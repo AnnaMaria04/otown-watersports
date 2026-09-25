@@ -38,7 +38,7 @@ export default function CoachingPage() {
         </div>
         <div className="glen__media">
           <Image className="only-desk" src="/images/glen-helm.jpg" alt="Glen Fletcher at the helm, handle in hand" fill quality={85} sizes="(max-width: 900px) 100vw, 55vw" />
-          <Image className="only-mob" src="/images/glen-driving.jpg" alt="Glen Fletcher driving the boat" fill quality={85} sizes="100vw" style={{ objectPosition: "40% 55%" }} />
+          <Image className="only-mob" src="/images/glen-driving.jpg" alt="Glen Fletcher driving the boat" fill quality={85} sizes="100vw" style={{ objectPosition: "40% 62%" }} />
           <figure className="glen__inset">
             <Image src="/images/dock-guitar.jpg" alt="An acoustic guitar on the O’Town dock at sunrise" fill quality={85} sizes="280px" />
             <figcaption>The dock, most mornings.</figcaption>
