@@ -144,7 +144,7 @@ export const riders: Rider[] = [
     photo: "/athletes/alize.jpg", cardPhoto: "/athletes/alize-4x5.jpg", photoAlt: "Alizé Piana tucked mid-air through a curtain of spray", photoPosition: "50% 30%" },
   { key: "fernanda", name: "Fernanda Larios", country: "Mexico", title: "Pro wakeboarder", photo: "/athletes/fernanda.jpg", cardPhoto: "/athletes/fernanda-4x5.jpg", photoAlt: "Fernanda Larios carving behind the boat", photoPosition: "50% 40%",
     points: ["Silver at the 2025 Junior Pan American Games.", "4th at the 2023 Pan American Games."] },
-  { key: "anna-mariia", name: "Anna-Mariia Kushkovskaia", country: "Russia", title: "Pro wakeboarder", instagram: "anna_maria_wake",
+  { key: "anna-mariia", name: "Anna-Mariia Kushkovskaia", country: "Russia", title: "Pro wakeboarder", instagram: "anna_maria_wake", photo: "/athletes/anna-mariia.jpg", cardPhoto: "/athletes/anna-mariia-4x5.jpg", photoAlt: "Anna-Mariia Kushkovskaia grabbing her board mid-air behind the boat", photoPosition: "54% 40%",
     points: ["Junior European Champion, 2019.", "Russian national champion, 2022–2025."] },
   { key: "zoey", name: "Zoey Carroll", country: "USA", title: "Junior pro wakeboarder", instagram: "zoeytcarroll",
     points: ["Gold, U14 Girls, 2024 IWWF Pan American Championships.", "2026 WWA World Champion, Junior Pro Women."],
@@ -213,7 +213,7 @@ export const boat = {
   /** O'Town's new boat is a Supra SL (owner + @fletcherotown, Sept 2026).
    *  NOTE: the 360° render was recorded from a configurator build that carries an SV badge — re-record an SL build to match. */
   model: "SL 450" as string | null,
-  year: 2026,
+  year: 2027,
   make: "Supra",
   link: "https://www.supraboats.com/boats/sl",
   frames: 36,
