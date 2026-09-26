@@ -56,8 +56,8 @@ export default function AthletesPage() {
                 <li key={a.key} id={a.key} className="ath-card">
                   <Link href={`/athletes/${a.key}`} className={`ath-card__media${a.photo ? "" : " ath-card__media--type"}`} aria-label={a.name}>
                     {a.photo ? (
-                      <Image src={a.photo} alt={a.photoAlt ?? `${a.name} riding`} fill quality={80} sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                        style={{ objectPosition: a.photoPosition ?? "50% 50%" }} />
+                      <Image src={a.cardPhoto ?? a.photo} alt={a.photoAlt ?? `${a.name} riding`} fill quality={82} sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                        style={{ objectPosition: a.cardPhoto ? "50% 50%" : a.photoPosition ?? "50% 50%" }} />
                     ) : (
                       <span className="ath-card__initials" aria-hidden>{first[0]}{rest.length ? rest[rest.length - 1][0] : ""}</span>
                     )}
