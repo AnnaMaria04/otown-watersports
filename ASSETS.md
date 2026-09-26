@@ -63,3 +63,4 @@ hero-sl450.jpg (IMG_4555), sl450-crew, sl450-lake, dock-start-sl450, trampoline-
 
 ### Waiver
 public/docs/otown-waiver.pdf and /waiver: reset from the original Florida-Release PDF on otownwatersports.com, legal text verbatim.
+| public/athletes/rex-2026.jpg | Rex Abbott's Instagram @rad_rexx, post DbbcbD7Ad0p (July 2026), used with rider's consent |

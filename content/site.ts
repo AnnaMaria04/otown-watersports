@@ -148,7 +148,7 @@ export const riders: Rider[] = [
     photo: "/athletes/zoey.jpg", cardPhoto: "/athletes/zoey-4x5.jpg", photoAlt: "Zoey Carroll inverted over the wake", photoPosition: "50% 40%" },
   { key: "ana", name: "Ana Thomas", country: "USA", title: "Junior pro wakeboarder",
     points: ["2022 WWA World Champion, Junior Girls.", "4th, Junior Pro Women, 2026 Nautique Wake Series."] },
-  { key: "rex", name: "Rex Abbott", country: "USA", title: "Junior pro wakeboarder", instagram: "rad_rexx", photo: "/athletes/rex.jpg", cardPhoto: "/athletes/rex-4x5.jpg", photoAlt: "Rex Abbott grabbing above the wake on Lake Norman", photoPosition: "50% 35%",
+  { key: "rex", name: "Rex Abbott", country: "USA", title: "Junior pro wakeboarder", instagram: "rad_rexx", photo: "/athletes/rex-2026.jpg", cardPhoto: "/athletes/rex-2026-4x5.jpg", photoAlt: "Rex Abbott on the dock in his competition jersey, 2026", photoPosition: "58% 45%",
     points: ["3rd at the 2026 WWA Wakeboard World Championships.", "5th, Junior Pro Men, 2026 Nautique Wake Series."] },
   { key: "stella", name: "Stella Tracy", country: "USA", title: "Junior pro wakeboarder",
     points: ["5th, Junior Pro Women, 2026 Nautique Wake Series."] },
