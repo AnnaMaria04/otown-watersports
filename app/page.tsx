@@ -3,6 +3,7 @@ import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
 import RiderSpotlight from "@/components/RiderSpotlight";
 import BoatViewer from "@/components/BoatViewer";
+import BoatPolaroids from "@/components/BoatPolaroids";
 import VideoDialog from "@/components/VideoDialog";
 import Lightbox from "@/components/Lightbox";
 import { boat, contact, experiences, glen } from "@/content/site";
@@ -110,18 +111,11 @@ export default async function Home() {
               O’Town now rides behind a new {boat.year} {boat.make} {boat.model}: a clean, consistent wake to learn and progress on. What matters just as much is who’s driving: speed, line length and timing, tuned to the rider behind the boat.
             </p>
           </div>
-          <div className="boat__viewer">
-            <BoatViewer frames={boat.frames} label={boatLabel} badge={`${boat.year} · ${boat.make} ${boat.model}`} />
-          </div>
-          <div className="boat__real">
-            <Lightbox className="boat__shot boat__shot--a" src="/images/new/dock-start-sl450.jpg" alt="A rider ready on the dock, the new SL 450 waiting on the lake" caption="Ready on the dock" sizes="(max-width: 700px) 50vw, 25vw" position="50% 62%" />
-            <Lightbox className="boat__shot boat__shot--b" src="/images/new/sl450-crew.jpg" alt="The new Supra SL 450 on Lake Barton with riders on board" caption="The SL 450 on Lake Barton" sizes="(max-width: 700px) 100vw, 50vw" position="40% 64%" />
-            <VideoDialog src="/video/sl450-arrival.mp4" title="The SL 450 pulling in" className="tile boat__shot boat__shot--c" muted portrait>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/sl450-arrival-poster.jpg" alt="The new Supra SL 450 pulling in to the O’Town dock" loading="lazy" />
-              <span className="tile__play"><Play /></span>
-              <span className="tile__cap">Pulling in to the dock</span>
-            </VideoDialog>
+          <div className="boat__row">
+            <div className="boat__viewer">
+              <BoatViewer frames={boat.frames} label={boatLabel} badge={`${boat.year} · ${boat.make} ${boat.model}`} />
+            </div>
+            <BoatPolaroids />
           </div>
           <div className="boat__foot">
             <p>Proudly riding behind a {boat.year} {boat.make}{boat.model ? ` ${boat.model}` : ""}.</p>

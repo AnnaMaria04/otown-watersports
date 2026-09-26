@@ -54,25 +54,23 @@ export default function AthletesPage() {
               const [first, ...rest] = a.name.split(" ");
               return (
                 <li key={a.key} id={a.key} className="ath-card">
-                  <div className={`ath-card__media${a.photo ? "" : " ath-card__media--type"}`}>
+                  <Link href={`/athletes/${a.key}`} className={`ath-card__media${a.photo ? "" : " ath-card__media--type"}`} aria-label={a.name}>
                     {a.photo ? (
                       <Image src={a.photo} alt={a.photoAlt ?? `${a.name} riding`} fill quality={80} sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
                         style={{ objectPosition: a.photoPosition ?? "50% 50%" }} />
                     ) : (
-                      <span className={`ath-card__type${a.name.length > 16 ? " ath-card__type--long" : ""}`} aria-hidden><span>{first}</span><span>{rest.join(" ")}</span></span>
+                      <span className="ath-card__initials" aria-hidden>{first[0]}{rest.length ? rest[rest.length - 1][0] : ""}</span>
                     )}
-                    <span className="ath-card__n" aria-hidden>{String(n + 1).padStart(2, "0")}</span>
-                  </div>
-                  <div className="ath-card__body">
-                    <p className="ath-card__country">{a.country} · {a.title}</p>
-                    <h2 className="ath-card__name"><Link href={`/athletes/${a.key}`} className="ath-card__link">{a.name}</Link></h2>
-                    <ul className="ath-card__points">{a.points.map((p) => <li key={p}>{p}</li>)}</ul>
-                    {a.instagram && (
-                      <a className="ath-card__ig" href={`https://www.instagram.com/${a.instagram}/`} target="_blank" rel="noreferrer" aria-label={`${a.name} on Instagram`}>
-                        <IG /> @{a.instagram}
-                      </a>
-                    )}
-                  </div>
+                  </Link>
+                  <div className="ath-card__meta"><span>{String(n + 1).padStart(2, "0")}</span><span>{a.country}</span></div>
+                  <h2 className="ath-card__name"><Link href={`/athletes/${a.key}`}>{a.name}</Link></h2>
+                  <p className="ath-card__title">{a.title}</p>
+                  <ul className="ath-card__points">{a.points.map((p) => <li key={p}>{p}</li>)}</ul>
+                  {a.instagram && (
+                    <a className="ath-card__ig" href={`https://www.instagram.com/${a.instagram}/`} target="_blank" rel="noreferrer">
+                      <IG /> @{a.instagram}
+                    </a>
+                  )}
                 </li>
               );
             })}

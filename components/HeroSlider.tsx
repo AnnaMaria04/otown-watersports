@@ -58,7 +58,6 @@ export default function HeroSlider() {
     return () => clearTimeout(t);
   }, [i, auto, paused]);
 
-  const s = heroSlides[i];
 
   return (
     <section
@@ -86,10 +85,6 @@ export default function HeroSlider() {
       <div className="hero__inner wrap">
         <div className="hero__top">
           <Link href="/plan#visit" className="hero__loc" aria-label="Lake Barton, Orlando, Florida: see the map"><span className="hero__dot" aria-hidden />{contact.location}<span className="hero__loc-arrow" aria-hidden>↗</span></Link>
-          <p className="hero__count" aria-hidden>
-            <span key={i} className="hero__count-n">0{i + 1}</span> / 0{heroSlides.length}
-            <span key={`c-${i}`} className="hero__count-cap">{s.caption}</span>
-          </p>
         </div>
 
         <div className="hero__mid">

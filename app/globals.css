@@ -949,3 +949,58 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
   .stay-hero__facts { margin-top: 30px; gap: 12px; }
   .stay-hero__facts span { font-size: 12.5px; }
 }
+
+/* Athletes roster: editorial, magazine-style (overrides the earlier card look) */
+.ath { background: var(--pearl); color: var(--ink); padding: clamp(56px, 7vw, 96px) 0 var(--section); }
+.ath-grid { gap: clamp(48px, 5vw, 72px) clamp(20px, 2.4vw, 36px); }
+.ath-card { background: none; color: var(--ink); border-radius: 0; overflow: visible; display: block; isolation: auto; }
+.ath-card::before, .ath-card__media::after { display: none; }
+.ath-card__media { display: block; position: relative; aspect-ratio: 4 / 5; border-radius: 3px; overflow: hidden; background: #e4e1db; }
+.ath-card__media img { object-fit: cover; filter: saturate(.92); transition: transform 1.2s var(--ease), filter .6s; }
+.ath-card:hover .ath-card__media img { transform: scale(1.035); filter: saturate(1.05); }
+.ath-card__media--type { display: grid; place-items: center; background: #e8e5df; }
+.ath-card__initials { font-family: var(--display); font-stretch: 62%; font-weight: 800; font-size: clamp(120px, 12vw, 190px); line-height: 1; letter-spacing: -.02em; color: transparent; -webkit-text-stroke: 1.5px rgba(11,17,22,.28); }
+.ath-card__meta { display: flex; justify-content: space-between; margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--ink); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.ath-card__name { font-family: var(--display); font-stretch: 72%; font-weight: 800; font-size: clamp(34px, 3vw, 46px); line-height: .95; margin: 14px 0 6px; }
+.ath-card__name a { color: inherit; text-decoration: none; }
+.ath-card:hover .ath-card__name { color: var(--ink); }
+.ath-card__name a:hover { color: var(--cyan-deep); }
+.ath-card__title { margin: 0 0 14px; font-size: 14px; color: var(--text-soft); }
+.ath-card__points { list-style: none; margin: 0; padding: 0; display: block; font-size: 15px; line-height: 1.5; color: var(--ink); }
+.ath-card__points li { padding: 9px 0; border-top: 1px solid var(--rule); }
+.ath-card__points li::before { display: none; }
+.ath-card__points li { padding-left: 0; }
+.ath-card__ig { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; padding: 0; font-size: 13.5px; font-weight: 600; color: var(--ink); opacity: 1; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 4px; }
+.ath-card__ig:hover { color: var(--cyan-deep); text-decoration-color: currentColor; }
+@media (max-width: 640px) { .ath-card__media { aspect-ratio: 4 / 4.4; } .ath-grid { gap: 44px; } }
+
+/* Boat: 3D viewer with a polaroid stack beside it */
+.boat__row { display: grid; grid-template-columns: minmax(0, 1fr) clamp(260px, 25vw, 360px); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.pola { position: relative; outline: none; }
+.pola__stack { position: relative; aspect-ratio: 5 / 6.1; }
+.pola__card { position: absolute; inset: 0; margin: 0; background: #fbfaf7; border-radius: 4px; padding: 12px 12px 0; box-shadow: 0 1px 2px rgba(0,0,0,.2), 0 24px 50px -20px rgba(0,0,0,.65);
+  transform: translate(calc(var(--d) * 10px), calc(var(--d) * -8px)) rotate(var(--r)) scale(calc(1 - var(--d) * .045));
+  transition: transform .8s cubic-bezier(.2,.8,.2,1), opacity .5s, filter .6s; filter: brightness(calc(1 - var(--d) * .12)); }
+.pola__card:not(.is-top) { pointer-events: none; }
+.pola__card.is-top { transform: rotate(calc(var(--r) * .5)); }
+.pola__card.is-leaving-l { transform: translate(-70%, 6%) rotate(-16deg); opacity: 0; transition: transform .42s cubic-bezier(.5,0,.8,.4), opacity .42s; }
+.pola__card.is-leaving-r { transform: translate(70%, 6%) rotate(16deg); opacity: 0; transition: transform .42s cubic-bezier(.5,0,.8,.4), opacity .42s; }
+.pola__photo { position: relative; aspect-ratio: 1 / 1.02; overflow: hidden; background: #ddd; }
+.pola__photo img { object-fit: cover; }
+.pola__card figcaption { padding: 14px 4px 16px; font-family: "Segoe Print", "Bradley Hand", "Marker Felt", cursive; font-size: 17px; color: #22313a; text-align: center; letter-spacing: .01em; }
+.pola__play { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%; border: 0; display: grid; place-items: center; background: var(--cyan); color: var(--ink); cursor: pointer; box-shadow: 0 10px 30px -8px rgba(0,0,0,.5); transition: transform .3s; }
+.pola__play:hover { transform: scale(1.08); }
+.pola__nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 34px; position: relative; }
+.pola__count { font-size: 13px; letter-spacing: .1em; color: var(--on-dark-soft); min-width: 64px; text-align: center; }
+.pola__count b { color: #fff; font-weight: 700; }
+.pola__bar { position: absolute; left: 50%; bottom: -14px; width: 120px; margin-left: -60px; height: 2px; background: rgba(255,255,255,.12); border-radius: 2px; overflow: hidden; }
+.pola__bar span { display: block; height: 100%; width: 0; background: var(--cyan); }
+.pola__bar span.is-run { animation: pola-fill linear forwards; }
+@keyframes pola-fill { to { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .pola__card { transition: none; } }
+@media (max-width: 900px) {
+  .boat__row { grid-template-columns: 1fr; }
+  .pola { width: min(300px, 76vw); margin: 12px auto 0; }
+}
+.ath-card__media { text-decoration: none; }
+@media (max-width: 700px) { .boat-badge { left: 50%; transform: translateX(-50%); top: 0; } }
