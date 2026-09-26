@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { riders } from "@/content/site";
 import { riderBios } from "@/content/riderBios";
+import { riderResults } from "@/content/riderResults";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://otown-watersports.vercel.app";
 
@@ -33,11 +34,7 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
   const next = riders[(i + 1) % riders.length];
   const [first, ...rest] = r.name.split(" ");
   const b = riderBios[r.key];
-  const yearOf = (t: string) => Number(t.match(/\b(19|20)\d{2}\b/)?.[0] ?? 0);
-  const seen = new Set<string>();
-  const highlights = [...r.points, ...(b?.more ?? [])]
-    .filter((t) => { const k = t.toLowerCase().replace(/^\d{4}:\s*/, "").slice(0, 28); if (seen.has(k)) return false; seen.add(k); return true; })
-    .sort((x, y) => yearOf(y) - yearOf(x));
+  const results = riderResults[r.key] ?? [];
   const pool = riders.filter((x) => x.key !== r.key && x.photo);
   const related = [...pool.filter((x) => x.title.startsWith("Junior") === r.title.startsWith("Junior")), ...pool.filter((x) => x.title.startsWith("Junior") !== r.title.startsWith("Junior"))].slice(0, 3);
   const ld = {
@@ -54,7 +51,7 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
         ...(r.photo ? { image: `${SITE}${r.photo}` } : {}),
         ...(r.instagram ? { sameAs: [`https://www.instagram.com/${r.instagram}/`] } : {}),
         knowsAbout: ["Wakeboarding", "Boat wakeboarding"],
-        award: highlights,
+        award: results.map((x) => `${x.text} (${x.year})`),
         ...(b?.from ? { homeLocation: { "@type": "Country", name: b.from } } : {}),
         ...(b?.sources.length ? { subjectOf: b.sources.map((x) => ({ "@type": "WebPage", name: x.label, url: x.url })) } : {}),
         affiliation: { "@type": "SportsOrganization", name: "O’Town Watersports", url: SITE },
@@ -84,7 +81,7 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
         <div className="rider-page__copy">
           <nav className="rider-page__crumbs" aria-label="Breadcrumb"><Link href="/athletes">Athletes</Link> <span aria-hidden>/</span> {r.name}</nav>
           <p className="eyebrow eyebrow--cyan">{r.country} · {r.title}</p>
-          <h1 className="display display--name">{first}<br />{rest.join(" ")}</h1>
+          <h1 className={`display display--name${r.name.split(" ").some((w) => w.length > 9) ? " display--name-long" : ""}`}>{first}<br />{rest.join(" ")}</h1>
           {r.instagram && (
             <a className="riders__ig" href={`https://www.instagram.com/${r.instagram}/`} target="_blank" rel="noreferrer">Follow @{r.instagram} on Instagram <span aria-hidden>↗</span></a>
           )}
@@ -102,10 +99,12 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
             <p className="eyebrow">Results &amp; career</p>
             <h2 className="rider-more__h">{r.name}: career highlights</h2>
             <ol className="rider-hl">
-              {highlights.map((p) => {
-                const y = p.match(/\b(19|20)\d{2}\b/)?.[0];
-                return (<li key={p}><span className={`rider-hl__y${y ? "" : " is-dot"}`}>{y ?? ""}</span><span className="rider-hl__t">{p.replace(/^\d{4}:?\s+/, "").replace(/,? (in )?\d{4}\.$/, ".")}</span></li>);
-              })}
+              {results.map((x) => (
+                <li key={x.year + x.text}>
+                  <span className="rider-hl__y">{x.year}</span>
+                  <span className="rider-hl__t">{x.text}{x.source.startsWith("http") && <a className="rider-hl__src" href={x.source} target="_blank" rel="noreferrer nofollow" aria-label="Source">source ↗</a>}</span>
+                </li>
+              ))}
             </ol>
             {b && b.sources.length > 0 && (
               <p className="rider-src">Sources: {b.sources.map((x, k) => (<span key={x.url}>{k > 0 && " · "}<a href={x.url} target="_blank" rel="noreferrer nofollow">{x.label}</a></span>))}</p>

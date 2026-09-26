@@ -62,7 +62,7 @@ export default function AthletesPage() {
                       <span className="ath-card__initials" aria-hidden>{first[0]}{rest.length ? rest[rest.length - 1][0] : ""}</span>
                     )}
                   </Link>
-                  <div className="ath-card__meta"><span>{String(n + 1).padStart(2, "0")}</span><span>{a.country}</span></div>
+                  <div className="ath-card__meta"><span>{a.country}</span></div>
                   <h2 className="ath-card__name"><Link href={`/athletes/${a.key}`}>{a.name}</Link></h2>
                   <p className="ath-card__title">{a.title}</p>
                   <ul className="ath-card__points">{a.points.map((p) => <li key={p}>{p}</li>)}</ul>
