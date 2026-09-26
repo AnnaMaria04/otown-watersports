@@ -81,11 +81,11 @@ export default function StayPage() {
               <span className="tile__play"><Play /></span>
               <span className="tile__cap">Walk through the house</span>
             </VideoDialog>
-            <Lightbox className="sg__c" src="/images/new/stay-lounge.jpg" alt="The lounge with sofas, a TV and the dining table" caption="The lounge" sizes="(max-width: 700px) 100vw, 33vw" position="50% 60%" />
-            <Lightbox className="sg__d" src="/images/new/stay-kitchen.jpg" alt="The stocked kitchen with fridge, oven and counters" caption="Stocked kitchen" sizes="(max-width: 700px) 50vw, 25vw" position="50% 55%" />
-            <Lightbox className="sg__e" src="/images/new/stay-bunks.jpg" alt="Bunk beds for camps and teams" caption="Bunks for camps" sizes="(max-width: 700px) 50vw, 25vw" position="50% 50%" />
+            <Lightbox className="sg__c" src="/images/new/rider-behind-sl450.jpg" alt="A young rider behind the boat on Lake Barton" caption="Out on Lake Barton" sizes="(max-width: 700px) 100vw, 33vw" position="50% 88%" />
+            <Lightbox className="sg__d" src="/images/new/trampoline-flip-2.jpg" alt="A rider flipping on the lakeside trampoline" caption="The trampoline on the dock" sizes="(max-width: 700px) 50vw, 25vw" position="50% 40%" />
+            <Lightbox className="sg__e" src="/images/new/tube-ride.jpg" alt="Friends tubing on Lake Barton" caption="Tubing on the lake" sizes="(max-width: 700px) 50vw, 25vw" position="50% 50%" />
             <Lightbox className="sg__f" src="/images/games-room.jpg" alt="The downstairs lounge with a table-tennis table and board racks" caption="Downstairs lounge" sizes="(max-width: 700px) 50vw, 25vw" />
-            <Lightbox className="sg__g" src="/images/new/dock-trampoline.jpg" alt="The dock and trampoline on Lake Barton, right outside the house" caption="Right outside: the dock" sizes="(max-width: 700px) 100vw, 50vw" position="50% 88%" />
+            <Lightbox className="sg__g" src="/images/new/sl450-lake.jpg" alt="The Supra SL 450 on Lake Barton under summer clouds" caption="The boat, a few steps away" sizes="(max-width: 700px) 100vw, 50vw" position="50% 62%" />
           </div>
         </div>
       </section>
