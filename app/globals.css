@@ -773,12 +773,14 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
   .wv-num { right: 18px; bottom: 14px; }
 }
 @media print {
-  @page { size: letter; margin: 0; }
+  @page { margin: .3in .35in; }
   html, body { background: #fff !important; }
   .site-header, .site-footer, .wv-intro, .skip, nextjs-portal { display: none !important; }
   main, .wv-wrap { padding: 0 !important; margin: 0 !important; background: #fff !important; }
   .wv { gap: 0; display: block; }
-  .wv-page { box-shadow: none; width: 8.5in; height: 11in; min-height: 0; max-width: none; padding: .45in .5in .5in; font-size: 8.4pt; line-height: 1.17; break-after: page; overflow: hidden; }
+  .wv-page { box-shadow: none; width: auto; height: auto; min-height: 0; max-width: none; padding: 0; font-size: 8.2pt; line-height: 1.15; break-after: page; overflow: visible; }
+  .wv-sigs, .wv-sig, .wv-foot, .wv-box { break-inside: avoid; }
+  .wv-num { display: none; }
   .wv-page:last-child { break-after: auto; }
   .wv-box { font-size: 9.5pt; padding: 4px; margin-bottom: 10px; }
   .wv-h { font-size: 9.6pt; margin-top: 7px; }
