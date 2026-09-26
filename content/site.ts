@@ -132,7 +132,7 @@ export const riders: Rider[] = [
     photo: "/athletes/alize.jpg", cardPhoto: "/athletes/alize-4x5.jpg", photoAlt: "Alizé Piana tucked mid-air through a curtain of spray", photoPosition: "50% 30%" },
   { key: "hina", name: "Hina Yoshihara", country: "Japan", title: "Pro wakeboarder", instagram: "hinata_yoshihara",
     points: ["Four-time Japanese champion and two-time WWA Asian champion."],
-    photo: "/athletes/hina.jpg", cardPhoto: "/athletes/hina-4x5.jpg", photoAlt: "Hinata Yoshihara on the boat in Florida", photoPosition: "40% 35%" },
+    photo: "/athletes/hina.jpg", cardPhoto: "/athletes/hina-4x5.jpg", photoAlt: "Hinata Yoshihara on the boat after a set", photoPosition: "40% 35%" },
   { key: "campbell", name: "Campbell Scarborough", country: "USA", title: "Pro wakeboarder", instagram: "campbell_scarborough",
     points: ["Open Women champion, cable wakeboard, 2024 IWWF Pan American Championships."],
     photo: "/athletes/campbell.jpg", cardPhoto: "/athletes/campbell-4x5.jpg", photoAlt: "Campbell Scarborough jumping at the cable park", photoPosition: "55% 35%" },
@@ -149,7 +149,7 @@ export const riders: Rider[] = [
   { key: "ana", name: "Ana Thomas", country: "USA", title: "Junior pro wakeboarder",
     points: ["2022 WWA World Champion, Junior Girls.", "4th, Junior Pro Women, 2026 Nautique Wake Series."] },
   { key: "rex", name: "Rex Abbott", country: "USA", title: "Junior pro wakeboarder", instagram: "rad_rexx", photo: "/athletes/rex.jpg", cardPhoto: "/athletes/rex-4x5.jpg", photoAlt: "Rex Abbott grabbing above the wake on Lake Norman", photoPosition: "50% 35%",
-    points: ["5th, Junior Pro Men, 2026 Nautique Wake Series."] },
+    points: ["3rd at the 2026 WWA Wakeboard World Championships.", "5th, Junior Pro Men, 2026 Nautique Wake Series."] },
   { key: "stella", name: "Stella Tracy", country: "USA", title: "Junior pro wakeboarder",
     points: ["5th, Junior Pro Women, 2026 Nautique Wake Series."] },
 ];
