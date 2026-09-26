@@ -66,3 +66,4 @@ public/docs/otown-waiver.pdf and /waiver: reset from the original Florida-Releas
 | public/athletes/rex-2026.jpg | Rex Abbott's Instagram @rad_rexx, post DbbcbD7Ad0p (July 2026), used with rider's consent |
 | public/athletes/anna-mariia.jpg | Supplied by Anna-Mariia Kushkovskaia (her own photo), Sept 2026 |
 | public/athletes/stella*.jpg | Stella Tracy's Instagram @stellajtracy, reel DZ8qjOnpjO8 cover (June 2026), AI-upscaled; used with rider's consent |
+| public/athletes/ashley-ig*.jpg | Ashley Kazmer's Instagram @ashley_kazmer, collab reel with Glen Fletcher DRQcJtfDh6s (Nov 2025); caption overlay removed, AI-upscaled; rider consent |

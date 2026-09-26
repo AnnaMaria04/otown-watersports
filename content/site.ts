@@ -127,7 +127,7 @@ export const riders: Rider[] = [
     photo: "/athletes/kira.jpg", cardPhoto: "/athletes/kira-4x5.jpg", photoAlt: "Kira Lewis grabbing high above the lake", photoPosition: "65% 30%" },
   { key: "ashley", name: "Ashley Kazmer", country: "USA", title: "Pro wakeboarder", instagram: "ashley_kazmer",
     points: ["2023 Junior Pro Women World Champion."],
-    photo: "/athletes/ashley.jpg", cardPhoto: "/athletes/ashley-4x5.jpg", photoAlt: "Ashley Kazmer inverted above the wake on Smith Mountain Lake", photoPosition: "62% 40%" },
+    photo: "/athletes/ashley-ig.jpg", cardPhoto: "/athletes/ashley-ig-4x5.jpg", photoAlt: "Ashley Kazmer grabbing her board high above the wake, in a clip shared with Glen Fletcher", photoPosition: "50% 30%" },
   { key: "rex", name: "Rex Abbott", country: "USA", title: "Junior pro wakeboarder", featured: true, instagram: "rad_rexx", photo: "/athletes/rex-2026.jpg", cardPhoto: "/athletes/rex-2026-4x5.jpg", photoAlt: "Rex Abbott on the dock in his competition jersey, 2026", photoPosition: "58% 45%",
     points: ["3rd at the 2026 WWA Wakeboard World Championships.", "3rd overall, Junior Pro, 2026 Pro Wakeboard Tour.", "2022 WWA World Champion, Men’s Wakeskate."] },
   { key: "campbell", name: "Campbell Scarborough", country: "USA", title: "Pro wakeboarder", instagram: "campbell_scarborough",
