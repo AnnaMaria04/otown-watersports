@@ -1049,3 +1049,7 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 .rider-hl li { grid-template-columns: 150px 1fr; }
 .rider-hl__y { font-size: 26px; }
 @media (max-width: 600px) { .rider-hl li { grid-template-columns: 92px 1fr; gap: 12px; } .rider-hl__y { font-size: 17px; white-space: normal; } }
+
+.rider-hl li { grid-template-columns: 180px 1fr; }
+.rider-hl__y { display: flex; flex-direction: column; font-size: 26px; line-height: 1.1; white-space: nowrap; }
+@media (max-width: 600px) { .rider-hl li { grid-template-columns: 96px 1fr; gap: 12px; } .rider-hl__y { font-size: 17px; white-space: normal; } }

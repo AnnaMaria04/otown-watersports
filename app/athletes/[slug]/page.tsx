@@ -34,7 +34,8 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
   const next = riders[(i + 1) % riders.length];
   const [first, ...rest] = r.name.split(" ");
   const b = riderBios[r.key];
-  const results = riderResults[r.key] ?? [];
+  const yr = (y: string) => Number(y.match(/\d{4}/g)?.pop() ?? 0);
+  const results = [...(riderResults[r.key] ?? [])].sort((a, b) => yr(b.year) - yr(a.year));
   const pool = riders.filter((x) => x.key !== r.key && x.photo);
   const related = [...pool.filter((x) => x.title.startsWith("Junior") === r.title.startsWith("Junior")), ...pool.filter((x) => x.title.startsWith("Junior") !== r.title.startsWith("Junior"))].slice(0, 3);
   const ld = {
@@ -101,7 +102,7 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
             <ol className="rider-hl">
               {results.map((x) => (
                 <li key={x.year + x.text}>
-                  <span className="rider-hl__y">{x.year}</span>
+                  <span className="rider-hl__y">{x.year.split(", ").map((y) => <span key={y}>{y}</span>)}</span>
                   <span className="rider-hl__t">{x.text}{x.source.startsWith("http") && <a className="rider-hl__src" href={x.source} target="_blank" rel="noreferrer nofollow" aria-label="Source">source ↗</a>}</span>
                 </li>
               ))}

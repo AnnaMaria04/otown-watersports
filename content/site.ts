@@ -1,3 +1,4 @@
+import { riderResults } from "./riderResults";
 /**
  * All factual content lives here, separate from presentation.
  * Sources: otownwatersports.com (home, about, glen-fletcher-2, rates), @fletcherotown on Instagram,
@@ -155,6 +156,12 @@ export const riders: Rider[] = [
 ];
 
 /** Landing page features, in order. */
+// Card points come from the verified results (first two = strongest), one style everywhere: "Did X (year)."
+for (const r of riders) {
+  const res = riderResults[r.key];
+  if (res?.length) r.points = res.slice(0, 2).map((x) => `${x.text} (${x.year}).`);
+}
+
 export const spotlight: Rider[] = riders.filter((r) => r.featured);
 
 
