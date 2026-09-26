@@ -93,7 +93,7 @@ export default function StayPage() {
               <span className="tile__play"><Play /></span>
               <span className="tile__cap">Walk through the house</span>
             </VideoDialog>
-            <Lightbox className="sg__c" src="/images/new/rider-behind-sl450.jpg" alt="A young rider behind the boat on Lake Barton" caption="Out on Lake Barton" sizes="(max-width: 700px) 100vw, 33vw" position="50% 88%" />
+            <Lightbox className="sg__c" src="/images/new/dock-start-rope.jpg" alt="A rider on the dock with the Supra SL 450 waiting on Lake Barton" caption="Rope in hand, boat ready" sizes="(max-width: 700px) 100vw, 33vw" position="40% 60%" />
             <Lightbox className="sg__d" src="/images/new/trampoline-flip-2.jpg" alt="A rider flipping on the lakeside trampoline" caption="The trampoline on the dock" sizes="(max-width: 700px) 50vw, 25vw" position="50% 40%" />
             <Lightbox className="sg__e" src="/images/new/tube-ride.jpg" alt="Friends tubing on Lake Barton" caption="Tubing on the lake" sizes="(max-width: 700px) 50vw, 25vw" position="50% 50%" />
             <Lightbox className="sg__f" src="/images/games-room.jpg" alt="The downstairs lounge with a table-tennis table and board racks" caption="Downstairs lounge" sizes="(max-width: 700px) 50vw, 25vw" />

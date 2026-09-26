@@ -1,0 +1,193 @@
+/** Short rider bios for the /athletes/[slug] pages (SEO). Every fact is from a public source listed below
+ *  (full research notes in research/riders.json). Nothing here is invented; keep it that way when editing. */
+export type RiderBio = { from?: string; bio: string[]; sources: { label: string; url: string }[] };
+
+export const riderBios: Record<string, RiderBio> = {
+  meagan: {
+    bio: [
+      "Meagan Ethell is one of the most decorated riders in women’s wakeboarding. She won her eighth WWA Wakeboard World Championship title on the Gold Coast, Australia, in 2024, and took the 2026 Pro Wakeboard Tour Pro Women overall title.",
+      "Her record also includes Queen of Wake and Wake Games titles, and she has been named Best Female Rider six times. She is a MasterCraft team rider.",
+    ],
+    sources: [
+      { label: "WWA, 2024 World Championships", url: "https://www.thewwa.com/gold-medals-awarded-on-australias-gold-coast-for-the-2024-nautique-wwa-wakeboard-world-championships/" },
+      { label: "Pro Wakeboard Tour results", url: "https://prowakeboardtour.com/2025-results/" },
+      { label: "MasterCraft athlete page", url: "https://www.mastercraft.com/athletes/meagan-ethell/" },
+    ],
+  },
+  rusty: {
+    from: "Canada",
+    bio: [
+      "Canadian pro Rusty Malinoski made history in 2009 when he landed the first 1080 ever done in competition, a switch toeside 1080 at the Pro Wakeboard Tour finale in Reno.",
+      "Earlier in his career he won Pro Men at the 2005 U.S. Pro-Am Championship. He remains one of the best-known names in progressive boat wakeboarding.",
+    ],
+    sources: [
+      { label: "Wakeboarding Mag, first 1080 in competition", url: "https://www.wakeboardingmag.com/blog/news/2009/08/16/rusty-malinoski-lands-first-1080-in-competition/" },
+      { label: "Wikipedia", url: "https://en.wikipedia.org/wiki/Rusty_Malinoski" },
+    ],
+  },
+  steel: {
+    bio: [
+      "Steel Lafferty won gold at the 2017 X Games and was named Wakeboarder of the Year the same season, seven years after taking Rookie of the Year in 2010.",
+      "Known for big, technical riding behind the boat, he is part of the pro men’s group on the O’Town roster.",
+    ],
+    sources: [{ label: "Steel Lafferty, accomplishments", url: "https://steellafferty.com/accomplishments/" }],
+  },
+  shota: {
+    from: "Japan",
+    bio: [
+      "Japan’s Shota Tezuka won gold in men’s wakeboard freestyle at the 2017 World Games in Wrocław, and came back to take silver at the 2025 World Games in Chengdu.",
+      "Eight years between two World Games podiums makes him one of the most consistent riders of his generation.",
+    ],
+    sources: [
+      { label: "2017 World Games results", url: "https://en.wikipedia.org/wiki/Water_skiing_at_the_2017_World_Games_%E2%80%93_Men%27s_wakeboard" },
+      { label: "2025 World Games results", url: "https://en.wikipedia.org/wiki/Wakeboarding_at_the_2025_World_Games" },
+    ],
+  },
+  jamie: {
+    from: "Switzerland",
+    bio: [
+      "Swiss rider Jamie Huser set a world record in 2025 with a 140 metre (460 ft) wakeboard rail slide in Laax, Switzerland.",
+      "He won the 2022 WWA World Championship and the 2022 WWA U.S. Nationals in Junior Pro Men. A Red Bull and Ronix athlete, he has lived in Clermont, Florida, near Orlando, since 2020.",
+    ],
+    sources: [
+      { label: "Alliance Wake, world record", url: "https://alliancewake.com/wake/switzerlands-jamie-huser-sets-a-new-world-record/" },
+      { label: "WWA, 2022 World Championships", url: "https://www.thewwa.com/2022-nautique-wwa-wakeboard-world-championships-masters-wakesurf-championships-presented-by-gm-marine-conclude-in-pine-mountain-georgia/" },
+    ],
+  },
+  camden: {
+    bio: [
+      "Camden Marsden grew up riding on Lake Lanier in Cumming, Georgia. He won the 2023 WWA U.S. National Championship in Junior Men and finished 6th overall in Pro Men on the 2026 Pro Wakeboard Tour.",
+      "He rides for Centurion Boats, Ronix and Inland Wave.",
+    ],
+    sources: [
+      { label: "WWA, 2023 Nationals", url: "https://www.thewwa.com/2023-nautique-wwa-national-championships-presented-by-gm-marine-wrap-up-in-pine-mountain-georgia/" },
+      { label: "Pro Wakeboard Tour results", url: "https://prowakeboardtour.com/2025-results/" },
+    ],
+  },
+  kitt: {
+    bio: [
+      "Orlando-based Kitt Smith won gold in women’s wakeboard at the 2025 Junior Pan American Games, and was the 2022 WWA U.S. National Champion in Junior Pro Women.",
+      "She is a Centurion team rider, and a coach and co-owner at Freedom Wake Park.",
+    ],
+    sources: [
+      { label: "2025 Junior Pan American Games", url: "https://en.wikipedia.org/wiki/Water_skiing_at_the_2025_Junior_Pan_American_Games" },
+      { label: "WWA, 2022 Nationals", url: "https://www.thewwa.com/2022-national-champions-crowned-in-polk-county/" },
+      { label: "Centurion team page", url: "https://centurionboats.com/team/kitt-smith/" },
+    ],
+  },
+  kira: {
+    bio: [
+      "Kira Lewis, from New Jersey, won back-to-back WWA Junior Pro Women World Championships in Japan (2018) and Mexico (2019), and finished 2nd overall on the 2023 Junior Pro Tour.",
+      "She trains in Clermont, Florida, and now competes in Pro Women, finishing 8th on the 2026 Pro Wakeboard Tour.",
+    ],
+    sources: [
+      { label: "Wakeboarding Mag", url: "https://www.wakeboardingmag.com/story/gear/whats-in-kira-lewis-board-bag/" },
+      { label: "Montverde Academy", url: "https://montverde.org/kira-lewis-ranks-second-in-junior-pro-tour-after-competing-in-wwa-wakeboard-world-championships/" },
+    ],
+  },
+  ashley: {
+    bio: [
+      "Ashley Kazmer won the 2023 Junior Pro Women World Championship in Portugal, then took 2nd in Junior Pro Women at the 2024 WWA World Championships on the Gold Coast.",
+      "She trains on Smith Mountain Lake, Virginia, spends winters riding in Florida, and finished 6th in Pro Women on the 2026 Pro Wakeboard Tour.",
+    ],
+    sources: [
+      { label: "Cary Magazine", url: "https://www.carymagazine.com/features/ashley-kazmer-wakeboard-world-champion/" },
+      { label: "WWA, 2024 World Championships", url: "https://www.thewwa.com/gold-medals-awarded-on-australias-gold-coast-for-the-2024-nautique-wwa-wakeboard-world-championships/" },
+    ],
+  },
+  alize: {
+    from: "Italy",
+    bio: [
+      "Alizé Piana, from Lecco, Italy, won the 2022 IWWF World Championship in Wakeboard Under 18 Women at Varco Sabino, just 13 months after being hospitalised with severe burns.",
+      "She finished 5th in Open Women at the 2025 IWWF Europe & Africa Boat Championships.",
+    ],
+    sources: [
+      { label: "FISSW", url: "https://fissw.com/news/la-campionessa-alize-piana-insignita-della-civica-benemerenza-della-citta-di-lecco/" },
+      { label: "Il Fatto Quotidiano", url: "https://www.ilfattoquotidiano.it/2022/08/08/dai-mesi-passati-in-un-letto-dospedale-alloro-mondiale-nel-wakeboard-lincredibile-rinascita-di-alize-piana/6756082/" },
+    ],
+  },
+  hina: {
+    from: "Japan",
+    bio: [
+      "Hinata “Hina” Yoshihara is a four-time Japanese champion and two-time WWA Asian champion. In a 2022 Wakeboarding Mag interview she talked about training with Glen at O’Town Watersports.",
+      "She finished 5th overall in Pro Women on the 2026 Pro Wakeboard Tour.",
+    ],
+    sources: [
+      { label: "Wakeboarding Mag interview", url: "https://www.wakeboardingmag.com/howto/hinata-yoshihara-interview/" },
+      { label: "Pro Wakeboard Tour results", url: "https://prowakeboardtour.com/2025-results/" },
+    ],
+  },
+  campbell: {
+    bio: [
+      "Campbell Scarborough, from Winter Springs in the Orlando area, rides both boat and cable. She won Open Women cable wakeboard at the 2024 IWWF Pan American Championships in Orlando, and the 2022 WWA Wake Park Nationals in Pro Women Traditional.",
+      "Behind the boat she finished 11th in Pro Women on the 2026 Pro Wakeboard Tour. She is a Hyperlite team rider.",
+    ],
+    sources: [
+      { label: "USA Water Ski & Wake Sports", url: "https://www.usawaterski.org/news/2024/july/20/u-s-cable-wakeboard-athletes-qualify-for-world-games" },
+      { label: "WWA, 2022 Nationals", url: "https://www.thewwa.com/2022-national-champions-crowned-in-polk-county/" },
+    ],
+  },
+  luna: {
+    from: "Belgium",
+    bio: [
+      "Luna Cassart, from Namur, represented Belgium in women’s wakeboard freestyle at the 2025 World Games and finished 4th in Open Women at the 2025 IWWF Europe & Africa Boat Wakeboard Championships.",
+      "As a junior she already held Belgian and French senior titles.",
+    ],
+    sources: [
+      { label: "2025 World Games", url: "https://en.wikipedia.org/wiki/Wakeboarding_at_the_2025_World_Games" },
+      { label: "IWWF Europe & Africa results", url: "https://www.iwwfed-ea.org/boatwake/25/25EURO15/women_wakeboard_final_startlist_r.pdf" },
+    ],
+  },
+  fernanda: {
+    from: "Mexico",
+    bio: [
+      "Fernanda Larios, from Mexico City, won silver in women’s wakeboard at the 2025 Junior Pan American Games and finished 4th at the 2023 Pan American Games in Santiago.",
+      "She is a former Mexican national champion and trained weekends between Miami and Orlando while at school in Florida.",
+    ],
+    sources: [
+      { label: "2025 Junior Pan American Games", url: "https://en.wikipedia.org/wiki/Water_skiing_at_the_2025_Junior_Pan_American_Games" },
+      { label: "2023 Pan American Games", url: "https://en.wikipedia.org/wiki/Water_skiing_at_the_2023_Pan_American_Games_%E2%80%93_Women%27s_wakeboard" },
+      { label: "Community Newspapers", url: "https://communitynewspapers.com/featured/palmer-trinity-sophomore-wins-mexicos-national-wakeboarding-championship/" },
+    ],
+  },
+  "anna-mariia": {
+    from: "Russia",
+    bio: [
+      "Anna-Mariia Kushkovskaia is a competitive boat wakeboarder. She was Junior European Champion in 2019 and Russian national champion from 2022 to 2025.",
+      "She also built this website.",
+    ],
+    sources: [{ label: "Vesti Kaliningrad", url: "https://vesti-kaliningrad.ru/kaliningrad-prinyal-chempionat-rossii-po-katernomu-vejkbordu/" }],
+  },
+  zoey: {
+    bio: [
+      "Zoey Carroll, from Hickory, North Carolina, won U14 Girls wakeboard at the 2024 IWWF Pan American Championships and placed 3rd in Junior Pro Women on the 2026 Nautique Wake Series.",
+      "She rides for GoPro and Ronix.",
+    ],
+    sources: [
+      { label: "Wikipedia", url: "https://en.wikipedia.org/wiki/Zoey_Carroll" },
+      { label: "zoeycarroll.com", url: "https://zoeycarroll.com/" },
+    ],
+  },
+  ana: {
+    bio: [
+      "Ana Thomas won the 2022 WWA World Championship in Junior Girls and placed 4th in Junior Pro Women on the 2026 Nautique Wake Series.",
+    ],
+    sources: [{ label: "WWA, 2022 World Championships", url: "https://www.thewwa.com/2022-nautique-wwa-wakeboard-world-championships-masters-wakesurf-championships-presented-by-gm-marine-conclude-in-pine-mountain-georgia/" }],
+  },
+  rex: {
+    bio: [
+      "Rex Abbott, from the Lake Norman area of North Carolina, rides both wakeboard and wakeskate. He was 3rd at the 2026 WWA Wakeboard World Championships and 5th in Junior Pro Men on the 2026 Nautique Wake Series.",
+      "He also won the 2022 WWA World Championship in Men’s Wakeskate.",
+    ],
+    sources: [
+      { label: "WWA, 2022 World Championships", url: "https://www.thewwa.com/2022-nautique-wwa-wakeboard-world-championships-masters-wakesurf-championships-presented-by-gm-marine-conclude-in-pine-mountain-georgia/" },
+      { label: "Pro Wakeboard Tour results", url: "https://prowakeboardtour.com/2025-results/" },
+    ],
+  },
+  stella: {
+    bio: [
+      "Stella Tracy placed 5th in Junior Pro Women on the 2026 Nautique Wake Series and is one of the youngest riders on the O’Town roster.",
+    ],
+    sources: [],
+  },
+};

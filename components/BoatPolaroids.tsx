@@ -9,7 +9,6 @@ const SHOTS: Shot[] = [
   { src: "/images/new/sl450-crew.jpg", alt: "The new Supra SL 450 on Lake Barton with riders on board", caption: "The SL 450 on Lake Barton", pos: "38% 62%" },
   { src: "/images/new/dock-start-sl450.jpg", alt: "A rider ready on the dock, the SL 450 waiting on the lake", caption: "Ready on the dock", pos: "50% 60%" },
   { src: "/video/sl450-arrival-poster.jpg", alt: "The SL 450 pulling in to the O’Town dock", caption: "Pulling in to the dock", pos: "50% 55%", video: "/video/sl450-arrival.mp4" },
-  { src: "/images/new/rider-behind-sl450.jpg", alt: "A young rider behind the SL 450 on Lake Barton", caption: "Behind the boat", pos: "50% 80%" },
 ];
 
 const DURATION = 5200;

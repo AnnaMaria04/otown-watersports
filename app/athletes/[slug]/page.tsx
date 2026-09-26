@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { riders } from "@/content/site";
+import { riderBios } from "@/content/riderBios";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://otown-watersports.vercel.app";
 
@@ -14,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const r = riders.find((x) => x.key === slug);
   if (!r) return {};
-  const desc = `${r.name}, ${r.title.toLowerCase()} from ${r.country}, rides with Glen Fletcher at O’Town Watersports, Orlando. ${r.points.join(" ")}`;
+  const bio = riderBios[r.key]?.bio.join(" ");
+  const desc = bio ?? `${r.name}, ${r.title.toLowerCase()} from ${r.country}. ${r.points.join(" ")}`;
   return {
     title: `${r.name} | ${r.title} | O’Town Watersports Orlando`,
     description: desc.slice(0, 300),
@@ -30,6 +32,14 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
   const r = riders[i];
   const next = riders[(i + 1) % riders.length];
   const [first, ...rest] = r.name.split(" ");
+  const b = riderBios[r.key];
+  const related = riders.filter((x) => x.key !== r.key && x.photo && (x.title.startsWith("Junior") === r.title.startsWith("Junior"))).slice(0, 3);
+  const faq = [
+    { q: `Who is ${r.name}?`, a: b?.bio[0] ?? `${r.name} is a ${r.title.toLowerCase()} from ${r.country}.` },
+    { q: `What has ${first} won?`, a: r.points.join(" ") },
+    { q: `Where can I train like ${first}?`, a: `${first} is on the O’Town Watersports rider roster. O’Town offers one-to-one wakeboard coaching with Glen Fletcher on Lake Barton in Orlando, Florida, for every level from first-timers to pros.` },
+    ...(r.instagram ? [{ q: `Is ${first} on Instagram?`, a: `Yes, ${first} posts as @${r.instagram}.` }] : []),
+  ];
   const ld = {
     "@context": "https://schema.org",
     "@graph": [
@@ -39,12 +49,18 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
         name: r.name,
         jobTitle: r.title,
         nationality: r.country,
-        description: r.points.join(" "),
+        description: b?.bio.join(" ") ?? r.points.join(" "),
         url: `${SITE}/athletes/${r.key}`,
         ...(r.photo ? { image: `${SITE}${r.photo}` } : {}),
         ...(r.instagram ? { sameAs: [`https://www.instagram.com/${r.instagram}/`] } : {}),
         knowsAbout: ["Wakeboarding"],
+        ...(b?.from ? { homeLocation: { "@type": "Country", name: b.from } } : {}),
+        ...(b?.sources.length ? { subjectOf: b.sources.map((x) => ({ "@type": "WebPage", name: x.label, url: x.url })) } : {}),
         affiliation: { "@type": "SportsOrganization", name: "O’Town Watersports", url: SITE },
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
       },
       {
         "@type": "BreadcrumbList",
@@ -76,11 +92,37 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
           {r.instagram && (
             <a className="riders__ig" href={`https://www.instagram.com/${r.instagram}/`} target="_blank" rel="noreferrer">Follow @{r.instagram} on Instagram <span aria-hidden>↗</span></a>
           )}
-          <p className="rider-page__about">{first} is part of the O’Town Watersports rider roster, coached by Glen Fletcher on Lake Barton in Orlando, Florida. O’Town offers one-to-one wakeboard and wakesurf coaching for every level, from first-timers to pros.</p>
+          {b?.bio.map((t) => <p key={t} className="rider-page__about">{t}</p>)}
           <div className="actions">
             <Link href="/plan?activity=coaching" className="btn btn--primary btn--pill btn--lg">Train with Glen</Link>
             <Link href={`/athletes/${next.key}`} className="u-link u-link--light">Next: {next.name} →</Link>
           </div>
+        </div>
+      </section>
+
+      <section className="rider-more">
+        <div className="rider-more__inner">
+          <div>
+            <p className="eyebrow">About {first}</p>
+            <h2 className="rider-more__h">Questions about {r.name}</h2>
+            <dl className="rider-faq">
+              {faq.map((f) => (<div key={f.q}><dt>{f.q}</dt><dd>{f.a}</dd></div>))}
+            </dl>
+            {b && b.sources.length > 0 && (
+              <p className="rider-src">Sources: {b.sources.map((x, k) => (<span key={x.url}>{k > 0 && " · "}<a href={x.url} target="_blank" rel="noreferrer nofollow">{x.label}</a></span>))}</p>
+            )}
+          </div>
+          {related.length > 0 && (
+            <nav aria-label="More O’Town riders" className="rider-rel">
+              <p className="eyebrow">More O’Town riders</p>
+              <ul>
+                {related.map((x) => (
+                  <li key={x.key}><Link href={`/athletes/${x.key}`}><span className="rider-rel__img"><Image src={x.cardPhoto ?? x.photo!} alt="" fill sizes="80px" /></span><span><b>{x.name}</b><small>{x.title}</small></span></Link></li>
+                ))}
+              </ul>
+              <Link href="/athletes" className="u-link">All riders →</Link>
+            </nav>
+          )}
         </div>
       </section>
     </>
