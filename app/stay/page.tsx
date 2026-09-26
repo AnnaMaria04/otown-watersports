@@ -11,13 +11,22 @@ export const metadata: Metadata = {
   alternates: { canonical: "/stay" },
 };
 
-const amenities = [
-  { t: "Rooms on the lake", d: "Bedrooms in the house on Lake Barton, including bunks for teams and camps." },
-  { t: "Stocked kitchen", d: "We stock the kitchen around your preferences and allergies. Meals aren’t cooked for you, so you cook what you like, when you like." },
-  { t: "Supervision for minors", d: "Parents can send young riders to train. Riders under 18 are supervised during their stay." },
-  { t: "Washer and dryer", d: "Laundry on site, so wet gear and riding clothes are never a problem." },
-  { t: "High speed Wi-Fi", d: "Fast internet throughout the house, for school, work or watching back your sets." },
-  { t: "Steps from the dock", d: "The boat, the dock and the trampoline are right outside. Train, rest, go again." },
+type Amenity = { t: string; d: string; img?: string; alt?: string; pos?: string; icon?: React.ReactNode; cls: string };
+
+const I = ({ children }: { children: React.ReactNode }) => (
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>{children}</svg>
+);
+
+const amenities: Amenity[] = [
+  { cls: "amen--rooms", t: "Rooms on the lake", d: "Bedrooms in the house on Lake Barton, including bunks for teams and camps.", img: "/images/new/stay-bunks.jpg", alt: "Bunk beds in a bright room at O’Town", pos: "50% 55%" },
+  { cls: "amen--kitchen", t: "Stocked kitchen", d: "We stock the kitchen around your preferences and allergies. Meals aren’t cooked for you, so you cook what you like, when you like.", img: "/images/new/stay-kitchen.jpg", alt: "The kitchen at O’Town with fridge, oven and counters", pos: "50% 60%" },
+  { cls: "amen--minors", t: "Supervision for minors", d: "Parents can send young riders to train. Riders under 18 are supervised during their stay.",
+    icon: <I><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z" /><path d="M9 12l2 2 4-4" /></I> },
+  { cls: "amen--laundry", t: "Washer and dryer", d: "Laundry on site, so wet gear and riding clothes are never a problem.",
+    icon: <I><rect x="4" y="3" width="16" height="18" rx="2.5" /><circle cx="12" cy="13" r="4.5" /><path d="M7.5 6.5h.01M10.5 6.5h.01" /></I> },
+  { cls: "amen--wifi", t: "High speed Wi-Fi", d: "Fast internet throughout the house, for school, work or watching back your sets.",
+    icon: <I><path d="M2.5 9a14 14 0 0 1 19 0" /><path d="M5.5 12.5a9.5 9.5 0 0 1 13 0" /><path d="M8.7 16a5 5 0 0 1 6.6 0" /><path d="M12 19.5h.01" /></I> },
+  { cls: "amen--dock", t: "Steps from the dock", d: "The boat, the dock and the trampoline are right outside. Train, rest, go again.", img: "/images/new/dock-trampoline.jpg", alt: "The dock and trampoline on Lake Barton right outside the house", pos: "50% 82%" },
 ];
 
 const Play = () => <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden><path d="M7 4.5v15l12.5-7.5z" fill="currentColor" /></svg>;
@@ -45,10 +54,17 @@ export default function StayPage() {
           </div>
           <ul className="amen">
             {amenities.map((a, i) => (
-              <li key={a.t} className="amen__item">
-                <span className="amen__n">0{i + 1}</span>
-                <h3>{a.t}</h3>
-                <p>{a.d}</p>
+              <li key={a.t} className={`amen__card ${a.cls}${a.img ? " amen__card--photo" : ""}`}>
+                {a.img ? (
+                  <div className="amen__media"><Image src={a.img} alt={a.alt ?? ""} fill quality={85} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 40vw" style={{ objectPosition: a.pos }} /></div>
+                ) : (
+                  <span className="amen__icon">{a.icon}</span>
+                )}
+                <div className="amen__text">
+                  <span className="amen__n">{String(i + 1).padStart(2, "0")}</span>
+                  <h3>{a.t}</h3>
+                  <p>{a.d}</p>
+                </div>
               </li>
             ))}
           </ul>
