@@ -141,7 +141,7 @@ export const riders: Rider[] = [
     photo: "/athletes/luna.jpg", cardPhoto: "/athletes/luna-4x5.jpg", photoAlt: "Luna Cassart grabbing above the lake", photoPosition: "50% 40%" },
   { key: "fernanda", name: "Fernanda Larios", country: "Mexico", title: "Pro wakeboarder", photo: "/athletes/fernanda.jpg", cardPhoto: "/athletes/fernanda-4x5.jpg", photoAlt: "Fernanda Larios carving behind the boat", photoPosition: "50% 40%",
     points: ["Silver at the 2025 Junior Pan American Games.", "4th at the 2023 Pan American Games."] },
-  { key: "anna-mariia", name: "Anna-Mariia Kushkovskaia", country: "Russia", title: "Pro wakeboarder",
+  { key: "anna-mariia", name: "Anna-Mariia Kushkovskaia", country: "Russia", title: "Pro wakeboarder", instagram: "anna_maria_wake",
     points: ["Junior European Champion, 2019.", "Russian national champion, 2022 to 2025."] },
   { key: "zoey", name: "Zoey Carroll", country: "USA", title: "Junior pro wakeboarder", instagram: "zoeytcarroll",
     points: ["Gold, U14 Girls, 2024 IWWF Pan American Championships.", "3rd, Junior Pro Women, 2026 Nautique Wake Series."],
@@ -149,7 +149,7 @@ export const riders: Rider[] = [
   { key: "ana", name: "Ana Thomas", country: "USA", title: "Junior pro wakeboarder",
     points: ["2022 WWA World Champion, Junior Girls.", "4th, Junior Pro Women, 2026 Nautique Wake Series."] },
   { key: "rex", name: "Rex Abbott", country: "USA", title: "Junior pro wakeboarder", instagram: "rad_rexx", photo: "/athletes/rex-2026.jpg", cardPhoto: "/athletes/rex-2026-4x5.jpg", photoAlt: "Rex Abbott on the dock in his competition jersey, 2026", photoPosition: "58% 45%",
-    points: ["3rd at the 2026 WWA Wakeboard World Championships.", "5th, Junior Pro Men, 2026 Nautique Wake Series."] },
+    points: ["3rd at the 2026 WWA Wakeboard World Championships.", "5th, Junior Pro Men, 2026 Nautique Wake Series.", "2022 WWA World Champion, Men’s Wakeskate."] },
   { key: "stella", name: "Stella Tracy", country: "USA", title: "Junior pro wakeboarder",
     points: ["5th, Junior Pro Women, 2026 Nautique Wake Series."] },
 ];

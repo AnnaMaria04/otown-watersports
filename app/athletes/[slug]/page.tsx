@@ -33,13 +33,8 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
   const next = riders[(i + 1) % riders.length];
   const [first, ...rest] = r.name.split(" ");
   const b = riderBios[r.key];
-  const related = riders.filter((x) => x.key !== r.key && x.photo && (x.title.startsWith("Junior") === r.title.startsWith("Junior"))).slice(0, 3);
-  const faq = [
-    { q: `Who is ${r.name}?`, a: b?.bio[0] ?? `${r.name} is a ${r.title.toLowerCase()} from ${r.country}.` },
-    { q: `What has ${first} won?`, a: r.points.join(" ") },
-    { q: `Where can I train like ${first}?`, a: `${first} is on the O’Town Watersports rider roster. O’Town offers one-to-one wakeboard coaching with Glen Fletcher on Lake Barton in Orlando, Florida, for every level from first-timers to pros.` },
-    ...(r.instagram ? [{ q: `Is ${first} on Instagram?`, a: `Yes, ${first} posts as @${r.instagram}.` }] : []),
-  ];
+  const pool = riders.filter((x) => x.key !== r.key && x.photo);
+  const related = [...pool.filter((x) => x.title.startsWith("Junior") === r.title.startsWith("Junior")), ...pool.filter((x) => x.title.startsWith("Junior") !== r.title.startsWith("Junior"))].slice(0, 3);
   const ld = {
     "@context": "https://schema.org",
     "@graph": [
@@ -57,10 +52,6 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
         ...(b?.from ? { homeLocation: { "@type": "Country", name: b.from } } : {}),
         ...(b?.sources.length ? { subjectOf: b.sources.map((x) => ({ "@type": "WebPage", name: x.label, url: x.url })) } : {}),
         affiliation: { "@type": "SportsOrganization", name: "O’Town Watersports", url: SITE },
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
       },
       {
         "@type": "BreadcrumbList",
@@ -88,7 +79,6 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
           <nav className="rider-page__crumbs" aria-label="Breadcrumb"><Link href="/athletes">Athletes</Link> <span aria-hidden>/</span> {r.name}</nav>
           <p className="eyebrow eyebrow--cyan">{r.country} · {r.title}</p>
           <h1 className="display display--name">{first}<br />{rest.join(" ")}</h1>
-          <ul className="dash-list">{r.points.map((p) => <li key={p}>{p}</li>)}</ul>
           {r.instagram && (
             <a className="riders__ig" href={`https://www.instagram.com/${r.instagram}/`} target="_blank" rel="noreferrer">Follow @{r.instagram} on Instagram <span aria-hidden>↗</span></a>
           )}
@@ -103,11 +93,20 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
       <section className="rider-more">
         <div className="rider-more__inner">
           <div>
-            <p className="eyebrow">About {first}</p>
-            <h2 className="rider-more__h">Questions about {r.name}</h2>
-            <dl className="rider-faq">
-              {faq.map((f) => (<div key={f.q}><dt>{f.q}</dt><dd>{f.a}</dd></div>))}
-            </dl>
+            <p className="eyebrow">Career highlights</p>
+            <ol className="rider-hl">
+              {r.points.map((p) => {
+                const y = p.match(/\b(19|20)\d{2}\b/)?.[0];
+                return (<li key={p}><span className="rider-hl__y">{y ?? "—"}</span><span className="rider-hl__t">{p}</span></li>);
+              })}
+            </ol>
+            <div className="rider-train">
+              <div>
+                <h2>Train where {first} rides</h2>
+                <p>One-to-one wakeboard coaching with Glen Fletcher on Lake Barton, Orlando. First-timers to pros.</p>
+              </div>
+              <Link href="/plan?activity=coaching" className="btn btn--primary btn--pill">Book a session</Link>
+            </div>
             {b && b.sources.length > 0 && (
               <p className="rider-src">Sources: {b.sources.map((x, k) => (<span key={x.url}>{k > 0 && " · "}<a href={x.url} target="_blank" rel="noreferrer nofollow">{x.label}</a></span>))}</p>
             )}
