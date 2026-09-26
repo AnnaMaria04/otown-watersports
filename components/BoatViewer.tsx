@@ -22,7 +22,7 @@ const smooth = (a: number, b: number, x: number) => {
  * 360° boat viewer built from captured views of Supra's own SL render (not a free-orbit 3D model).
  * Controlled by the rotation bar, view shortcuts, arrow keys and horizontal drag (with gentle inertia). Never plays on its own.
  */
-export default function BoatViewer({ frames, label }: { frames: number; label: string }) {
+export default function BoatViewer({ frames, label, badge }: { frames: number; label: string; badge?: string }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgs = useRef<HTMLImageElement[]>([]);
@@ -186,6 +186,7 @@ export default function BoatViewer({ frames, label }: { frames: number; label: s
     <div className="boat-viewer">
       <div ref={stageRef} className={`boat-stage${ready ? " is-ready" : ""}`} aria-hidden>
         <div className="boat-floor" />
+        {badge && <span className="boat-badge"><b>{badge.split(" · ")[0]}</b>{badge.split(" · ")[1]}</span>}
         <picture>
           <source media="(max-width: 700px)" srcSet="/boat/m/00.webp" />
           <img className="boat-poster" src="/boat/d/00.webp" alt="" width={1800} height={915} />

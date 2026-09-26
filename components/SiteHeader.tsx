@@ -8,6 +8,7 @@ import Magnetic from "./Magnetic";
 const links = [
   { label: "Coaching", href: "/coaching" },
   { label: "Rates", href: "/rates" },
+  { label: "Stay", href: "/stay" },
   { label: "Experiences", href: "/#experiences" },
   { label: "Life at O’Town", href: "/#life" },
 ];

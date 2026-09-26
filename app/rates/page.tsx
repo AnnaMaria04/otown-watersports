@@ -6,13 +6,18 @@ import { contact, faqs, rates } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Rates & Booking | O’Town Watersports Orlando",
-  description: "Wakeboard and wakesurf lesson prices in Orlando: $160 per lesson with Glen Fletcher, $145 with staff, $425 full day. Camps on request. Lake Barton, Orlando, FL.",
+  description: "Wakeboard and wakesurf lesson prices in Orlando: $175 for a 30 minute set, $450 for a full day with two 45 minute sessions. Camps and overnight stays tailored to you. Lake Barton, Orlando, FL.",
   alternates: { canonical: "/rates" },
 };
 
 export default function RatesPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [...rates.policies, ...faqs].map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      }) }} />
       <section className="page-hero">
         <Image src="/images/bg-sunset-air.jpg" alt="A rider inverted high above the wake at sunset" fill priority quality={85} sizes="(orientation: portrait) 150vh, 100vw" style={{ objectPosition: "28% 16%" }} />
         <div className="wrap page-hero__inner page-hero__inner--rates">
@@ -31,9 +36,9 @@ export default function RatesPage() {
               <p className="price__amount">{r.price}</p>
               <p className="price__unit">{r.unit}</p>
               <ul>{r.includes.map((i) => <li key={i}>{i}</li>)}</ul>
-              <Link href={`/plan?activity=${r.name === "Camps" ? "training-stay" : r.name === "Full day" ? "coaching" : "first-session"}`}
+              <Link href={r.key === "stay" ? "/stay" : `/plan?activity=${r.key === "day" ? "coaching" : "first-session"}`}
                 className={`btn btn--pill ${r.featured ? "btn--primary" : "btn--ink"}`}>
-                {r.name === "Camps" ? "Ask about camps" : "Request a time"}
+                {r.key === "stay" ? "See the stay" : "Request a time"}
               </Link>
             </li>
           ))}
@@ -44,7 +49,7 @@ export default function RatesPage() {
             <p className="eyebrow eyebrow--dark">Booking policy</p>
             <h2 className="display display--lg display--ink">The small<br />print.</h2>
             <p className="lede" style={{ marginTop: 20 }}>Questions? Call <a href={contact.phone.href}>{contact.phone.label}</a>.</p>
-            <p style={{ marginTop: 16 }}><a className="u-link" href={contact.waiver} target="_blank" rel="noreferrer">Read the waiver</a></p>
+            <p style={{ marginTop: 16 }}><Link className="u-link" href={contact.waiver}>Read and download the waiver</Link></p>
           </div>
           <Accordion items={rates.policies} />
         </div>

@@ -5,7 +5,8 @@ import RiderSpotlight from "@/components/RiderSpotlight";
 import BoatViewer from "@/components/BoatViewer";
 import VideoDialog from "@/components/VideoDialog";
 import Lightbox from "@/components/Lightbox";
-import { boat, contact, experiences, glen, igPosts } from "@/content/site";
+import { boat, contact, experiences, glen } from "@/content/site";
+import { getLatestReels } from "@/lib/instagram";
 
 const Play = () => (
   <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden><path d="M7 4.5v15l12.5-7.5z" fill="currentColor" /></svg>
@@ -14,7 +15,10 @@ const Arrow = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" /></svg>
 );
 
-export default function Home() {
+export const revalidate = 3600;
+
+export default async function Home() {
+  const reels = await getLatestReels(6);
   const boatLabel = `the O’Town ${boat.make}${boat.model ? ` ${boat.model}` : ""}`;
 
   return (
@@ -97,18 +101,28 @@ export default function Home() {
         <div className="wrap">
           <div className="boat__head" data-reveal>
             <div>
-              <p className="eyebrow eyebrow--cyan">The boat · {boat.make} {boat.model}</p>
-              <h2 id="boat-title" className="display display--lg">Good equipment.<br />Experienced hands.</h2>
+              <p className="eyebrow eyebrow--cyan">New for {boat.year} · {boat.make} {boat.model}</p>
+              <h2 id="boat-title" className="display display--lg">A brand new boat.<br />Experienced hands.</h2>
             </div>
             <p className="boat__copy">
-              A well set-up {boat.make} {boat.model} throws a clean, consistent wake to learn and progress on. What matters just as much is who’s driving: speed, line length and timing, tuned to the rider behind the boat.
+              O’Town now rides behind a new {boat.year} {boat.make} {boat.model}: a clean, consistent wake to learn and progress on. What matters just as much is who’s driving: speed, line length and timing, tuned to the rider behind the boat.
             </p>
           </div>
           <div className="boat__viewer">
-            <BoatViewer frames={boat.frames} label={boatLabel} />
+            <BoatViewer frames={boat.frames} label={boatLabel} badge={`${boat.year} · ${boat.make} ${boat.model}`} />
+          </div>
+          <div className="boat__real">
+            <Lightbox className="boat__shot" src="/images/new/sl450-crew.jpg" alt="The new Supra SL 450 on Lake Barton with riders on board" caption="The SL 450 on Lake Barton" sizes="(max-width: 700px) 100vw, 33vw" position="40% 62%" />
+            <VideoDialog src="/video/sl450-arrival.mp4" title="The SL 450 pulling in" className="tile boat__shot" muted portrait>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/video/sl450-arrival-poster.jpg" alt="The new Supra SL 450 pulling in to the O’Town dock" loading="lazy" />
+              <span className="tile__play"><Play /></span>
+              <span className="tile__cap">Pulling in to the dock</span>
+            </VideoDialog>
+            <Lightbox className="boat__shot" src="/images/new/sl450-lake.jpg" alt="The Supra SL 450 idling on Lake Barton under summer clouds" caption="Summer on Lake Barton" sizes="(max-width: 700px) 100vw, 33vw" position="50% 62%" />
           </div>
           <div className="boat__foot">
-            <p>Proudly riding behind a {boat.make}{boat.model ? ` ${boat.model}` : ""}.</p>
+            <p>Proudly riding behind a {boat.year} {boat.make}{boat.model ? ` ${boat.model}` : ""}.</p>
             <a className="btn btn--glass btn--pill" href={boat.link} target="_blank" rel="noreferrer">
               Explore the {boat.make}{boat.model ? ` ${boat.model}` : ""} <Arrow />
             </a>
@@ -128,11 +142,11 @@ export default function Home() {
           </div>
           <div className="bento">
             <Lightbox className="bento__a" src="/images/dock-bougainvillea.jpg" alt="Bougainvillea over the trampoline and dock, riders sitting at the water’s edge, the boat moored" caption="The dock and the trampoline" sizes="(max-width: 900px) 100vw, 50vw" position="50% 62%" />
-            <VideoDialog src="/video/clip-riding-1.mp4" title="On the boat with Glen" className="tile bento__b" muted>
+            <VideoDialog src="/video/stay-walkthrough.mp4" title="Inside the house" className="tile bento__b" muted portrait>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/clip-riding-1-poster.jpg" alt="Glen at the wheel of the Supra" loading="lazy" style={{ objectPosition: "38% 50%" }} />
+              <img src="/video/stay-walkthrough-poster.jpg" alt="The open kitchen and lounge upstairs at O’Town" loading="lazy" style={{ objectPosition: "50% 50%" }} />
               <span className="tile__play"><Play /></span>
-              <span className="tile__cap">On the boat with Glen</span>
+              <span className="tile__cap">Inside the house</span>
             </VideoDialog>
             <Lightbox className="bento__c" src="/images/tubing.jpg" alt="Two friends laughing on a tube on the lake" caption="Tubing off the back of the boat" sizes="(max-width: 900px) 50vw, 25vw" position="50% 45%" />
             <Lightbox className="bento__d" src="/images/games-room.jpg" alt="The downstairs lounge with a table-tennis table and board racks" caption="Downstairs lounge" sizes="(max-width: 900px) 50vw, 25vw" />
@@ -160,9 +174,9 @@ export default function Home() {
           <a className="u-link" href={contact.instagram.href} target="_blank" rel="noreferrer">Follow {contact.instagram.label}</a>
         </div>
         <ul className="ig__rail">
-          {igPosts.map((p) => (
+          {reels.map((p) => (
             <li key={p.id}>
-              <a href={`https://www.instagram.com/reel/${p.id}/`} target="_blank" rel="noreferrer" className="ig__card">
+              <a href={p.href} target="_blank" rel="noreferrer" className="ig__card">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.image} alt="" loading="lazy" width={360} height={640} />
                 <span className="ig__cap">{p.caption}</span>

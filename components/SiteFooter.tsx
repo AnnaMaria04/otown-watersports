@@ -5,6 +5,8 @@ const pages = [
   { label: "Coaching", href: "/coaching" },
   { label: "Rates", href: "/rates" },
   { label: "Athletes", href: "/athletes" },
+  { label: "Stay at O’Town", href: "/stay" },
+  { label: "Waiver", href: "/waiver" },
   { label: "Plan your session", href: "/plan" },
 ];
 
@@ -33,7 +35,6 @@ export default function SiteFooter() {
             <p className="eyebrow">Contact</p>
             <ul>
               <li><a href={contact.phone.href}>{contact.phone.label}</a></li>
-              <li><a href={contact.cell.href}>{contact.cell.label} <span className="muted">cell</span></a></li>
               <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
             </ul>
           </div>
@@ -43,7 +44,6 @@ export default function SiteFooter() {
             <address>{contact.address}</address>
             <ul>
               <li><a href={contact.directions} target="_blank" rel="noreferrer">Get directions ↗</a></li>
-              <li><a href={contact.waiver} target="_blank" rel="noreferrer">Sign the waiver ↗</a></li>
             </ul>
             <p className="eyebrow site-footer__follow">Follow</p>
             <ul className="site-footer__social">
@@ -56,6 +56,7 @@ export default function SiteFooter() {
         <div className="site-footer__base">
           <span>© {new Date().getFullYear()} O’Town Watersports</span>
           <span>Lake Barton, Orlando · Open every week of the year</span>
+          <a className="site-footer__credit" href="https://amkcode.app" target="_blank" rel="noopener">Site by <b>AMK.code</b></a>
         </div>
       </div>
     </footer>

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import Link from "next/link";
 import InquiryForm from "@/components/InquiryForm";
 import { contact } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Book a Wakeboard Lesson | O’Town Watersports Orlando",
-  description: "Book a wakeboard or wakesurf lesson with Glen Fletcher in Orlando. Pick your level and dates, or call 407 380 0734. 5220 E Colonial Dr, Orlando, FL 32807.",
+  description: "Book a wakeboard or wakesurf lesson with Glen Fletcher in Orlando. Pick your level and dates, or call 407 529 7727. 5220 E Colonial Dr, Orlando, FL 32807.",
   alternates: { canonical: "/plan" },
 };
 
@@ -20,7 +21,6 @@ export default function PlanPage() {
             <p className="plan__lede">Tell us your level, dates and what you’d like to do. We’ll help you plan your time on the water.</p>
             <div className="plan__direct">
               <a href={contact.phone.href}>{contact.phone.label}</a>
-              <a href={contact.cell.href}>{contact.cell.label} <span>cell</span></a>
               <a href={`mailto:${contact.email}`}>{contact.email}</a>
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function PlanPage() {
             </dl>
             <div className="actions">
               <a className="btn btn--ink btn--pill btn--lg" href={contact.directions} target="_blank" rel="noreferrer">Get directions</a>
-              <a className="u-link" href={contact.waiver} target="_blank" rel="noreferrer">Sign the waiver</a>
+              <Link className="u-link" href={contact.waiver}>Read the waiver</Link>
             </div>
           </div>
           <div className="map">

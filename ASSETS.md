@@ -36,3 +36,30 @@ Every image and video on the site, its source, where it is used, and publication
 - Original logo file (vector) from Glen
 - Photos of the featured riders *at O'Town* with Glen (would replace the public web images)
 - 4K lake/riding footage for a moving hero
+
+## September 2026 update
+
+### Rider photos (public/athletes) — riders agreed to image use in exchange for Instagram links (client, Sept 2026)
+| File | Source |
+|---|---|
+| camden.jpg | Knoxville News Sentinel gallery, PWT Lenoir City 2024 (knoxnews.com) |
+| camden-card.jpg | Frame from Pro Wakeboard Tour YouTube short (i.ytimg.com/vi/mjK70itB2ns) |
+| meagan-air.jpg, meagan-portrait.jpg | Red Bull athlete page, img.redbull.com (Red Bull Content Pool) |
+| jamie.jpg, jamie-card.jpg | Red Bull (rail world record article, athlete portrait) |
+| kira.jpg | Wakeboarding Mag (WKB0821-Kiratwo) |
+| kitt.jpg | Centurion Boats team page |
+| steel-air.jpg | steellafferty.com |
+| hina.jpg | Wakeboarding Mag interview, Jan 2022 |
+| campbell.jpg | USA Water Ski & Wake Sports news (USOPC Cloudinary) |
+| ashley.jpg | Cary Magazine, 2023 |
+| zoey.jpg | zoeycarroll.com |
+| luna.jpg | L’Avenir, 2020 (og image) |
+| rusty.jpg, rusty-card.jpg, shota.jpg, alize.jpg | earlier sources (see above) |
+No photo yet: Fernanda Larios, Ana Thomas, Stella Tracy, Rex Abbott, Anna-Mariia Kushkovskaia (typographic cards).
+Surnames of Rex, Ana, Stella, Zoey confirmed in the 2026 WWA Nautique Wake Series rankings (app.thewwa.com).
+
+### O’Town originals (public/images/new, public/video) — client’s Desktop folder, Sept 2026
+hero-sl450.jpg (IMG_4555), sl450-crew, sl450-lake, dock-start-sl450, trampoline-flip, stay-*, dock-trampoline; video sl450-arrival (IMG_4551), stay-walkthrough (IMG_1623).
+
+### Waiver
+public/docs/otown-waiver.pdf and /waiver: reset from the original Florida-Release PDF on otownwatersports.com, legal text verbatim.

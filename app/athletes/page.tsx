@@ -1,61 +1,82 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { athletes, juniorRiders, moreRiders } from "@/content/site";
+import { riders } from "@/content/site";
+
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://otown-watersports.vercel.app";
 
 export const metadata: Metadata = {
-  title: "Pro Riders Coached by Glen Fletcher | O’Town Watersports",
-  description: "World champions, X Games medalists and junior pros from the rider list Glen Fletcher has coached over more than twenty years on Lake Barton, Orlando.",
+  title: "O’Town Riders: Meagan Ethell, Rusty Malinoski, Jamie Huser, Camden Marsden & more",
+  description: "The O’Town Watersports rider roster in Orlando: Camden Marsden, Meagan Ethell, Rusty Malinoski, Jamie Huser, Kira Lewis, Kitt Smith, Steel Lafferty, Shota Tezuka and more, coached by Glen Fletcher.",
   alternates: { canonical: "/athletes" },
 };
 
+const IG = () => (
+  <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" strokeWidth="1.8" /><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" /><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" /></svg>
+);
+
 export default function AthletesPage() {
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "O’Town Watersports riders",
+    itemListElement: riders.map((r, n) => ({
+      "@type": "ListItem",
+      position: n + 1,
+      item: {
+        "@type": "Person",
+        name: r.name,
+        url: `${SITE}/athletes#${r.key}`,
+        jobTitle: r.title,
+        nationality: r.country,
+        description: r.points.join(" "),
+        ...(r.photo ? { image: `${SITE}${r.photo}` } : {}),
+        ...(r.instagram ? { sameAs: [`https://www.instagram.com/${r.instagram}/`] } : {}),
+        affiliation: { "@type": "SportsOrganization", name: "O’Town Watersports", url: SITE },
+      },
+    })),
+  };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       <section className="ath-hero" aria-labelledby="ath-title">
         <div className="wrap">
           <p className="eyebrow eyebrow--cyan">Athletes</p>
-          <h1 id="ath-title" className="display display--hero">The riders<br />Glen has <span className="ath-hero__neon">coached.</span></h1>
-          <p className="ath-hero__lede">World champions, X Games medalists and junior pros, all from the rider list on O’Town’s coaching page, across more than twenty years behind the boat.</p>
+          <h1 id="ath-title" className="display display--hero">The O’Town<br /><span className="ath-hero__neon">riders.</span></h1>
+          <p className="ath-hero__lede">World champions, X Games medalists and the next generation of junior pros, coached by Glen Fletcher on Lake Barton, Orlando.</p>
         </div>
       </section>
 
-      <section className="ath" aria-label="Featured athletes">
+      <section className="ath" aria-label="All riders">
         <div className="wrap">
           <ul className="ath-grid">
-            {athletes.map((a, n) => (
-              <li key={a.name} className="ath-card">
-                <div className="ath-card__media">
-                  {a.photo && (
-                    <Image src={a.photo} alt={`${a.name} riding`} fill quality={80} sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                      style={{ objectPosition: a.position ?? "50% 50%" }} />
-                  )}
-                  <span className="ath-card__n" aria-hidden>{String(n + 1).padStart(2, "0")}</span>
-                </div>
-                <div className="ath-card__body">
-                  <p className="ath-card__country">{a.country}</p>
-                  <h2 className="ath-card__name">{a.name}</h2>
-                  <p className="ath-card__note">{a.note}</p>
-                </div>
-              </li>
-            ))}
+            {riders.map((a, n) => {
+              const [first, ...rest] = a.name.split(" ");
+              return (
+                <li key={a.key} id={a.key} className="ath-card">
+                  <div className={`ath-card__media${a.photo ? "" : " ath-card__media--type"}`}>
+                    {a.photo ? (
+                      <Image src={a.photo} alt={a.photoAlt ?? `${a.name} riding`} fill quality={80} sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                        style={{ objectPosition: a.photoPosition ?? "50% 50%" }} />
+                    ) : (
+                      <span className={`ath-card__type${a.name.length > 16 ? " ath-card__type--long" : ""}`} aria-hidden><span>{first}</span><span>{rest.join(" ")}</span></span>
+                    )}
+                    <span className="ath-card__n" aria-hidden>{String(n + 1).padStart(2, "0")}</span>
+                  </div>
+                  <div className="ath-card__body">
+                    <p className="ath-card__country">{a.country} · {a.title}</p>
+                    <h2 className="ath-card__name"><Link href={`/athletes/${a.key}`} className="ath-card__link">{a.name}</Link></h2>
+                    <ul className="ath-card__points">{a.points.map((p) => <li key={p}>{p}</li>)}</ul>
+                    {a.instagram && (
+                      <a className="ath-card__ig" href={`https://www.instagram.com/${a.instagram}/`} target="_blank" rel="noreferrer" aria-label={`${a.name} on Instagram`}>
+                        <IG /> @{a.instagram}
+                      </a>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
           </ul>
-        </div>
-      </section>
-
-      <section className="roster" aria-labelledby="roster-title">
-        <div className="wrap roster__grid">
-          <div>
-            <p className="eyebrow eyebrow--cyan">The full list</p>
-            <h2 id="roster-title" className="display display--lg">Also on<br />Glen’s list.</h2>
-            <p className="roster__foot">Historical coaching relationships from O’Town’s rider list. Not current students or sponsors.</p>
-          </div>
-          <div>
-            <h3>Pro riders</h3>
-            <ul className="name-grid">{[...moreRiders, "Sophia Fletcher"].map((n) => <li key={n}>{n}</li>)}</ul>
-            <h3>Junior pros</h3>
-            <ul className="name-grid">{juniorRiders.map((n) => <li key={n}>{n}</li>)}</ul>
-          </div>
         </div>
       </section>
 

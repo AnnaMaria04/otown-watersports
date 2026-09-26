@@ -5,12 +5,11 @@
  */
 
 export const contact = {
-  phone: { label: "407 380 0734", href: "tel:+14073800734" },
-  cell: { label: "407 529 7727", href: "tel:+14075297727" },
+  phone: { label: "407 529 7727", href: "tel:+14075297727" },
   email: "info@otownwatersports.com",
   instagram: { label: "@fletcherotown", href: "https://www.instagram.com/fletcherotown/" },
   facebook: { label: "Facebook", href: "https://www.facebook.com/otownwatersports/" },
-  waiver: "https://otownwatersports.com/about/waiver/",
+  waiver: "/waiver",
   location: "Lake Barton · Orlando, Florida",
   address: "5220 E Colonial Dr, Orlando, FL 32807",
   directions: "https://www.google.com/maps/dir/?api=1&destination=5220+E+Colonial+Dr,+Orlando,+FL+32807",
@@ -25,23 +24,21 @@ export const heroSlides = [
   {
     key: "learn",
     label: "Learn",
-    caption: "Alizé Piana, from Glen’s rider list",
-    image: "/images/hero-alize-air.jpg",
-    alt: "Alizé Piana tucked mid-air through a curtain of spray",
-    portrait: false,
-    position: "50% 32%",
-    mobilePosition: "44% 30%",
-    mobileZoom: 0.8,
-    mobileOrigin: "50% 42%",
+    caption: "The new 2026 Supra SL 450",
+    image: "/images/hero-sl450.jpg",
+    alt: "A young rider waits on the swim platform of O’Town’s new Supra SL 450 on Lake Barton",
+    portrait: true,
+    position: "50% 64%",
+    mobilePosition: "24% 50%",
     zoom: 1,
     origin: "50% 50%",
   },
   {
     key: "ride",
     label: "Ride",
-    caption: "Bec Gange, from Glen’s rider list",
+    caption: "Fully inverted above the wake",
     image: "/images/hero-bec-invert.jpg",
-    alt: "Bec Gange fully inverted high above the boat",
+    alt: "A rider fully inverted high above the boat",
     portrait: false,
     position: "50% 18%",
     mobilePosition: "50% 20%",
@@ -79,124 +76,92 @@ export type Rider = {
   key: string;
   name: string;
   country: string;
+  title: string;
+  /** Short, sourced achievements (see research/riders.json for sources). */
   points: string[];
-  source: string;
-  /** Add a licensed photo path here when one is supplied. Without it the panel is typographic. */
+  instagram?: string;
   photo?: string;
   photoAlt?: string;
   photoPosition?: string;
-  thumb?: string;
-  /** Second image for the floating card — a portrait or podium shot. */
+  /** Second image for the floating card on the landing page: a portrait or podium shot. */
   card?: string;
   cardCaption?: string;
+  featured?: boolean;
 };
 
-/** Wider athlete list for /athletes — photos from public web sources (see ASSETS.md). */
-export const athletes: { name: string; country: string; note: string; photo?: string; position?: string }[] = [
-  { name: "Raimi Merritt", country: "USA", note: "Female Rider of the Year, 2009 to 2013.", photo: "/athletes/raimi.jpg", position: "50% 22%" },
-  { name: "Dallas Friday", country: "USA", note: "Four-time X Games gold; 2009 World Champion.", photo: "/athletes/dallas.jpg", position: "50% 35%" },
-  { name: "Rusty Malinoski", country: "Canada", note: "Credited with the first 1080 in pro competition.", photo: "/athletes/rusty.jpg", position: "50% 30%" },
-  { name: "Aaron Rathy", country: "Canada", note: "2009 World Champion and King of Wake.", photo: "/athletes/aaron.jpg", position: "60% 30%" },
-  { name: "Meagan Ethell", country: "USA", note: "Best Female Rider, 2019 Wake Awards.", photo: "/athletes/meagan-2.jpg", position: "50% 40%" },
-  { name: "Steel Lafferty", country: "USA", note: "2017 X Games gold and Wakeboarder of the Year.", photo: "/athletes/steel.jpg", position: "55% 35%" },
-  { name: "Erika Lang", country: "USA", note: "2017 World Games silver; 2023 world champion in water-ski tricks.", photo: "/athletes/erika.jpg", position: "62% 45%" },
-  { name: "Shota Tezuka", country: "Japan", note: "First Japanese-born rider to win a Junior Pro Tour stop.", photo: "/athletes/shota.jpg", position: "45% 40%" },
-  { name: "Bec Gange", country: "Australia", note: "Two-time wakeboard world champion.", photo: "/athletes/bec.jpg", position: "50% 25%" },
-  { name: "Alizé Piana", country: "Italy", note: "2022 Junior Women world champion.", photo: "/athletes/alize.jpg", position: "40% 30%" },
-  { name: "Mary Morgan Howell", country: "USA", note: "On O’Town’s pro women list.", photo: "/athletes/marymorgan.jpg", position: "62% 40%" },
-  { name: "Austin Hair", country: "USA", note: "3rd overall, 2013 Pro Wakeboard Tour.", photo: "/athletes/austin.jpg", position: "70% 45%" },
+/** O’Town’s rider roster (client list, Sept 2026). Surnames of Rex, Ana, Stella and Zoey confirmed against the 2026 WWA Nautique Wake Series rankings.
+ *  Photos: public web sources, see ASSETS.md. Riders agreed to image use in exchange for Instagram links. */
+export const riders: Rider[] = [
+  { key: "camden", name: "Camden Marsden", country: "USA", title: "Pro wakeboarder", featured: true, instagram: "camdenmarsden",
+    points: ["2023 WWA U.S. National Champion, Junior Men.", "Won Junior Pro at the 2024 Pro Wakeboard Tour stop in Lenoir City."],
+    photo: "/athletes/camden.jpg", photoAlt: "Camden Marsden carving hard into the wake", photoPosition: "62% 45%",
+    card: "/athletes/camden-card.jpg", cardCaption: "Pro Wakeboard Tour" },
+  { key: "meagan", name: "Meagan Ethell", country: "USA", title: "Pro wakeboarder", featured: true, instagram: "meaganethell",
+    points: ["Eight-time WWA Wakeboard World Champion.", "Six-time Best Female Rider at the Wake Awards."],
+    photo: "/athletes/meagan-air.jpg", photoAlt: "Meagan Ethell inverted above the wake", photoPosition: "40% 30%",
+    card: "/athletes/meagan-portrait.jpg", cardCaption: "Off the water" },
+  { key: "rusty", name: "Rusty Malinoski", country: "Canada", title: "Pro wakeboarder", featured: true, instagram: "rustymalinoski",
+    points: ["Landed the first 1080 in competition, in 2009.", "Pro Men winner at the 2005 U.S. Pro-Am Championship."],
+    photo: "/athletes/rusty.jpg", photoAlt: "Rusty Malinoski inverted, his signature board overhead", photoPosition: "50% 34%",
+    card: "/athletes/rusty-card.jpg", cardCaption: "Off the water" },
+  { key: "jamie", name: "Jamie Huser", country: "Switzerland", title: "Pro wakeboarder", featured: true, instagram: "jamiehuser",
+    points: ["World record: a 140 metre wakeboard rail slide, 2025.", "2022 WWA World Champion, Junior Pro Men."],
+    photo: "/athletes/jamie.jpg", photoAlt: "Jamie Huser on his 140 metre world record rail in the Swiss Alps", photoPosition: "55% 60%",
+    card: "/athletes/jamie-card.jpg", cardCaption: "Off the water" },
+  { key: "kira", name: "Kira Lewis", country: "USA", title: "Pro wakeboarder", instagram: "kira.wake",
+    points: ["Two-time WWA Junior Pro Women World Champion, 2018 and 2019."],
+    photo: "/athletes/kira.jpg", photoAlt: "Kira Lewis grabbing high above the lake", photoPosition: "62% 30%" },
+  { key: "kitt", name: "Kitt Smith", country: "USA", title: "Pro wakeboarder", instagram: "thekittsmith",
+    points: ["Gold at the 2025 Junior Pan American Games.", "2022 WWA U.S. National Champion, Junior Pro Women."],
+    photo: "/athletes/kitt.jpg", photoAlt: "Kitt Smith spraying off the lip", photoPosition: "55% 45%" },
+  { key: "steel", name: "Steel Lafferty", country: "USA", title: "Pro wakeboarder", instagram: "steellafferty",
+    points: ["2017 X Games gold.", "2017 Wakeboarder of the Year."],
+    photo: "/athletes/steel-air.jpg", photoAlt: "Steel Lafferty high above the lake", photoPosition: "50% 30%" },
+  { key: "shota", name: "Shota Tezuka", country: "Japan", title: "Pro wakeboarder", instagram: "shotatezuka",
+    points: ["Gold at the 2017 World Games.", "Silver at the 2025 World Games."],
+    photo: "/athletes/shota.jpg", photoAlt: "Shota Tezuka riding", photoPosition: "45% 40%" },
+  { key: "hina", name: "Hina Yoshihara", country: "Japan", title: "Pro wakeboarder", instagram: "hinata_yoshihara",
+    points: ["Four-time Japanese champion and two-time WWA Asian champion."],
+    photo: "/athletes/hina.jpg", photoAlt: "Hinata Yoshihara on the boat in Florida", photoPosition: "50% 30%" },
+  { key: "campbell", name: "Campbell Scarborough", country: "USA", title: "Pro wakeboarder", instagram: "campbell_scarborough",
+    points: ["Open Women champion, cable wakeboard, 2024 IWWF Pan American Championships."],
+    photo: "/athletes/campbell.jpg", photoAlt: "Campbell Scarborough jumping at the cable park", photoPosition: "58% 30%" },
+  { key: "ashley", name: "Ashley Kazmer", country: "USA", title: "Pro wakeboarder", instagram: "ashley_kazmer",
+    points: ["2023 Junior Pro Women World Champion."],
+    photo: "/athletes/ashley.jpg", photoAlt: "Ashley Kazmer on the podium at the WWA World Championships", photoPosition: "50% 30%" },
+  { key: "fernanda", name: "Fernanda Larios", country: "Mexico", title: "Pro wakeboarder",
+    points: ["Silver at the 2025 Junior Pan American Games.", "4th at the 2023 Pan American Games."] },
+  { key: "zoey", name: "Zoey Carroll", country: "USA", title: "Junior pro wakeboarder", instagram: "zoeytcarroll",
+    points: ["Gold, U14 Girls, 2024 IWWF Pan American Championships.", "3rd, Junior Pro Women, 2026 Nautique Wake Series."],
+    photo: "/athletes/zoey.jpg", photoAlt: "Zoey Carroll inverted over the wake", photoPosition: "50% 40%" },
+  { key: "ana", name: "Ana Thomas", country: "USA", title: "Junior pro wakeboarder",
+    points: ["2022 WWA World Champion, Junior Girls.", "4th, Junior Pro Women, 2026 Nautique Wake Series."] },
+  { key: "stella", name: "Stella Tracy", country: "USA", title: "Junior pro wakeboarder",
+    points: ["5th, Junior Pro Women, 2026 Nautique Wake Series."] },
+  { key: "rex", name: "Rex Abbott", country: "USA", title: "Junior pro wakeboarder",
+    points: ["5th, Junior Pro Men, 2026 Nautique Wake Series."] },
+  { key: "alize", name: "Alizé Piana", country: "Italy", title: "Pro wakeboarder", instagram: "alizewake",
+    points: ["2022 IWWF World Champion, Wakeboard Under 18 Women."],
+    photo: "/athletes/alize.jpg", photoAlt: "Alizé Piana tucked mid-air through a curtain of spray", photoPosition: "40% 30%" },
+  { key: "luna", name: "Luna Cassart", country: "Belgium", title: "Pro wakeboarder", instagram: "lunacassart",
+    points: ["Represented Belgium at the 2025 World Games.", "4th, Open Women, 2025 IWWF Europe & Africa Championships."],
+    photo: "/athletes/luna.jpg", photoAlt: "Luna Cassart grabbing above the lake", photoPosition: "50% 40%" },
+  { key: "anna-mariia", name: "Anna-Mariia Kushkovskaia", country: "Russia", title: "Wakeboarder, Master of Sport",
+    points: ["Russian national champion, 2022 to 2025."] },
 ];
 
-/** Riders listed on the official O'Town coaching page. Historical relationships — not current students or endorsers. */
-export const spotlight: Rider[] = [
-  {
-    key: "raimi",
-    name: "Raimi Merritt",
-    country: "USA",
-    points: ["Moved to Orlando at 15 to train with Glen.", "Named female Rider of the Year five years running, 2009 to 2013."],
-    source: "https://en.wikipedia.org/wiki/Raimi_Merritt",
-    photo: "/athletes/raimi.jpg",
-    photoAlt: "Raimi Merritt inverted above the wake",
-    photoPosition: "50% 22%",
-    card: "/athletes/raimi-card.jpg",
-    cardCaption: "On the World Cup podium",
-  },
-  {
-    key: "dallas",
-    name: "Dallas Friday",
-    country: "USA",
-    points: ["Four-time X Games gold medalist.", "2009 WWA Wakeboard World Champion."],
-    source: "https://usa-wwf.org/IWWF-Hall-of-Fame/dallas-friday",
-    photo: "/athletes/dallas.jpg",
-    photoAlt: "Dallas Friday riding",
-    photoPosition: "50% 40%",
-    card: "/athletes/dallas-card.jpg",
-    cardCaption: "WWA World Championships podium",
-  },
-  {
-    key: "rusty",
-    name: "Rusty Malinoski",
-    country: "Canada",
-    points: ["Credited with the first 1080 landed in professional competition."],
-    source: "https://en.wikipedia.org/wiki/Rusty_Malinoski",
-    photo: "/athletes/rusty.jpg",
-    photoAlt: "Rusty Malinoski inverted, his signature board overhead",
-    photoPosition: "50% 34%",
-    card: "/athletes/rusty-card.jpg",
-    cardCaption: "Off the water",
-  },
-  {
-    key: "aaron",
-    name: "Aaron Rathy",
-    country: "Canada",
-    points: ["2009 WWA Wakeboard World Champion.", "2009 King of Wake."],
-    source: "https://www.wakeboardingmag.com/blog/events/2009/08/30/rathy-friday-win-worlds-and-king-of-wake-crowns/",
-    photo: "/athletes/aaron.jpg",
-    photoAlt: "Aaron Rathy high above the lake under a stormy sky",
-    photoPosition: "60% 32%",
-    card: "/athletes/aaron-card.jpg",
-    cardCaption: "Off the water",
-  },
-  {
-    key: "meagan",
-    name: "Meagan Ethell",
-    country: "USA",
-    points: ["Best Female Rider at the 2019 Wake Awards."],
-    source: "https://www.wakeboardingmag.com/story/photos/2019-wake-awards-winners/",
-    photo: "/athletes/meagan.jpg",
-    photoAlt: "Meagan Ethell in the air in front of red canyon walls",
-    photoPosition: "45% 40%",
-    card: "/athletes/meagan-card.jpg",
-    cardCaption: "Off the water",
-  },
-  {
-    key: "sophia",
-    name: "Sophia Fletcher",
-    country: "USA",
-    points: ["Listed with the pro women on O’Town’s coaching page."],
-    source: "https://otownwatersports.com/about/glen-fletcher-2/",
-    photo: "/images/sophia-wakesurf.jpg",
-    photoAlt: "Sophia Fletcher wakesurfing on Lake Barton",
-    photoPosition: "50% 45%",
-  },
-];
+/** Landing page features, in order. */
+export const spotlight: Rider[] = riders.filter((r) => r.featured);
 
-export const juniorRiders = [
-  "Sky Berninghaus", "Marc Kroon", "Landon Kasey", "Jorge Gill", "Kevin Duffy",
-  "Jamie Huser", "Xavi Olea", "Igor Colombo", "Kira Lewis", "Kitt Smith", "Jordan Wolfe",
-];
 
 /** How a session works — from the rates page (training on and off the water, trampoline, video review). */
 export const method = [
   { n: "01", title: "On the water", body: "One-to-one sets behind the boat, with Glen driving and coaching every pass: speed, line length and timing tuned to you.", image: "/images/sophia-wakesurf.jpg", alt: "A rider wakesurfing behind the boat on Lake Barton", position: "50% 55%" },
-  { n: "02", title: "On the trampoline", body: "Air awareness and trick progressions on the lakeside trampoline, so the movement is familiar before you try it behind the boat.", image: "/images/trampoline.jpg", alt: "A rider flips on the lakeside trampoline", position: "50% 35%" },
+  { n: "02", title: "On the trampoline", body: "Air awareness and trick progressions on the lakeside trampoline, so the movement is familiar before you try it behind the boat.", image: "/images/new/trampoline-flip.jpg", alt: "A rider flips on the lakeside trampoline", position: "50% 30%" },
   { n: "03", title: "In video review", body: "Full days include video review of your sessions. See what you felt, and know exactly what to change on the next set.", image: "/images/glen-driving.jpg", alt: "Glen driving the boat, looking back toward the rider", position: "35% 40%" },
 ];
 
-export const moreRiders = [
-  "Sian Hurst", "Andrew Adkison",
-  "Tony Carroll", "Jacob Valdez", "Eddie Valdez", "Damian Adam", "Deco Rondi", "Lorenzo Soprani", "Carolina Goldenberg", "Luna Cassart", "Taylor McCullough", "Hollie Waldrop", "Bethany Henderson", "Otoha Kawahara",
-];
+
 
 export type ActivityKey = "first-session" | "coaching" | "training-stay" | "wakesurf" | "other";
 
@@ -207,9 +172,9 @@ export const experiences = [
     title: "Your first session",
     who: "For people learning to wakeboard or wakesurf.",
     body: "Start behind the boat with a coach who has taught every kind of rider, from standing up for the first time to riding comfortably across the wake.",
-    image: "/images/dock-boat-tube.jpg",
-    alt: "The boat at the O’Town dock, ready for the next rider",
-    position: "50% 70%",
+    image: "/images/new/dock-start-sl450.jpg",
+    alt: "A rider ready for a dock start, the new Supra SL 450 waiting on the lake",
+    position: "50% 58%",
   },
   {
     key: "coaching" as ActivityKey,
@@ -226,7 +191,7 @@ export const experiences = [
     index: "03",
     title: "Plan a training stay",
     who: "For visitors who want more time on the water.",
-    body: "Camps can combine coaching, video review, meals and lakeside accommodation. Tell us your dates and we’ll confirm what’s available.",
+    body: "Camps and overnight stays are tailored to you: coaching, video review and a room at O’Town on the lake. Tell us your dates and we’ll confirm what’s available.",
     image: "/images/stay-bedroom.jpg",
     alt: "A bright bedroom with a window looking onto the lake",
     position: "50% 72%",
@@ -236,7 +201,8 @@ export const experiences = [
 export const boat = {
   /** O'Town's new boat is a Supra SL (owner + @fletcherotown, Sept 2026).
    *  NOTE: the 360° render was recorded from a configurator build that carries an SV badge — re-record an SL build to match. */
-  model: "SL" as string | null,
+  model: "SL 450" as string | null,
+  year: 2026,
   make: "Supra",
   link: "https://www.supraboats.com/boats/sl",
   frames: 36,
@@ -257,22 +223,21 @@ export const faqs = [
   { q: "What happens if the weather turns?", a: "O’Town is open year-round and lessons run rain or shine, wind or no wind." },
   { q: "How do I reserve a session?", a: "Send an inquiry or call. A 50% deposit holds your time, and the balance is due on arrival." },
   { q: "Is there a waiver?", a: "Yes. Every rider signs the O’Town waiver. Riders under 18 need it signed before they arrive." },
-  { q: "Can I stay on site?", a: "Camps can include meals and accommodation. Ask with your dates and we’ll confirm availability." },
+  { q: "Can I stay on site?", a: "Yes. Camps and overnight stays include a room at O’Town with a stocked kitchen, laundry and high speed Wi-Fi. Call with your dates for pricing and availability." },
   { q: "Where are you?", a: "5220 E Colonial Dr, Orlando, on private Lake Barton, about 15 to 20 minutes from Orlando International Airport. Look for the two-story building with the big blue “O”." },
 ];
 
 export const rates = {
   items: [
-    { name: "Lesson with Glen", price: "$160", unit: "per lesson", includes: ["1:1 coaching with Glen", "Training on and off the water"], featured: true },
-    { name: "Lesson with staff", price: "$145", unit: "per lesson", includes: ["1:1 coaching", "Training on and off the water"] },
-    { name: "Full day", price: "$425", unit: "per day", includes: ["Training on and off the water", "Trampoline training", "Video review of sessions"] },
-    { name: "Camps", price: "Call", unit: "for pricing", includes: ["Training on and off the water", "Video review", "Meals & accommodation"] },
+    { key: "set", name: "1 set", price: "$175", unit: "30 minutes", includes: ["1:1 coaching", "Training on and off the water"], featured: true },
+    { key: "day", name: "Full day", price: "$450", unit: "per day", includes: ["Two 45 minute sessions", "Training on and off the water", "Trampoline training", "Video review of sessions"] },
+    { key: "stay", name: "Camps & overnight stay", price: "Tailored", unit: "to your needs", includes: ["Coaching on and off the water", "Video review", "A room at O’Town on the lake", "Stocked kitchen, laundry, Wi-Fi"] },
   ],
   note: "All sessions are by appointment only.",
   policies: [
     {
       q: "Making a reservation",
-      a: "Email or call 407 380 0734 with each rider’s name and age, riding experience and goals, and the dates and times you’d like. A 50% deposit holds the reservation.",
+      a: "Email or call 407 529 7727 with each rider’s name and age, riding experience and goals, and the dates and times you’d like. A 50% deposit holds the reservation.",
     },
     { q: "Waiver", a: "Every rider signs the O’Town Watersports waiver. Riders under 18 need it signed before arriving." },
     { q: "Payment", a: "Visa, MasterCard, AMEX, check, traveler’s check or cash. A 3% fee is added to card transactions. Full payment is due on arrival." },

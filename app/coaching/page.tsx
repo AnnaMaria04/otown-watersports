@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import RiderSpotlight from "@/components/RiderSpotlight";
-import { glen, juniorRiders, method, moreRiders, spotlight } from "@/content/site";
+import { glen, method, riders } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Wakeboard Coaching with Glen Fletcher | O’Town Watersports Orlando",
@@ -75,16 +75,14 @@ export default function CoachingPage() {
           <div>
             <p className="eyebrow eyebrow--cyan">The list</p>
             <h2 id="roster-title" className="display display--lg">Riders Glen<br />has worked with.</h2>
-            <p className="roster__foot">From the rider list on O’Town’s coaching page, covering many years of coaching. Not a list of current students or sponsors.</p>
+            <p className="roster__foot">The O’Town rider roster: world champions, X Games medalists and the next generation of junior pros.</p>
             <p style={{ marginTop: 28 }}><Link href="/athletes" className="btn btn--primary btn--pill">Meet the athletes</Link></p>
           </div>
           <div>
-            <h3>Featured above</h3>
-            <ul className="name-grid">{spotlight.map((r) => <li key={r.key}>{r.name}</li>)}</ul>
             <h3>Pro riders</h3>
-            <ul className="name-grid">{moreRiders.map((n) => <li key={n}>{n}</li>)}</ul>
+            <ul className="name-grid">{riders.filter((r) => !r.title.startsWith("Junior")).map((r) => <li key={r.key}><Link href={`/athletes/${r.key}`}>{r.name}</Link></li>)}</ul>
             <h3>Junior pros</h3>
-            <ul className="name-grid">{juniorRiders.map((n) => <li key={n}>{n}</li>)}</ul>
+            <ul className="name-grid">{riders.filter((r) => r.title.startsWith("Junior")).map((r) => <li key={r.key}><Link href={`/athletes/${r.key}`}>{r.name}</Link></li>)}</ul>
           </div>
         </div>
       </section>

@@ -41,11 +41,14 @@ export default function RiderSpotlight() {
         <div className="riders__copy wrap-left">
           <p className="eyebrow eyebrow--cyan" id="riders-title">Riders Glen has worked with</p>
           <div className="riders__swap" key={r.key}>
-            <p className="riders__country">{r.country}</p>
+            <p className="riders__country">{r.country} · {r.title}</p>
             <h2 className="display display--name">{first}<br />{rest.join(" ")}</h2>
             <ul className="dash-list">
               {r.points.map((p) => <li key={p}>{p}</li>)}
             </ul>
+            {r.instagram && (
+              <a className="riders__ig" href={`https://www.instagram.com/${r.instagram}/`} target="_blank" rel="noreferrer">@{r.instagram} on Instagram <span aria-hidden>↗</span></a>
+            )}
           </div>
           <div className="actions">
             <Link href="/plan?activity=coaching" className="btn btn--primary btn--pill btn--lg">Train with Glen</Link>
