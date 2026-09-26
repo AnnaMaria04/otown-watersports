@@ -1034,3 +1034,6 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 .rider-train h2 { font-size: 22px; margin: 0 0 6px; }
 .rider-train p { margin: 0; color: rgba(244,242,238,.7); font-size: 15px; }
 @media (max-width: 600px) { .rider-train { flex-direction: column; align-items: flex-start; } .rider-hl li { grid-template-columns: 64px 1fr; gap: 14px; } .rider-hl__y { font-size: 24px; } }
+
+.rider-hl__y.is-dot::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan, #19c3e6); transform: translateY(-4px); }
+.rider-hl + .rider-src { border-top: 0; padding-top: 0; }

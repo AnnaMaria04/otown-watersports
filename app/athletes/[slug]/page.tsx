@@ -33,6 +33,11 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
   const next = riders[(i + 1) % riders.length];
   const [first, ...rest] = r.name.split(" ");
   const b = riderBios[r.key];
+  const yearOf = (t: string) => Number(t.match(/\b(19|20)\d{2}\b/)?.[0] ?? 0);
+  const seen = new Set<string>();
+  const highlights = [...r.points, ...(b?.more ?? [])]
+    .filter((t) => { const k = t.toLowerCase().replace(/^\d{4}:\s*/, "").slice(0, 28); if (seen.has(k)) return false; seen.add(k); return true; })
+    .sort((x, y) => yearOf(y) - yearOf(x));
   const pool = riders.filter((x) => x.key !== r.key && x.photo);
   const related = [...pool.filter((x) => x.title.startsWith("Junior") === r.title.startsWith("Junior")), ...pool.filter((x) => x.title.startsWith("Junior") !== r.title.startsWith("Junior"))].slice(0, 3);
   const ld = {
@@ -48,7 +53,8 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
         url: `${SITE}/athletes/${r.key}`,
         ...(r.photo ? { image: `${SITE}${r.photo}` } : {}),
         ...(r.instagram ? { sameAs: [`https://www.instagram.com/${r.instagram}/`] } : {}),
-        knowsAbout: ["Wakeboarding"],
+        knowsAbout: ["Wakeboarding", "Boat wakeboarding"],
+        award: highlights,
         ...(b?.from ? { homeLocation: { "@type": "Country", name: b.from } } : {}),
         ...(b?.sources.length ? { subjectOf: b.sources.map((x) => ({ "@type": "WebPage", name: x.label, url: x.url })) } : {}),
         affiliation: { "@type": "SportsOrganization", name: "O’Town Watersports", url: SITE },
@@ -93,20 +99,14 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
       <section className="rider-more">
         <div className="rider-more__inner">
           <div>
-            <p className="eyebrow">Career highlights</p>
+            <p className="eyebrow">Results &amp; career</p>
+            <h2 className="rider-more__h">{r.name}: career highlights</h2>
             <ol className="rider-hl">
-              {r.points.map((p) => {
+              {highlights.map((p) => {
                 const y = p.match(/\b(19|20)\d{2}\b/)?.[0];
-                return (<li key={p}><span className="rider-hl__y">{y ?? "—"}</span><span className="rider-hl__t">{p}</span></li>);
+                return (<li key={p}><span className={`rider-hl__y${y ? "" : " is-dot"}`}>{y ?? ""}</span><span className="rider-hl__t">{p.replace(/^\d{4}:?\s+/, "").replace(/,? (in )?\d{4}\.$/, ".")}</span></li>);
               })}
             </ol>
-            <div className="rider-train">
-              <div>
-                <h2>Train where {first} rides</h2>
-                <p>One-to-one wakeboard coaching with Glen Fletcher on Lake Barton, Orlando. First-timers to pros.</p>
-              </div>
-              <Link href="/plan?activity=coaching" className="btn btn--primary btn--pill">Book a session</Link>
-            </div>
             {b && b.sources.length > 0 && (
               <p className="rider-src">Sources: {b.sources.map((x, k) => (<span key={x.url}>{k > 0 && " · "}<a href={x.url} target="_blank" rel="noreferrer nofollow">{x.label}</a></span>))}</p>
             )}

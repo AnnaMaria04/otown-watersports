@@ -1,9 +1,10 @@
 /** Short rider bios for the /athletes/[slug] pages (SEO). Every fact is from a public source listed below
  *  (full research notes in research/riders.json). Nothing here is invented; keep it that way when editing. */
-export type RiderBio = { from?: string; bio: string[]; sources: { label: string; url: string }[] };
+export type RiderBio = { from?: string; bio: string[]; /** Extra sourced results shown under Career highlights. */ more?: string[]; sources: { label: string; url: string }[] };
 
 export const riderBios: Record<string, RiderBio> = {
   meagan: {
+    more: ["2026: Pro Wakeboard Tour Pro Women overall winner.", "Queen of Wake and Wake Games champion.", "MasterCraft team rider."],
     bio: [
       "Meagan Ethell is one of the most decorated riders in women’s wakeboarding. She won her eighth WWA Wakeboard World Championship title on the Gold Coast, Australia, in 2024, and took the 2026 Pro Wakeboard Tour Pro Women overall title.",
       "Her record also includes Queen of Wake and Wake Games titles, and she has been named Best Female Rider six times. She is a MasterCraft team rider.",
@@ -15,6 +16,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   rusty: {
+    more: ["2009: first 1080 landed in competition, a switch toeside 1080 at the Pro Wakeboard Tour finale in Reno."],
     from: "Canada",
     bio: [
       "Canadian pro Rusty Malinoski made history in 2009 when he landed the first 1080 ever done in competition, a switch toeside 1080 at the Pro Wakeboard Tour finale in Reno.",
@@ -26,6 +28,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   steel: {
+    more: ["2010: Rookie of the Year."],
     bio: [
       "Steel Lafferty won gold at the 2017 X Games and was named Wakeboarder of the Year the same season, seven years after taking Rookie of the Year in 2010.",
       "Known for big, technical riding behind the boat, he is part of the pro men’s group on the O’Town roster.",
@@ -33,6 +36,7 @@ export const riderBios: Record<string, RiderBio> = {
     sources: [{ label: "Steel Lafferty, accomplishments", url: "https://steellafferty.com/accomplishments/" }],
   },
   shota: {
+    more: ["2017: World Games gold in Wrocław, Poland.", "2025: World Games silver in Chengdu, China.", "2026: 16th, Pro Men, Pro Wakeboard Tour."],
     from: "Japan",
     bio: [
       "Japan’s Shota Tezuka won gold in men’s wakeboard freestyle at the 2017 World Games in Wrocław, and came back to take silver at the 2025 World Games in Chengdu.",
@@ -44,6 +48,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   jamie: {
+    more: ["2022: WWA U.S. National Champion, Junior Pro Men.", "Red Bull and Ronix athlete, based in Clermont, Florida."],
     from: "Switzerland",
     bio: [
       "Swiss rider Jamie Huser set a world record in 2025 with a 140 metre (460 ft) wakeboard rail slide in Laax, Switzerland.",
@@ -55,6 +60,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   camden: {
+    more: ["2026: 6th overall, Pro Men, Pro Wakeboard Tour.", "2022: 2nd at the WWA World Championships.", "Centurion Boats, Ronix and Inland Wave team rider."],
     bio: [
       "Camden Marsden grew up riding on Lake Lanier in Cumming, Georgia. He won the 2023 WWA U.S. National Championship in Junior Men and finished 6th overall in Pro Men on the 2026 Pro Wakeboard Tour.",
       "He rides for Centurion Boats, Ronix and Inland Wave.",
@@ -65,6 +71,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   kitt: {
+    more: ["Three-time Pan Am Championships champion.", "Centurion team rider; coach and co-owner at Freedom Wake Park, Orlando."],
     bio: [
       "Orlando-based Kitt Smith won gold in women’s wakeboard at the 2025 Junior Pan American Games, and was the 2022 WWA U.S. National Champion in Junior Pro Women.",
       "She is a Centurion team rider, and a coach and co-owner at Freedom Wake Park.",
@@ -76,6 +83,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   kira: {
+    more: ["2023: 2nd overall, Junior Pro Tour.", "2026: 8th, Pro Women, Pro Wakeboard Tour."],
     bio: [
       "Kira Lewis, from New Jersey, won back-to-back WWA Junior Pro Women World Championships in Japan (2018) and Mexico (2019), and finished 2nd overall on the 2023 Junior Pro Tour.",
       "She trains in Clermont, Florida, and now competes in Pro Women, finishing 8th on the 2026 Pro Wakeboard Tour.",
@@ -86,6 +94,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   ashley: {
+    more: ["2024: 2nd, Junior Pro Women, WWA World Championships, Gold Coast.", "2026: 6th, Pro Women, Pro Wakeboard Tour."],
     bio: [
       "Ashley Kazmer won the 2023 Junior Pro Women World Championship in Portugal, then took 2nd in Junior Pro Women at the 2024 WWA World Championships on the Gold Coast.",
       "She trains on Smith Mountain Lake, Virginia, spends winters riding in Florida, and finished 6th in Pro Women on the 2026 Pro Wakeboard Tour.",
@@ -96,6 +105,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   alize: {
+    more: ["2025: 5th, Open Women, IWWF Europe & Africa Boat Championships.", "Won her 2022 world title 13 months after being hospitalised with severe burns."],
     from: "Italy",
     bio: [
       "Alizé Piana, from Lecco, Italy, won the 2022 IWWF World Championship in Wakeboard Under 18 Women at Varco Sabino, just 13 months after being hospitalised with severe burns.",
@@ -107,6 +117,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   hina: {
+    more: ["2026: 5th overall, Pro Women, Pro Wakeboard Tour.", "Trained with Glen at O’Town, per Wakeboarding Mag (2022)."],
     from: "Japan",
     bio: [
       "Hinata “Hina” Yoshihara is a four-time Japanese champion and two-time WWA Asian champion. In a 2022 Wakeboarding Mag interview she talked about training with Glen at O’Town Watersports.",
@@ -118,6 +129,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   campbell: {
+    more: ["2022: WWA Wake Park Nationals champion, Pro Women Traditional.", "2026: 11th, Pro Women, Pro Wakeboard Tour.", "Hyperlite team rider."],
     bio: [
       "Campbell Scarborough, from Winter Springs in the Orlando area, rides both boat and cable. She won Open Women cable wakeboard at the 2024 IWWF Pan American Championships in Orlando, and the 2022 WWA Wake Park Nationals in Pro Women Traditional.",
       "Behind the boat she finished 11th in Pro Women on the 2026 Pro Wakeboard Tour. She is a Hyperlite team rider.",
@@ -128,6 +140,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   luna: {
+    more: ["2025: World Games, women’s wakeboard freestyle, for Belgium.", "Belgian and French senior champion while still a junior."],
     from: "Belgium",
     bio: [
       "Luna Cassart, from Namur, represented Belgium in women’s wakeboard freestyle at the 2025 World Games and finished 4th in Open Women at the 2025 IWWF Europe & Africa Boat Wakeboard Championships.",
@@ -139,6 +152,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   fernanda: {
+    more: ["2022: Mexican national champion, Women.", "Trained between Miami and Orlando while at school in Florida."],
     from: "Mexico",
     bio: [
       "Fernanda Larios, from Mexico City, won silver in women’s wakeboard at the 2025 Junior Pan American Games and finished 4th at the 2023 Pan American Games in Santiago.",
@@ -151,6 +165,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   "anna-mariia": {
+    more: ["2013: 2nd, Girls, Russian Boat Wakeboard Championships.", "Two-time European youth championships winner."],
     from: "Russia",
     bio: [
       "Anna-Mariia Kushkovskaia is a competitive boat wakeboarder. She was Junior European Champion in 2019 and Russian national champion from 2022 to 2025.",
@@ -159,6 +174,7 @@ export const riderBios: Record<string, RiderBio> = {
     sources: [{ label: "Vesti Kaliningrad", url: "https://vesti-kaliningrad.ru/kaliningrad-prinyal-chempionat-rossii-po-katernomu-vejkbordu/" }],
   },
   zoey: {
+    more: ["2026: WWA World Champion and Nautique Masters champion, Junior Pro Women (per her website).", "GoPro and Ronix rider."],
     bio: [
       "Zoey Carroll, from Hickory, North Carolina, won U14 Girls wakeboard at the 2024 IWWF Pan American Championships and placed 3rd in Junior Pro Women on the 2026 Nautique Wake Series.",
       "She rides for GoPro and Ronix.",
@@ -175,6 +191,7 @@ export const riderBios: Record<string, RiderBio> = {
     sources: [{ label: "WWA, 2022 World Championships", url: "https://www.thewwa.com/2022-nautique-wwa-wakeboard-world-championships-masters-wakesurf-championships-presented-by-gm-marine-conclude-in-pine-mountain-georgia/" }],
   },
   rex: {
+    more: ["2026: 3rd overall, Junior Pro, Pro Wakeboard Tour."],
     bio: [
       "Rex Abbott, from the Lake Norman area of North Carolina, rides both wakeboard and wakeskate. He was 3rd at the 2026 WWA Wakeboard World Championships and 5th in Junior Pro Men on the 2026 Nautique Wake Series.",
       "He also won the 2022 WWA World Championship in Men’s Wakeskate.",
