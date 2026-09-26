@@ -201,9 +201,11 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   stella: {
+    from: "USA",
     bio: [
-      "Stella Tracy placed 5th in Junior Pro Women on the 2026 Nautique Wake Series and is one of the youngest riders on the O’Town roster.",
+      "Stella Tracy is a wakeboarder from Eufaula, Oklahoma. In 2026 she finished 3rd at the WWA Wakeboard World Championships, took bronze at the WWA Nationals and ranked 5th in Junior Pro Women on the Nautique Wake Series.",
+      "She got her start at a local event run by Sammy’s Surf Shop, where she has competed every year for a decade.",
     ],
-    sources: [],
+    sources: [{ label: "Stella Tracy on Instagram", url: "https://www.instagram.com/stellajtracy/" }],
   },
 };

@@ -144,14 +144,14 @@ export const riders: Rider[] = [
     photo: "/athletes/alize.jpg", cardPhoto: "/athletes/alize-4x5.jpg", photoAlt: "Alizé Piana tucked mid-air through a curtain of spray", photoPosition: "50% 30%" },
   { key: "fernanda", name: "Fernanda Larios", country: "Mexico", title: "Pro wakeboarder", photo: "/athletes/fernanda.jpg", cardPhoto: "/athletes/fernanda-4x5.jpg", photoAlt: "Fernanda Larios carving behind the boat", photoPosition: "50% 40%",
     points: ["Silver at the 2025 Junior Pan American Games.", "4th at the 2023 Pan American Games."] },
-  { key: "anna-mariia", name: "Anna-Mariia Kushkovskaia", country: "Russia", title: "Pro wakeboarder", instagram: "anna_maria_wake", photo: "/athletes/anna-mariia.jpg", cardPhoto: "/athletes/anna-mariia-4x5.jpg", photoAlt: "Anna-Mariia Kushkovskaia grabbing her board mid-air behind the boat", photoPosition: "54% 40%",
+  { key: "anna-mariia", name: "Anna-Mariia Kushkovskaia", country: "Russia", title: "Pro wakeboarder", instagram: "anna_maria_wake", photo: "/athletes/anna-mariia.jpg", cardPhoto: "/athletes/anna-mariia-card.jpg", photoAlt: "Anna-Mariia Kushkovskaia grabbing her board mid-air behind the boat", photoPosition: "54% 40%",
     points: ["Junior European Champion, 2019.", "Russian national champion, 2022–2025."] },
   { key: "zoey", name: "Zoey Carroll", country: "USA", title: "Junior pro wakeboarder", instagram: "zoeytcarroll",
     points: ["Gold, U14 Girls, 2024 IWWF Pan American Championships.", "2026 WWA World Champion, Junior Pro Women."],
     photo: "/athletes/zoey.jpg", cardPhoto: "/athletes/zoey-4x5.jpg", photoAlt: "Zoey Carroll inverted over the wake", photoPosition: "50% 40%" },
   { key: "ana", name: "Ana Thomas", country: "USA", title: "Junior pro wakeboarder",
     points: ["2022 WWA World Champion, Jr. Girls 9 & Under.", "4th, Junior Pro Women, 2026 Nautique Wake Series."] },
-  { key: "stella", name: "Stella Tracy", country: "USA", title: "Junior pro wakeboarder",
+  { key: "stella", name: "Stella Tracy", country: "USA", title: "Junior pro wakeboarder", instagram: "stellajtracy", photo: "/athletes/stella.jpg", cardPhoto: "/athletes/stella-4x5.jpg", photoAlt: "Stella Tracy on the back of the boat, ready to ride", photoPosition: "50% 35%",
     points: ["5th, Junior Pro Women, 2026 Nautique Wake Series."] },
 ];
 

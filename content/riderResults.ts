@@ -107,6 +107,8 @@ export const riderResults: Record<string, Result[]> = {
     { year: "2026", text: "Ranked 4th in Junior Pro Women on the Nautique Wake Series", source: "https://app.thewwa.com/wwa-rankings" },
   ],
   stella: [
+    { year: "2026", text: "Finished 3rd at the WWA Wakeboard World Championships", source: "https://www.instagram.com/p/DdaQR7NDCeA/" },
+    { year: "2026", text: "Won bronze at the WWA Wakeboard National Championships", source: "https://www.instagram.com/p/DbV-0vUETYj/" },
     { year: "2026", text: "Ranked 5th in Junior Pro Women on the Nautique Wake Series", source: "https://app.thewwa.com/wwa-rankings" },
   ],
 };
