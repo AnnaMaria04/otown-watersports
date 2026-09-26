@@ -24,12 +24,14 @@ export const heroSlides = [
   {
     key: "learn",
     label: "Learn",
-    caption: "The new 2026 Supra SL 450",
-    image: "/images/hero-sl450.jpg",
-    alt: "A young rider waits on the swim platform of O’Town’s new Supra SL 450 on Lake Barton",
-    portrait: true,
-    position: "50% 64%",
-    mobilePosition: "24% 50%",
+    caption: "Kitt Smith, O’Town rider",
+    image: "/images/hero-kitt.jpg",
+    alt: "Kitt Smith throwing spray off the wake in golden evening light",
+    portrait: false,
+    position: "60% 40%",
+    mobilePosition: "56% 42%",
+    mobileZoom: 0.8,
+    mobileOrigin: "50% 42%",
     zoom: 1,
     origin: "50% 50%",
   },
@@ -95,7 +97,7 @@ export const riders: Rider[] = [
   { key: "camden", name: "Camden Marsden", country: "USA", title: "Pro wakeboarder", featured: true, instagram: "camdenmarsden",
     points: ["2023 WWA U.S. National Champion, Junior Men.", "Won Junior Pro at the 2024 Pro Wakeboard Tour stop in Lenoir City."],
     photo: "/athletes/camden.jpg", photoAlt: "Camden Marsden carving hard into the wake", photoPosition: "62% 45%",
-    card: "/athletes/camden-card.jpg", cardCaption: "Pro Wakeboard Tour" },
+    card: "/athletes/camden-portrait.jpg", cardCaption: "Off the water" },
   { key: "meagan", name: "Meagan Ethell", country: "USA", title: "Pro wakeboarder", featured: true, instagram: "meaganethell",
     points: ["Eight-time WWA Wakeboard World Champion.", "Six-time Best Female Rider at the Wake Awards."],
     photo: "/athletes/meagan-air.jpg", photoAlt: "Meagan Ethell inverted above the wake", photoPosition: "40% 30%",
@@ -229,7 +231,7 @@ export const faqs = [
 
 export const rates = {
   items: [
-    { key: "set", name: "1 set", price: "$175", unit: "30 minutes", includes: ["1:1 coaching", "Training on and off the water"], featured: true },
+    { key: "set", name: "Private lesson", price: "$175", unit: "1 set: 30 minutes", includes: ["1:1 coaching", "Training on and off the water"], featured: true },
     { key: "day", name: "Full day", price: "$450", unit: "per day", includes: ["Two 45 minute sessions", "Training on and off the water", "Trampoline training", "Video review of sessions"] },
     { key: "stay", name: "Camps & overnight stay", price: "Tailored", unit: "to your needs", includes: ["Coaching on and off the water", "Video review", "A room at O’Town on the lake", "Stocked kitchen, laundry, Wi-Fi"] },
   ],

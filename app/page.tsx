@@ -88,7 +88,9 @@ export default async function Home() {
                   <h3 className="xp__title-m">{x.title}</h3>
                   <p className="xp__who">{x.who}</p>
                   <p>{x.body}</p>
-                  <Link href={`/plan?activity=${x.key}`} className="btn btn--primary btn--pill">Ask about this <Arrow /></Link>
+                  {x.key === "training-stay"
+                    ? <Link href="/stay" className="btn btn--primary btn--pill">See the stay <Arrow /></Link>
+                    : <Link href={`/plan?activity=${x.key}`} className="btn btn--primary btn--pill">Ask about this <Arrow /></Link>}
                 </div>
               </article>
             ))}
@@ -112,14 +114,14 @@ export default async function Home() {
             <BoatViewer frames={boat.frames} label={boatLabel} badge={`${boat.year} · ${boat.make} ${boat.model}`} />
           </div>
           <div className="boat__real">
-            <Lightbox className="boat__shot" src="/images/new/sl450-crew.jpg" alt="The new Supra SL 450 on Lake Barton with riders on board" caption="The SL 450 on Lake Barton" sizes="(max-width: 700px) 100vw, 33vw" position="40% 62%" />
-            <VideoDialog src="/video/sl450-arrival.mp4" title="The SL 450 pulling in" className="tile boat__shot" muted portrait>
+            <Lightbox className="boat__shot boat__shot--a" src="/images/new/dock-start-sl450.jpg" alt="A rider ready on the dock, the new SL 450 waiting on the lake" caption="Ready on the dock" sizes="(max-width: 700px) 50vw, 25vw" position="50% 62%" />
+            <Lightbox className="boat__shot boat__shot--b" src="/images/new/sl450-crew.jpg" alt="The new Supra SL 450 on Lake Barton with riders on board" caption="The SL 450 on Lake Barton" sizes="(max-width: 700px) 100vw, 50vw" position="40% 64%" />
+            <VideoDialog src="/video/sl450-arrival.mp4" title="The SL 450 pulling in" className="tile boat__shot boat__shot--c" muted portrait>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/video/sl450-arrival-poster.jpg" alt="The new Supra SL 450 pulling in to the O’Town dock" loading="lazy" />
               <span className="tile__play"><Play /></span>
               <span className="tile__cap">Pulling in to the dock</span>
             </VideoDialog>
-            <Lightbox className="boat__shot" src="/images/new/sl450-lake.jpg" alt="The Supra SL 450 idling on Lake Barton under summer clouds" caption="Summer on Lake Barton" sizes="(max-width: 700px) 100vw, 33vw" position="50% 62%" />
           </div>
           <div className="boat__foot">
             <p>Proudly riding behind a {boat.year} {boat.make}{boat.model ? ` ${boat.model}` : ""}.</p>

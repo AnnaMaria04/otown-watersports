@@ -34,12 +34,24 @@ const Play = () => <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden><
 export default function StayPage() {
   return (
     <>
-      <section className="page-hero page-hero--stay">
-        <Image src="/images/new/stay-bedroom-lake.jpg" alt="A bright bedroom at O’Town with a window looking straight onto Lake Barton" fill priority quality={85} sizes="(orientation: portrait) 150vh, 100vw" style={{ objectPosition: "58% 42%" }} />
-        <div className="wrap page-hero__inner">
-          <p className="eyebrow eyebrow--cyan">Stay at O’Town</p>
-          <h1 className="display display--hero">Wake up on the lake.</h1>
-          <p>Camps and overnight stays, tailored to your needs. Live at O’Town, ride with Glen and train every day on Lake Barton.</p>
+      <section className="stay-hero" aria-labelledby="stay-h1">
+        <div className="stay-hero__copy">
+          <p className="eyebrow eyebrow--dark">Stay at O’Town</p>
+          <h1 id="stay-h1" className="display display--hero display--ink">Wake up<br />on the lake.</h1>
+          <p className="stay-hero__lede">Camps and overnight stays, tailored to your needs. Live at O’Town, ride with Glen and train every day on Lake Barton.</p>
+          <div className="actions">
+            <Link className="btn btn--primary btn--pill btn--lg" href="/plan?activity=training-stay">Send your dates <span aria-hidden>→</span></Link>
+            <a className="u-link" href={contact.phone.href}>Call {contact.phone.label}</a>
+          </div>
+          <ul className="stay-hero__facts">
+            <li><b>Camps</b><span>and overnight stays</span></li>
+            <li><b>On the lake</b><span>steps from the dock</span></li>
+            <li><b>Tailored</b><span>to your dates and level</span></li>
+          </ul>
+        </div>
+        <div className="stay-hero__media">
+          <Image src="/images/new/stay-bedroom-lake.jpg" alt="A bright bedroom at O’Town with a window looking straight onto Lake Barton" fill priority quality={85} sizes="(max-width: 900px) 100vw, 55vw" style={{ objectPosition: "60% 45%" }} />
+          <span className="stay-hero__tag">Bedroom, lake view</span>
         </div>
       </section>
 
@@ -90,20 +102,17 @@ export default function StayPage() {
         </div>
       </section>
 
-      <section className="section stay-info" aria-labelledby="stay-info-title">
-        <div className="wrap stay-info__grid">
-          <div>
-            <p className="eyebrow eyebrow--dark">Pricing</p>
-            <h2 id="stay-info-title" className="display display--lg display--ink">Tailored to<br />your stay.</h2>
+      <section className="cta-band cta-band--short stay-cta" aria-labelledby="stay-info-title">
+        <Image src="/images/new/dock-trampoline.jpg" alt="" fill sizes="(orientation: portrait) 150vh, 100vw" quality={85} style={{ objectPosition: "50% 62%" }} />
+        <div className="wrap cta-band__inner">
+          <p className="eyebrow eyebrow--light">Pricing</p>
+          <h2 id="stay-info-title" className="display display--xl">Tailored to<br />your stay.</h2>
+          <p className="stay-cta__lede">Every camp and stay is priced around your dates, group size and coaching. Call and we’ll put it together with you.</p>
+          <div className="actions">
+            <a className="btn btn--primary btn--pill btn--lg" href={contact.phone.href}>Call {contact.phone.label}</a>
+            <Link className="u-link u-link--light" href="/plan?activity=training-stay">Send your dates</Link>
           </div>
-          <div className="stay-info__side">
-            <p className="lede">Every camp and stay is priced around your dates, group size and coaching. Call and we’ll put it together with you.</p>
-            <div className="actions">
-              <a className="btn btn--ink btn--pill btn--lg" href={contact.phone.href}>Call {contact.phone.label}</a>
-              <Link className="btn btn--outline btn--pill btn--lg" href="/plan?activity=training-stay">Send your dates</Link>
-            </div>
-            <p className="stay-info__note">Riders under 18 need the <Link className="u-link" href="/waiver">waiver</Link> signed by a parent or guardian before arriving.</p>
-          </div>
+          <p className="stay-cta__note">Riders under 18 need the <Link href="/waiver">waiver</Link> signed by a parent or guardian before arriving.</p>
         </div>
       </section>
     </>

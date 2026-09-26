@@ -9,7 +9,7 @@ const links = [
   { label: "Coaching", href: "/coaching" },
   { label: "Rates", href: "/rates" },
   { label: "Stay", href: "/stay" },
-  { label: "Experiences", href: "/#experiences" },
+  { label: "Athletes", href: "/athletes" },
   { label: "Life at O’Town", href: "/#life" },
 ];
 
@@ -67,7 +67,7 @@ export default function SiteHeader() {
   }, [open]);
 
   const close = () => setOpen(false);
-  const solid = scrolled || open;
+  const solid = scrolled || open || pathname === "/stay";
 
   return (
     <header className={`site-header${solid ? " is-solid" : ""}${open ? " is-open" : ""}`}>
