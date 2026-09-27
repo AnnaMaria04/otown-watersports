@@ -91,7 +91,6 @@ export default function StayPage() {
             { kind: "image", cls: "sg__d", src: "/images/new/trampoline-flip-2.jpg", alt: "A rider flipping on the lakeside trampoline", caption: "The trampoline on the dock", sizes: "(max-width: 700px) 50vw, 25vw", position: "50% 40%" },
             { kind: "image", cls: "sg__h", src: "/images/new/stay-lounge.jpg", alt: "The living room with sofas, a TV and the dining table", caption: "Living room", sizes: "(max-width: 700px) 100vw, 50vw", position: "50% 55%" },
             { kind: "image", cls: "sg__e", src: "/images/new/tube-ride.jpg", alt: "Friends tubing on Lake Barton", caption: "Tubing on the lake", sizes: "(max-width: 700px) 50vw, 25vw", position: "50% 50%" },
-            { kind: "video", cls: "sg__i", src: "/video/stay-lounge.mp4", poster: "/video/stay-lounge-poster.jpg", alt: "Walking through the lounge at O’Town", caption: "The lounge", portrait: true },
             { kind: "image", cls: "sg__f", src: "/images/games-room.jpg", alt: "The downstairs lounge with a table-tennis table and board racks", caption: "Games room", sizes: "(max-width: 700px) 50vw, 25vw" },
           ]} />
         </div>
