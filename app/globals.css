@@ -1168,3 +1168,8 @@ p, li, dd, .lede { text-wrap: pretty; }
 .statement__side p { font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; }
 .boat__copy, .section-head--row .lede { font-size: clamp(16px, 1.2vw, 18px); line-height: 1.65; }
 .glen__points li, .dash-list li { line-height: 1.55; }
+
+/* Boat + polaroids: boat keeps ~70% of the row */
+.boat__row { grid-template-columns: minmax(0, 1fr) clamp(240px, 22vw, 320px); gap: clamp(20px, 3vw, 48px); }
+@media (max-width: 900px) { .boat__row { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .boat-stage { margin-top: 0; } }
