@@ -67,3 +67,5 @@ public/docs/otown-waiver.pdf and /waiver: reset from the original Florida-Releas
 | public/athletes/anna-mariia.jpg | Supplied by Anna-Mariia Kushkovskaia (her own photo), Sept 2026 |
 | public/athletes/stella*.jpg | Stella Tracy's Instagram @stellajtracy, reel DZ8qjOnpjO8 cover (June 2026), AI-upscaled; used with rider's consent |
 | public/athletes/ashley-ig*.jpg | Ashley Kazmer's Instagram @ashley_kazmer, collab reel with Glen Fletcher DRQcJtfDh6s (Nov 2025); caption overlay removed, AI-upscaled; rider consent |
+| public/athletes/lane*.jpg | Lane Huerkamp's Instagram @lanehuerkamp, reel DcbxTwgJwX5 cover (Aug 2026), AI-upscaled; rider consent |
+| public/athletes/ana*.jpg | Ana Thomas's Instagram @awesomelyana, post DUgCKcUkVil (Feb 2026, USA Wakeboard awards), cropped + AI-upscaled; rider consent |

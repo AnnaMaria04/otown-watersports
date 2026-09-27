@@ -103,12 +103,25 @@ export const riderResults: Record<string, Result[]> = {
     { year: "2022", text: "Won the WWA U.S. National Championship", source: "https://www.orthocarolina.com/news/elevenyearold-wakeboarder-overcomes-injury-and-wins-national-title-" },
   ],
   ana: [
+    { year: "2026", text: "Finished 2nd at the WWA National Championships in her first Junior Pro season", source: "https://www.instagram.com/p/DbS_yw7yuX7/" },
     { year: "2022", text: "Won the WWA World Championship in Jr. Girls 9 & Under", source: WWA22W },
+    { year: "2025", text: "Won her division at the WWA National Championships in Grand Junction, Colorado", source: "https://www.instagram.com/p/DNDdJXauHFF/" },
+    { year: "2025", text: "Received the Shatter the Standard (Cable) award at the USA Wakeboard awards banquet", source: "https://www.instagram.com/p/DUgCKcUkVil/" },
     { year: "2026", text: "Ranked 4th in Junior Pro Women on the Nautique Wake Series", source: "https://app.thewwa.com/wwa-rankings" },
   ],
   stella: [
     { year: "2026", text: "Finished 3rd at the WWA Wakeboard World Championships", source: "https://www.instagram.com/p/DdaQR7NDCeA/" },
     { year: "2026", text: "Won bronze at the WWA Wakeboard National Championships", source: "https://www.instagram.com/p/DbV-0vUETYj/" },
     { year: "2026", text: "Ranked 5th in Junior Pro Women on the Nautique Wake Series", source: "https://app.thewwa.com/wwa-rankings" },
+  ],
+  payton: [
+    { year: "2024", text: "Won gold in Junior (U18) Women at the IWWF Pan American Wakeboard Championships", source: "https://www.usawaterski.org/news/2024/october/18/u-s-team-wins-gold-medal-at-iwwf-pan-american-wakeboard-championships" },
+    { year: "2022", text: "Won Junior Pro Women at the WWA Wakeboard World Championships", source: WWA22W },
+  ],
+  lane: [
+    { year: "2026", text: "Finished 14th overall in Pro Women on the Pro Wakeboard Tour", source: PWT26 },
+  ],
+  tucker: [
+    { year: "2022", text: "Won the WWA World Championship in Junior Boys 9 & Under", source: WWA22W },
   ],
 };

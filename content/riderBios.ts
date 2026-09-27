@@ -185,9 +185,13 @@ export const riderBios: Record<string, RiderBio> = {
   },
   ana: {
     bio: [
-      "Ana Thomas won the 2022 WWA World Championship in Jr. Girls 9 & Under and placed 4th in Junior Pro Women on the 2026 Nautique Wake Series.",
+      "Ana Thomas won the 2022 WWA World Championship in Jr. Girls 9 & Under and the 2025 WWA Nationals in her age division. In 2026, her first season in Junior Pro Women, she took 2nd at the WWA National Championships.",
+      "She rides both boat and cable, and was recognised at the USA Wakeboard awards for her cable riding.",
     ],
-    sources: [{ label: "WWA, 2022 World Championships", url: "https://www.thewwa.com/2022-nautique-wwa-wakeboard-world-championships-masters-wakesurf-championships-presented-by-gm-marine-conclude-in-pine-mountain-georgia/" }],
+    sources: [
+      { label: "WWA, 2022 World Championships", url: "https://www.thewwa.com/2022-nautique-wwa-wakeboard-world-championships-masters-wakesurf-championships-presented-by-gm-marine-conclude-in-pine-mountain-georgia/" },
+      { label: "Ana Thomas on Instagram", url: "https://www.instagram.com/awesomelyana/" },
+    ],
   },
   rex: {
     more: ["2026: 3rd overall, Junior Pro, Pro Wakeboard Tour."],
@@ -207,5 +211,31 @@ export const riderBios: Record<string, RiderBio> = {
       "She got her start at a local event run by Sammy’s Surf Shop, where she has competed every year for a decade.",
     ],
     sources: [{ label: "Stella Tracy on Instagram", url: "https://www.instagram.com/stellajtracy/" }],
+  },
+  payton: {
+    bio: [
+      "Payton Gross, from Sanford, North Carolina, won Junior Pro Women at the 2022 WWA Wakeboard World Championships and took gold in Junior (U18) Women at the 2024 IWWF Pan American Championships, helping Team USA to the team title.",
+    ],
+    sources: [
+      { label: "USA Water Ski & Wake Sports", url: "https://www.usawaterski.org/news/2024/october/18/u-s-team-wins-gold-medal-at-iwwf-pan-american-wakeboard-championships" },
+      { label: "WWA, 2022 World Championships", url: "https://www.thewwa.com/2022-nautique-wwa-wakeboard-world-championships-masters-wakesurf-championships-presented-by-gm-marine-conclude-in-pine-mountain-georgia/" },
+    ],
+  },
+  lane: {
+    bio: [
+      "Lane Huerkamp is a pro wakeboarder and Connelly team rider. She finished 14th overall in Pro Women on the 2026 Pro Wakeboard Tour.",
+    ],
+    sources: [
+      { label: "Pro Wakeboard Tour results", url: "https://prowakeboardtour.com/2025-results/" },
+      { label: "Lane Huerkamp on Instagram", url: "https://www.instagram.com/lanehuerkamp/" },
+    ],
+  },
+  tucker: {
+    bio: [
+      "Tucker Balmert won the Junior Boys 9 & Under division at the 2022 WWA Wakeboard World Championships and is one of the up-and-coming juniors on the O’Town roster.",
+    ],
+    sources: [
+      { label: "WWA, 2022 World Championships", url: "https://www.thewwa.com/2022-nautique-wwa-wakeboard-world-championships-masters-wakesurf-championships-presented-by-gm-marine-conclude-in-pine-mountain-georgia/" },
+    ],
   },
 };

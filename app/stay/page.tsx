@@ -18,7 +18,7 @@ const I = ({ children }: { children: React.ReactNode }) => (
 );
 
 const amenities: Amenity[] = [
-  { cls: "amen--rooms", t: "Rooms on the lake", d: "Bedrooms in the house on Lake Barton, including bunks for teams and camps.", img: "/images/new/stay-bunks.jpg", alt: "Bunk beds in a bright room at O’Town", pos: "50% 55%" },
+  { cls: "amen--rooms", t: "Rooms on the lake", d: "Bedrooms in the house on Lake Barton, including bunks for teams and camps.", img: "/images/new/stay-bunks.jpg", alt: "Bunk beds in a bright room at O’Town", pos: "50% 40%" },
   { cls: "amen--kitchen", t: "Stocked kitchen", d: "We stock the kitchen around your preferences and allergies. Meals aren’t cooked for you, so you cook what you like, when you like.", img: "/images/new/stay-kitchen.jpg", alt: "The kitchen at O’Town with fridge, oven and counters", pos: "50% 60%" },
   { cls: "amen--minors", t: "Supervision for minors", d: "Parents can send young riders to train. Riders under 18 are supervised during their stay.",
     icon: <I><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z" /><path d="M9 12l2 2 4-4" /></I> },
@@ -98,6 +98,19 @@ export default function StayPage() {
             <Lightbox className="sg__e" src="/images/new/tube-ride.jpg" alt="Friends tubing on Lake Barton" caption="Tubing on the lake" sizes="(max-width: 700px) 50vw, 25vw" position="50% 50%" />
             <Lightbox className="sg__f" src="/images/games-room.jpg" alt="The downstairs lounge with a table-tennis table and board racks" caption="Downstairs lounge" sizes="(max-width: 700px) 50vw, 25vw" />
             <Lightbox className="sg__g" src="/images/new/sl450-lake.jpg" alt="The Supra SL 450 on Lake Barton under summer clouds" caption="The boat, a few steps away" sizes="(max-width: 700px) 100vw, 50vw" position="50% 62%" />
+            <Lightbox className="sg__h" src="/images/new/stay-lounge.jpg" alt="The living room with sofas, a TV and the dining table" caption="Living room" sizes="(max-width: 700px) 100vw, 50vw" position="50% 55%" />
+            <VideoDialog src="/video/stay-lounge.mp4" title="The lounge" className="tile sg__i" muted portrait>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/video/stay-lounge-poster.jpg" alt="Walking through the lounge at O’Town" loading="lazy" />
+              <span className="tile__play"><Play /></span>
+              <span className="tile__cap">The lounge</span>
+            </VideoDialog>
+            <VideoDialog src="/video/lake-ride.mp4" title="Riding on Lake Barton" className="tile sg__j" muted portrait>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/video/lake-ride-poster.jpg" alt="A rider behind the boat on Lake Barton" loading="lazy" />
+              <span className="tile__play"><Play /></span>
+              <span className="tile__cap">Out on the lake</span>
+            </VideoDialog>
           </div>
         </div>
       </section>

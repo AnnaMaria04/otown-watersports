@@ -1053,3 +1053,9 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 .rider-hl li { grid-template-columns: 180px 1fr; }
 .rider-hl__y { display: flex; flex-direction: column; font-size: 26px; line-height: 1.1; white-space: nowrap; }
 @media (max-width: 600px) { .rider-hl li { grid-template-columns: 96px 1fr; gap: 12px; } .rider-hl__y { font-size: 17px; white-space: normal; } }
+/* Rooms photo is portrait: show the whole room (both bunk levels) instead of a tight crop */
+.amen--rooms .amen__media { min-height: 520px; }
+@media (max-width: 900px) { .amen--rooms .amen__media { min-height: 0; aspect-ratio: 3 / 4; flex: none; } }
+
+.sg__h { grid-column: span 2; }
+@media (max-width: 700px) { .sg__h { grid-column: 1 / -1; } .sg__i, .sg__j { grid-row: span 2; } }
