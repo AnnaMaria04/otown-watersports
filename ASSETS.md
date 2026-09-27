@@ -69,3 +69,4 @@ public/docs/otown-waiver.pdf and /waiver: reset from the original Florida-Releas
 | public/athletes/ashley-ig*.jpg | Ashley Kazmer's Instagram @ashley_kazmer, collab reel with Glen Fletcher DRQcJtfDh6s (Nov 2025); caption overlay removed, AI-upscaled; rider consent |
 | public/athletes/lane*.jpg | Lane Huerkamp's Instagram @lanehuerkamp, reel DcbxTwgJwX5 cover (Aug 2026), AI-upscaled; rider consent |
 | public/athletes/ana*.jpg | Ana Thomas's Instagram @awesomelyana, post DUgCKcUkVil (Feb 2026, USA Wakeboard awards), cropped + AI-upscaled; rider consent |
+| public/athletes/payton*.jpg | Payton Gross's Instagram @payton.gross.wake (Moomba Masters, Mar 2025), supplied by Anna-Maria; rider consent |
