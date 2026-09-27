@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { riders } from "@/content/site";
 import { riderBios } from "@/content/riderBios";
 import { riderResults } from "@/content/riderResults";
+import RiderCarousel from "@/components/RiderCarousel";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://otown-watersports.vercel.app";
 
@@ -37,7 +38,9 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
   const yr = (y: string) => Number(y.match(/\d{4}/g)?.pop() ?? 0);
   const results = [...(riderResults[r.key] ?? [])].sort((a, b) => yr(b.year) - yr(a.year));
   const pool = riders.filter((x) => x.key !== r.key && x.photo);
-  const related = [...pool.filter((x) => x.title.startsWith("Junior") === r.title.startsWith("Junior")), ...pool.filter((x) => x.title.startsWith("Junior") !== r.title.startsWith("Junior"))].slice(0, 3);
+  // Everyone else with a photo, starting after this rider (wraps round), so each page shows a different run
+  const others = [...riders.slice(i + 1), ...riders.slice(0, i)].filter((x) => x.photo);
+  const related = others;
   const ld = {
     "@context": "https://schema.org",
     "@graph": [
@@ -117,18 +120,9 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
             <nav aria-label="More O’Town riders" className="rider-rel">
               <div className="rider-rel__head">
                 <p className="eyebrow">More O’Town riders</p>
-                <Link href="/athletes" className="u-link">All riders →</Link>
+                <Link href="/athletes" className="u-link rider-rel__all">All riders →</Link>
               </div>
-              <ul>
-                {related.map((x) => (
-                  <li key={x.key}>
-                    <Link href={`/athletes/${x.key}`}>
-                      <span className="rider-rel__img"><Image src={x.cardPhoto ?? x.photo!} alt={x.photoAlt ?? x.name} fill sizes="(max-width: 700px) 70vw, 30vw" quality={85} /></span>
-                      <b>{x.name}</b><small>{x.country} · {x.title}</small>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <RiderCarousel items={related.map((x) => ({ key: x.key, name: x.name, meta: `${x.country} · ${x.title}`, img: x.cardPhoto ?? x.photo!, alt: x.photoAlt ?? x.name }))} />
             </nav>
           )}
         </div>

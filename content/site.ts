@@ -70,7 +70,7 @@ export const glen = {
   points: [
     "New Zealand-born former pro rider, coaching wakeboarding for more than twenty years.",
     "Has worked with first-timers, juniors and some of the best-known riders in the sport.",
-    "Beginners welcomed. Pros challenged.",
+    
   ],
   aside: "Between sets, there’s a fair chance of a guitar on the dock.",
 };

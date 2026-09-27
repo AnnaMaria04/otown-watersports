@@ -3,7 +3,6 @@ import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
 import RiderSpotlight from "@/components/RiderSpotlight";
 import BoatViewer from "@/components/BoatViewer";
-import BoatPolaroids from "@/components/BoatPolaroids";
 import MediaGallery from "@/components/MediaGallery";
 import { boat, contact, experiences, glen } from "@/content/site";
 import { getLatestReels } from "@/lib/instagram";
@@ -107,11 +106,10 @@ export default async function Home() {
               O’Town now rides behind a new {boat.year} {boat.make} {boat.model}: a clean, consistent wake to learn and progress on. What matters just as much is who’s driving: speed, line length and timing, tuned to the rider behind the boat.
             </p>
           </div>
-          <div className="boat__row">
+          <div className="boat__row boat__row--solo">
             <div className="boat__viewer">
               <BoatViewer frames={boat.frames} label={boatLabel} badge={`${boat.year} · ${boat.make} ${boat.model}`} />
             </div>
-            <BoatPolaroids />
           </div>
           <div className="boat__foot">
             <p>Proudly riding behind a {boat.year} {boat.make}{boat.model ? ` ${boat.model}` : ""}.</p>

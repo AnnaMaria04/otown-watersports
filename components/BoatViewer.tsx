@@ -180,7 +180,6 @@ export default function BoatViewer({ frames, label, badge }: { frames: number; l
     const d = Math.min(Math.abs(v.at * frames - value), frames - Math.abs(v.at * frames - value));
     return d < best.d ? { label: v.label, d } : best;
   }, { label: "", d: Infinity });
-  const step = frames / 24; // 15° per arrow press
 
   return (
     <div className="boat-viewer">
@@ -204,9 +203,6 @@ export default function BoatViewer({ frames, label, badge }: { frames: number; l
       </div>
 
       <div className="boat-bar">
-        <button type="button" className="icon-btn icon-btn--dark" aria-label="Rotate left" disabled={!ready} onClick={() => goTo(target.current - step)}>
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg>
-        </button>
         <div className="boat-range" style={{ ["--pct" as string]: `${pct}%` }}>
           <span className="boat-range__track" aria-hidden />
           <input
@@ -222,14 +218,9 @@ export default function BoatViewer({ frames, label, badge }: { frames: number; l
             }}
           />
           <span className="boat-range__thumb" aria-hidden />
-          <div className="boat-range__ticks" aria-hidden>{Array.from({ length: 13 }, (_, n) => <span key={n} />)}</div>
         </div>
-        <button type="button" className="icon-btn icon-btn--dark" aria-label="Rotate right" disabled={!ready} onClick={() => goTo(target.current + step)}>
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg>
-        </button>
-        <p className="boat-deg" aria-hidden>{ready ? `${String(deg).padStart(3, "0")}°` : `${Math.round(progress * 100)}%`}</p>
       </div>
-      <p className="boat-hint">{ready ? "Drag the boat, use the bar, or jump to a view" : "Loading views…"}</p>
+      <p className="boat-hint">{ready ? "Drag to rotate" : "Loading…"}</p>
     </div>
   );
 }
