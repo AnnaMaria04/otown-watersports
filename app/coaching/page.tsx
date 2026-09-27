@@ -88,7 +88,7 @@ export default function CoachingPage() {
       </section>
 
       <section className="cta-band cta-band--short" aria-labelledby="cta-title">
-        <Image src="/images/hero-bec-invert.jpg" alt="" fill sizes="(orientation: portrait) 150vh, 100vw" quality={85} style={{ objectPosition: "52% 28%" }} />
+        <Image src="/images/hero-bec-invert.jpg" alt="" fill sizes="(orientation: portrait) 640px, 100vw" quality={85} style={{ objectPosition: "52% 28%" }} />
         <div className="wrap cta-band__inner">
           <h2 id="cta-title" className="display display--xl">Your turn.</h2>
           <div className="actions">

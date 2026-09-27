@@ -98,7 +98,7 @@ export default function StayPage() {
       </section>
 
       <section className="cta-band cta-band--short stay-cta" aria-labelledby="stay-info-title">
-        <Image src="/images/new/dock-trampoline.jpg" alt="" fill sizes="(orientation: portrait) 150vh, 100vw" quality={85} style={{ objectPosition: "50% 62%" }} />
+        <Image src="/images/new/dock-trampoline.jpg" alt="" fill sizes="(orientation: portrait) 640px, 100vw" quality={85} style={{ objectPosition: "50% 62%" }} />
         <div className="wrap cta-band__inner">
           <p className="eyebrow eyebrow--light">Pricing</p>
           <h2 id="stay-info-title" className="display display--xl">Tailored to<br />your stay.</h2>
