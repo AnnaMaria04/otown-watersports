@@ -75,7 +75,7 @@ export default function HeroSlider() {
                 <Image className="hero__backfill" src={sl.image} alt="" aria-hidden fill quality={40} sizes="100vw" loading="eager" />
               )}
               <Image src={sl.image} alt={sl.alt} fill priority={n === 0} loading="eager" quality={85}
-                sizes={sl.portrait ? "(orientation: portrait) max(100vw, 75vh), 130vw" : "(orientation: portrait) 640px, 100vw"} />
+                sizes={sl.portrait ? "(orientation: portrait) max(100vw, 75vh), 130vw" : "(orientation: portrait) 680px, 100vw"} />
             </div>
           </div>
         ))}
