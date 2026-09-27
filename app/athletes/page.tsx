@@ -7,7 +7,7 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://otown-watersports.verc
 
 export const metadata: Metadata = {
   title: "O’Town Riders: Meagan Ethell, Rusty Malinoski, Jamie Huser, Camden Marsden & more",
-  description: "The O’Town Watersports rider roster in Orlando: Camden Marsden, Meagan Ethell, Rusty Malinoski, Jamie Huser, Kira Lewis, Kitt Smith, Steel Lafferty, Shota Tezuka and more, coached by Glen Fletcher.",
+  description: "The O’Town Watersports rider roster in Orlando: world champions Meagan Ethell, Rusty Malinoski, Steel Lafferty, Zoey Carroll and Jamie Huser, plus Camden Marsden, Rex Abbott, Stella Tracy and the next generation of junior pros, coached by Glen Fletcher.",
   alternates: { canonical: "/athletes" },
 };
 
