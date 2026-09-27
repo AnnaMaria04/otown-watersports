@@ -14,8 +14,10 @@ const ZOEY = "https://zoeycarroll.com/";
 
 export const riderResults: Record<string, Result[]> = {
   meagan: [
+    { year: "2026", text: "Won the WWA Wakeboard World Championship in Pro Women, her 9th world title", source: "https://www.instagram.com/p/DdRgCpllN45/" },
     { year: "2024", text: "Won her 8th WWA Wakeboard World Championship title in Australia", source: "https://www.wakeboardingmag.com/news/ethell-earns-eighth-wwa-title-while-rapa-snares-mens-title/" },
-    { year: "2026", text: "Pro Women overall co-champion on the Pro Wakeboard Tour", source: PWT26 },
+    { year: "2026", text: "Won the Pro Wakeboard Tour Pro Women overall title", source: PWT26 },
+    { year: "2025", text: "Won the WWA U.S. National Championship and the Nautique Masters, her ninth Masters title", source: "https://www.wakeboardingmag.com/news/meagan-ethell-nails-x-mobe-540-and-defends-her-masters-crown/" },
     { year: "2012–2025", text: "Named Best Female Rider at the Wake Awards six times", source: MC },
     { year: "2012", text: "Won Queen of Wake, The Masters and Wake Games as a rookie, and was named Rookie of the Year", source: MC },
   ],
@@ -41,6 +43,7 @@ export const riderResults: Record<string, Result[]> = {
     { year: "2025", text: "Set the world record for the longest wakeboard rail slide: 140 m (460 ft) in Laax, Switzerland", source: "https://alliancewake.com/wake/switzerlands-jamie-huser-sets-a-new-world-record/" },
     { year: "2022", text: "Won the WWA World Championship in Junior Pro Men", source: WWA22W },
     { year: "2022", text: "Won the WWA U.S. National Championship in Junior Pro Men", source: WWA22N },
+    { year: "2023", text: "Named Rookie of the Year after finishing 2nd overall in his first pro season", source: "https://alliancewake.com/wake/switzerlands-jamie-huser-sets-a-new-world-record/" },
   ],
   camden: [
     { year: "2023", text: "Won the WWA U.S. National Championship in Junior Men", source: "https://www.thewwa.com/2023-nautique-wwa-national-championships-presented-by-gm-marine-wrap-up-in-pine-mountain-georgia/" },
@@ -49,6 +52,7 @@ export const riderResults: Record<string, Result[]> = {
   kitt: [
     { year: "2025", text: "Won gold in women’s wakeboard at the Junior Pan American Games", source: "https://en.wikipedia.org/wiki/Water_skiing_at_the_2025_Junior_Pan_American_Games" },
     { year: "2022", text: "Won the WWA U.S. National Championship in Junior Pro Women", source: WWA22N },
+    { year: "2026", text: "Finished 9th overall in Pro Women on the Pro Wakeboard Tour", source: PWT26 },
   ],
   kira: [
     { year: "2019", text: "Won the WWA World Championship in Junior Pro Women in Mexico", source: KIRA },
@@ -60,7 +64,7 @@ export const riderResults: Record<string, Result[]> = {
   ashley: [
     { year: "2023", text: "Won the World Championship in Junior Pro Women in Portugal", source: "https://www.carymagazine.com/features/ashley-kazmer-wakeboard-world-champion/" },
     { year: "2024", text: "Finished 2nd in Junior Pro Women at the WWA World Championships in Australia", source: WWA24W },
-    { year: "2026", text: "Finished 6th overall in Pro Women on the Pro Wakeboard Tour", source: PWT26 },
+    { year: "2026", text: "Finished tied 5th overall in Pro Women on the Pro Wakeboard Tour", source: PWT26 },
   ],
   rex: [
     { year: "2026", text: "Finished 3rd at the WWA Wakeboard World Championships", source: "https://www.instagram.com/rad_rexx/" },
@@ -74,7 +78,7 @@ export const riderResults: Record<string, Result[]> = {
   ],
   hina: [
     { year: "by 2022", text: "Won four Japanese titles and two WWA Asian titles", source: "https://www.wakeboardingmag.com/howto/hinata-yoshihara-interview/" },
-    { year: "2026", text: "Finished 5th overall in Pro Women on the Pro Wakeboard Tour", source: PWT26 },
+    { year: "2026", text: "Finished tied 5th overall in Pro Women on the Pro Wakeboard Tour", source: PWT26 },
   ],
   luna: [
     { year: "2025", text: "Represented Belgium at the World Games, finishing 8th in women’s wakeboard freestyle", source: "https://en.wikipedia.org/wiki/Wakeboarding_at_the_2025_World_Games" },
@@ -86,6 +90,7 @@ export const riderResults: Record<string, Result[]> = {
   fernanda: [
     { year: "2025", text: "Won silver in women’s wakeboard at the Junior Pan American Games", source: "https://en.wikipedia.org/wiki/Water_skiing_at_the_2025_Junior_Pan_American_Games" },
     { year: "2023", text: "Finished 4th in women’s wakeboard at the Pan American Games in Santiago, Chile", source: "https://en.wikipedia.org/wiki/Water_skiing_at_the_2023_Pan_American_Games_%E2%80%93_Women%27s_wakeboard" },
+    { year: "2026", text: "Finished 12th overall in Pro Women on the Pro Wakeboard Tour", source: PWT26 },
     { year: "2022", text: "Won the Mexican National Championship in Women’s Open", source: "https://communitynewspapers.com/featured/palmer-trinity-sophomore-wins-mexicos-national-wakeboarding-championship/" },
   ],
   "anna-mariia": [

@@ -6,7 +6,7 @@ export const riderBios: Record<string, RiderBio> = {
   meagan: {
     more: ["2026: Pro Wakeboard Tour Pro Women overall winner.", "Queen of Wake and Wake Games champion.", "MasterCraft team rider."],
     bio: [
-      "Meagan Ethell is one of the most decorated riders in women’s wakeboarding. She won her eighth WWA Wakeboard World Championship title on the Gold Coast, Australia, in 2024, and was Pro Women overall co-champion on the 2026 Pro Wakeboard Tour.",
+      "Meagan Ethell is one of the most decorated riders in women’s wakeboarding. She won her ninth WWA Wakeboard World Championship title in September 2026, after her eighth on the Gold Coast, Australia, in 2024, and won the 2026 Pro Wakeboard Tour Pro Women overall title. In 2025 she won the WWA U.S. Nationals and her ninth Nautique Masters.",
       "As a rookie in 2012 she won Queen of Wake, The Masters and Wake Games, and she has been named Best Female Rider at the Wake Awards six times. She is a MasterCraft team rider.",
     ],
     sources: [
@@ -96,7 +96,7 @@ export const riderBios: Record<string, RiderBio> = {
     more: ["2024: 2nd, Junior Pro Women, WWA World Championships, Gold Coast.", "2026: 6th, Pro Women, Pro Wakeboard Tour."],
     bio: [
       "Ashley Kazmer won the 2023 Junior Pro Women World Championship in Portugal, then took 2nd in Junior Pro Women at the 2024 WWA World Championships on the Gold Coast.",
-      "She trains on Smith Mountain Lake, Virginia, spends winters riding in Florida, and finished 6th in Pro Women on the 2026 Pro Wakeboard Tour.",
+      "She trains on Smith Mountain Lake, Virginia, spends winters riding in Florida, and finished tied 5th in Pro Women on the 2026 Pro Wakeboard Tour.",
     ],
     sources: [
       { label: "Cary Magazine", url: "https://www.carymagazine.com/features/ashley-kazmer-wakeboard-world-champion/" },
@@ -120,7 +120,7 @@ export const riderBios: Record<string, RiderBio> = {
     from: "Japan",
     bio: [
       "Hinata “Hina” Yoshihara had won four Japanese titles and two WWA Asian titles by 2022. In a 2022 Wakeboarding Mag interview she talked about training with Glen at O’Town Watersports.",
-      "She finished 5th overall in Pro Women on the 2026 Pro Wakeboard Tour.",
+      "She finished tied 5th overall in Pro Women on the 2026 Pro Wakeboard Tour.",
     ],
     sources: [
       { label: "Wakeboarding Mag interview", url: "https://www.wakeboardingmag.com/howto/hinata-yoshihara-interview/" },

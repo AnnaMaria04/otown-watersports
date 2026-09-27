@@ -98,7 +98,7 @@ export type Rider = {
  *  Photos: public web sources, see ASSETS.md. Riders agreed to image use in exchange for Instagram links. */
 export const riders: Rider[] = [
   { key: "meagan", name: "Meagan Ethell", country: "USA", title: "Pro wakeboarder", featured: true, instagram: "meaganethell",
-    points: ["Eight-time WWA Wakeboard World Champion.", "Six-time Best Female Rider at the Wake Awards."],
+    points: ["Nine-time WWA Wakeboard World Champion.", "Six-time Best Female Rider at the Wake Awards."],
     photo: "/athletes/meagan-air.jpg", cardPhoto: "/athletes/meagan-air-4x5.jpg", photoAlt: "Meagan Ethell inverted above the wake", photoPosition: "40% 30%",
     card: "/athletes/meagan-portrait.jpg", cardCaption: "Off the water" },
   { key: "rusty", name: "Rusty Malinoski", country: "Canada", title: "Pro wakeboarder", featured: true, instagram: "rustymalinoski",
