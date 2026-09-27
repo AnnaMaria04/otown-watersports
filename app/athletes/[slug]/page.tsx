@@ -103,7 +103,7 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
               {results.map((x) => (
                 <li key={x.year + x.text}>
                   <span className="rider-hl__y">{x.year.split(", ").map((y) => <span key={y}>{y}</span>)}</span>
-                  <span className="rider-hl__t">{x.text}{x.source.startsWith("http") && <a className="rider-hl__src" href={x.source} target="_blank" rel="noreferrer nofollow" aria-label="Source">source ↗</a>}</span>
+                  <span className="rider-hl__t">{x.text}{x.source.startsWith("http") && <a className="rider-hl__src" href={x.source} target="_blank" rel="noreferrer nofollow" >source ↗</a>}</span>
                 </li>
               ))}
             </ol>
