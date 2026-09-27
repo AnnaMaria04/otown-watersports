@@ -111,15 +111,24 @@ export default async function RiderPage({ params }: { params: Promise<{ slug: st
               <p className="rider-src">Sources: {b.sources.map((x, k) => (<span key={x.url}>{k > 0 && " · "}<a href={x.url} target="_blank" rel="noreferrer nofollow">{x.label}</a></span>))}</p>
             )}
           </div>
+        </div>
+        <div className="rider-more__inner rider-more__inner--rel">
           {related.length > 0 && (
             <nav aria-label="More O’Town riders" className="rider-rel">
-              <p className="eyebrow">More O’Town riders</p>
+              <div className="rider-rel__head">
+                <p className="eyebrow">More O’Town riders</p>
+                <Link href="/athletes" className="u-link">All riders →</Link>
+              </div>
               <ul>
                 {related.map((x) => (
-                  <li key={x.key}><Link href={`/athletes/${x.key}`}><span className="rider-rel__img"><Image src={x.cardPhoto ?? x.photo!} alt="" fill sizes="80px" /></span><span><b>{x.name}</b><small>{x.title}</small></span></Link></li>
+                  <li key={x.key}>
+                    <Link href={`/athletes/${x.key}`}>
+                      <span className="rider-rel__img"><Image src={x.cardPhoto ?? x.photo!} alt={x.photoAlt ?? x.name} fill sizes="(max-width: 700px) 70vw, 30vw" quality={85} /></span>
+                      <b>{x.name}</b><small>{x.country} · {x.title}</small>
+                    </Link>
+                  </li>
                 ))}
               </ul>
-              <Link href="/athletes" className="u-link">All riders →</Link>
             </nav>
           )}
         </div>
