@@ -1108,3 +1108,9 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 .rider-src { color: rgba(8,20,26,.66); }
 
 .sg__h { grid-row: span 1; }
+
+/* Design pass */
+.xp__index { background: rgba(11,17,22,.55); padding: 6px 10px; border-radius: 999px; top: 16px; left: 16px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.rider-more__h { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.02; letter-spacing: -.015em; }
+.rider-more__inner, .rider-more__inner--rel { max-width: 1080px; }
+.rider-more__h { font-stretch: 72%; }

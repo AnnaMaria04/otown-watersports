@@ -139,7 +139,7 @@ export default async function Home() {
             { kind: "image", cls: "bento__d", src: "/images/games-room.jpg", alt: "The downstairs lounge with a table-tennis table and board racks", caption: "Downstairs lounge", sizes: "(max-width: 900px) 50vw, 25vw" },
             { kind: "video", cls: "bento__e", src: "/video/clip-dock.mp4", poster: "/video/clip-dock-poster.jpg", alt: "Palm trees opening onto the dock and Lake Barton", caption: "Out the back door" },
             { kind: "image", cls: "bento__f", src: "/images/dock-guitar.jpg", alt: "An acoustic guitar on the dock at sunrise, the trampoline and boat beyond", caption: "Mornings on the dock", sizes: "(max-width: 900px) 50vw, 25vw", position: "50% 50%" },
-            { kind: "video", cls: "bento__g", src: "/video/clip-riding-2.mp4", poster: "/video/clip-riding-2-poster.jpg", alt: "A rider grabbing the board high above the wake", caption: "Another set", position: "50% 70%" },
+            { kind: "video", cls: "bento__g", src: "/video/clip-riding-2.mp4", poster: "/video/clip-riding-2-poster.jpg", alt: "A rider grabbing the board high above the wake", caption: "Another set", position: "50% 42%" },
           ]} />
         </div>
       </section>
