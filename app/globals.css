@@ -1114,3 +1114,9 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 .rider-more__h { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.02; letter-spacing: -.015em; }
 .rider-more__inner, .rider-more__inner--rel { max-width: 1080px; }
 .rider-more__h { font-stretch: 72%; }
+/* Labels on photo headers: glass pill, readable on any image */
+.page-hero .eyebrow { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 7px 14px 7px 12px; border-radius: 999px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #fff; background: rgba(11,17,22,.42); border: 1px solid rgba(255,255,255,.18); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.page-hero .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+/* Active nav: keep the text colour, mark it with a cyan dot underneath (readable on photos and on solid header) */
+.site-nav__link[aria-current="page"] { color: inherit; position: relative; }
+.site-nav__link[aria-current="page"]::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
