@@ -164,7 +164,7 @@ export const riderBios: Record<string, RiderBio> = {
     ],
   },
   "anna-mariia": {
-    more: ["2013: 2nd, Girls, Russian Boat Wakeboard Championships.", "Two-time European youth championships winner."],
+    more: ["Two-time European youth championships winner."],
     from: "Russia",
     bio: [
       "Anna-Mariia Kushkovskaia is a competitive boat wakeboarder. She was Junior European Champion and took bronze in Junior at the IWWF championships in 2019, was 2nd in WWA Junior Pro Women in 2023, and was Russian national champion from 2022 to 2025.",

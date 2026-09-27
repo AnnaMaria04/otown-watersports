@@ -98,7 +98,6 @@ export const riderResults: Record<string, Result[]> = {
     { year: "2022–2025", text: "Won the Russian National Championship in boat wakeboard four years in a row", source: "rider" },
     { year: "2019", text: "Won bronze in the junior division at the IWWF championships", source: "rider" },
     { year: "2023", text: "Finished 2nd in WWA Junior Pro Women", source: "rider" },
-    { year: "2013", text: "Finished 2nd in Girls at the Russian Boat Wakeboard Championships", source: "https://kiteteam.ru/news/chempionat-rossii-po-katernomu-vejkbordu-rezultaty/" },
   ],
   zoey: [
     { year: "2026", text: "Won the WWA World Championship in Junior Pro Women", source: ZOEY },
