@@ -84,9 +84,11 @@ export default function BoatPolaroids() {
         <button type="button" className="icon-btn icon-btn--dark" onClick={() => go(1)} aria-label="Next photo">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg>
         </button>
-        {auto && (
-          <span className="pola__bar" aria-hidden><span key={`${i}-${paused ? "p" : "r"}`} className={paused || video ? "" : "is-run"} style={{ animationDuration: `${DURATION}ms` }} /></span>
-        )}
+      </div>
+      <div className="pola__dots" aria-hidden>
+        {SHOTS.map((sh, k) => (
+          <span key={sh.src} className={k === i ? `is-on${auto && !paused && !video ? " is-run" : ""}` : ""} style={k === i ? { animationDuration: `${DURATION}ms` } : undefined} />
+        ))}
       </div>
 
       <dialog ref={dlg} className="media-dialog media-dialog--portrait" aria-label="The SL 450 pulling in"

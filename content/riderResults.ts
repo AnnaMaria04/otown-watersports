@@ -115,6 +115,7 @@ export const riderResults: Record<string, Result[]> = {
     { year: "2026", text: "Ranked 5th in Junior Pro Women on the Nautique Wake Series", source: "https://app.thewwa.com/wwa-rankings" },
   ],
   payton: [
+    { year: "2025", text: "Won gold at the Moomba Masters in Melbourne, Australia", source: "https://www.instagram.com/payton.gross.wake/" },
     { year: "2024", text: "Won gold in Junior (U18) Women at the IWWF Pan American Wakeboard Championships", source: "https://www.usawaterski.org/news/2024/october/18/u-s-team-wins-gold-medal-at-iwwf-pan-american-wakeboard-championships" },
     { year: "2022", text: "Won Junior Pro Women at the WWA Wakeboard World Championships", source: WWA22W },
   ],

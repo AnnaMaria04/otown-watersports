@@ -214,7 +214,7 @@ export const riderBios: Record<string, RiderBio> = {
   },
   payton: {
     bio: [
-      "Payton Gross, from Sanford, North Carolina, won Junior Pro Women at the 2022 WWA Wakeboard World Championships and took gold in Junior (U18) Women at the 2024 IWWF Pan American Championships, helping Team USA to the team title.",
+      "Payton Gross, from Sanford, North Carolina, won Junior Pro Women at the 2022 WWA Wakeboard World Championships and took gold in Junior (U18) Women at the 2024 IWWF Pan American Championships, helping Team USA to the team title. In 2025 she added a Moomba Masters title in Australia.",
     ],
     sources: [
       { label: "USA Water Ski & Wake Sports", url: "https://www.usawaterski.org/news/2024/october/18/u-s-team-wins-gold-medal-at-iwwf-pan-american-wakeboard-championships" },
@@ -232,10 +232,11 @@ export const riderBios: Record<string, RiderBio> = {
   },
   tucker: {
     bio: [
-      "Tucker Balmert won the Junior Boys 9 & Under division at the 2022 WWA Wakeboard World Championships and is one of the up-and-coming juniors on the O’Town roster.",
+      "Tucker Balmert, from Colorado, won the Junior Boys 9 & Under division at the 2022 WWA Wakeboard World Championships. He is already landing 720s.",
     ],
     sources: [
       { label: "WWA, 2022 World Championships", url: "https://www.thewwa.com/2022-nautique-wwa-wakeboard-world-championships-masters-wakesurf-championships-presented-by-gm-marine-conclude-in-pine-mountain-georgia/" },
+      { label: "Tucker Balmert on Instagram", url: "https://www.instagram.com/tbalmert_wakeboarding/" },
     ],
   },
 };

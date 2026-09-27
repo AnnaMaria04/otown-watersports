@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Lightbox from "@/components/Lightbox";
+import MediaGallery from "@/components/MediaGallery";
 import VideoDialog from "@/components/VideoDialog";
 import { contact } from "@/content/site";
 
@@ -29,7 +29,6 @@ const amenities: Amenity[] = [
   { cls: "amen--dock", t: "Steps from the dock", d: "The boat, the dock and the trampoline are right outside. Train, rest, go again.", img: "/images/new/dock-trampoline.jpg", alt: "The dock and trampoline on Lake Barton right outside the house", pos: "50% 82%" },
 ];
 
-const Play = () => <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden><path d="M7 4.5v15l12.5-7.5z" fill="currentColor" /></svg>;
 
 export default function StayPage() {
   return (
@@ -85,33 +84,16 @@ export default function StayPage() {
 
       <section className="stay-gallery" aria-label="Inside O’Town">
         <div className="wrap">
-          <div className="sg">
-            <Lightbox className="sg__a" src="/images/new/stay-kitchen-dining.jpg" alt="The open kitchen and dining area upstairs at O’Town" caption="Kitchen and dining" sizes="(max-width: 700px) 100vw, 50vw" position="50% 55%" />
-            <VideoDialog src="/video/stay-walkthrough.mp4" title="Inside the house" className="tile sg__b" muted portrait>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/stay-walkthrough-poster.jpg" alt="Walking through the kitchen and lounge at O’Town" loading="lazy" />
-              <span className="tile__play"><Play /></span>
-              <span className="tile__cap">Walk through the house</span>
-            </VideoDialog>
-            <Lightbox className="sg__c" src="/images/new/dock-start-rope.jpg" alt="A rider on the dock with the Supra SL 450 waiting on Lake Barton" caption="Rope in hand, boat ready" sizes="(max-width: 700px) 100vw, 33vw" position="40% 60%" />
-            <Lightbox className="sg__d" src="/images/new/trampoline-flip-2.jpg" alt="A rider flipping on the lakeside trampoline" caption="The trampoline on the dock" sizes="(max-width: 700px) 50vw, 25vw" position="50% 40%" />
-            <Lightbox className="sg__e" src="/images/new/tube-ride.jpg" alt="Friends tubing on Lake Barton" caption="Tubing on the lake" sizes="(max-width: 700px) 50vw, 25vw" position="50% 50%" />
-            <Lightbox className="sg__f" src="/images/games-room.jpg" alt="The downstairs lounge with a table-tennis table and board racks" caption="Downstairs lounge" sizes="(max-width: 700px) 50vw, 25vw" />
-            <Lightbox className="sg__g" src="/images/new/sl450-lake.jpg" alt="The Supra SL 450 on Lake Barton under summer clouds" caption="The boat, a few steps away" sizes="(max-width: 700px) 100vw, 50vw" position="50% 62%" />
-            <Lightbox className="sg__h" src="/images/new/stay-lounge.jpg" alt="The living room with sofas, a TV and the dining table" caption="Living room" sizes="(max-width: 700px) 100vw, 50vw" position="50% 55%" />
-            <VideoDialog src="/video/stay-lounge.mp4" title="The lounge" className="tile sg__i" muted portrait>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/stay-lounge-poster.jpg" alt="Walking through the lounge at O’Town" loading="lazy" />
-              <span className="tile__play"><Play /></span>
-              <span className="tile__cap">The lounge</span>
-            </VideoDialog>
-            <VideoDialog src="/video/lake-ride.mp4" title="Riding on Lake Barton" className="tile sg__j" muted portrait>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/lake-ride-poster.jpg" alt="A rider behind the boat on Lake Barton" loading="lazy" />
-              <span className="tile__play"><Play /></span>
-              <span className="tile__cap">Out on the lake</span>
-            </VideoDialog>
-          </div>
+          <MediaGallery className="sg" items={[
+            { kind: "image", cls: "sg__a", src: "/images/new/stay-kitchen-dining.jpg", alt: "The open kitchen and dining area upstairs at O’Town", caption: "Kitchen and dining", sizes: "(max-width: 700px) 100vw, 50vw", position: "50% 55%" },
+            { kind: "video", cls: "sg__b", src: "/video/stay-walkthrough.mp4", poster: "/video/stay-walkthrough-poster.jpg", alt: "Walking through the kitchen and lounge at O’Town", caption: "Walk through the house", portrait: true },
+            { kind: "image", cls: "sg__c", src: "/images/new/dock-start-rope.jpg", alt: "A rider on the dock with the Supra SL 450 waiting on Lake Barton", caption: "Rope in hand, boat ready", sizes: "(max-width: 700px) 50vw, 25vw", position: "40% 60%" },
+            { kind: "image", cls: "sg__d", src: "/images/new/trampoline-flip-2.jpg", alt: "A rider flipping on the lakeside trampoline", caption: "The trampoline on the dock", sizes: "(max-width: 700px) 50vw, 25vw", position: "50% 40%" },
+            { kind: "image", cls: "sg__h", src: "/images/new/stay-lounge.jpg", alt: "The living room with sofas, a TV and the dining table", caption: "Living room", sizes: "(max-width: 700px) 100vw, 50vw", position: "50% 55%" },
+            { kind: "image", cls: "sg__e", src: "/images/new/tube-ride.jpg", alt: "Friends tubing on Lake Barton", caption: "Tubing on the lake", sizes: "(max-width: 700px) 50vw, 25vw", position: "50% 50%" },
+            { kind: "video", cls: "sg__i", src: "/video/stay-lounge.mp4", poster: "/video/stay-lounge-poster.jpg", alt: "Walking through the lounge at O’Town", caption: "The lounge", portrait: true },
+            { kind: "image", cls: "sg__f", src: "/images/games-room.jpg", alt: "The downstairs lounge with a table-tennis table and board racks", caption: "Games room", sizes: "(max-width: 700px) 50vw, 25vw" },
+          ]} />
         </div>
       </section>
 

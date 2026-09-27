@@ -137,7 +137,7 @@ export const riders: Rider[] = [
     photo: "/athletes/kitt.jpg", cardPhoto: "/athletes/kitt-4x5.jpg", photoAlt: "Kitt Smith spraying off the lip", photoPosition: "55% 45%" },
   { key: "fernanda", name: "Fernanda Larios", country: "Mexico", title: "Pro wakeboarder", photo: "/athletes/fernanda-hd.jpg", cardPhoto: "/athletes/fernanda-4x5.jpg", photoAlt: "Fernanda Larios carving behind the boat", photoPosition: "50% 40%",
     points: ["Silver at the 2025 Junior Pan American Games.", "4th at the 2023 Pan American Games."] },
-  { key: "payton", name: "Payton Gross", country: "USA", title: "Junior pro wakeboarder",
+  { key: "payton", name: "Payton Gross", country: "USA", title: "Junior pro wakeboarder", instagram: "payton.gross.wake",
     points: ["Gold, Junior (U18) Women, 2024 IWWF Pan American Championships."] },
   { key: "kira", name: "Kira Lewis", country: "USA", title: "Pro wakeboarder", instagram: "kira.wake",
     points: ["Two-time WWA Junior Pro Women World Champion, 2018 and 2019."],
@@ -157,7 +157,7 @@ export const riders: Rider[] = [
   { key: "alize", name: "Alizé Piana", country: "Italy", title: "Pro wakeboarder", instagram: "alizewake",
     points: ["2022 IWWF World Champion, Wakeboard Under 18 Women."],
     photo: "/athletes/alize.jpg", cardPhoto: "/athletes/alize-4x5.jpg", photoAlt: "Alizé Piana tucked mid-air through a curtain of spray", photoPosition: "50% 30%" },
-  { key: "tucker", name: "Tucker Balmert", country: "USA", title: "Junior wakeboarder",
+  { key: "tucker", name: "Tucker Balmert", country: "USA", title: "Junior wakeboarder", instagram: "tbalmert_wakeboarding", photo: "/athletes/tucker.jpg", cardPhoto: "/athletes/tucker-4x5.jpg", photoAlt: "Tucker Balmert in the air above the wake", photoPosition: "50% 25%",
     points: ["2022 WWA World Champion, Junior Boys 9 & Under."] },
 ];
 

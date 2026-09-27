@@ -4,14 +4,10 @@ import HeroSlider from "@/components/HeroSlider";
 import RiderSpotlight from "@/components/RiderSpotlight";
 import BoatViewer from "@/components/BoatViewer";
 import BoatPolaroids from "@/components/BoatPolaroids";
-import VideoDialog from "@/components/VideoDialog";
-import Lightbox from "@/components/Lightbox";
+import MediaGallery from "@/components/MediaGallery";
 import { boat, contact, experiences, glen } from "@/content/site";
 import { getLatestReels } from "@/lib/instagram";
 
-const Play = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden><path d="M7 4.5v15l12.5-7.5z" fill="currentColor" /></svg>
-);
 const Arrow = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" /></svg>
 );
@@ -136,30 +132,15 @@ export default async function Home() {
             </div>
             <p className="lede lede--narrow">The dock, the trampoline, the house on the lake, and whoever’s riding next.</p>
           </div>
-          <div className="bento">
-            <Lightbox className="bento__a" src="/images/dock-bougainvillea.jpg" alt="Bougainvillea over the trampoline and dock, riders sitting at the water’s edge, the boat moored" caption="The dock and the trampoline" sizes="(max-width: 900px) 100vw, 50vw" position="50% 62%" />
-            <VideoDialog src="/video/stay-walkthrough.mp4" title="Inside the house" className="tile bento__b" muted portrait>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/stay-walkthrough-poster.jpg" alt="The open kitchen and lounge upstairs at O’Town" loading="lazy" style={{ objectPosition: "50% 50%" }} />
-              <span className="tile__play"><Play /></span>
-              <span className="tile__cap">Inside the house</span>
-            </VideoDialog>
-            <Lightbox className="bento__c" src="/images/tubing.jpg" alt="Two friends laughing on a tube on the lake" caption="Tubing off the back of the boat" sizes="(max-width: 900px) 50vw, 25vw" position="50% 45%" />
-            <Lightbox className="bento__d" src="/images/games-room.jpg" alt="The downstairs lounge with a table-tennis table and board racks" caption="Downstairs lounge" sizes="(max-width: 900px) 50vw, 25vw" />
-            <VideoDialog src="/video/clip-dock.mp4" title="Out the back door" className="tile bento__e" muted>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/clip-dock-poster.jpg" alt="Palm trees opening onto the dock and Lake Barton" loading="lazy" />
-              <span className="tile__play"><Play /></span>
-              <span className="tile__cap">Out the back door</span>
-            </VideoDialog>
-            <Lightbox className="bento__f" src="/images/dock-guitar.jpg" alt="An acoustic guitar on the dock at sunrise, the trampoline and boat beyond" caption="Mornings on the dock" sizes="(max-width: 900px) 50vw, 25vw" position="50% 50%" />
-            <VideoDialog src="/video/clip-riding-2.mp4" title="Another set" className="tile bento__g" muted>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/video/clip-riding-2-poster.jpg" alt="A rider grabbing the board high above the wake" loading="lazy" style={{ objectPosition: "50% 70%" }} />
-              <span className="tile__play"><Play /></span>
-              <span className="tile__cap">Another set</span>
-            </VideoDialog>
-          </div>
+          <MediaGallery className="bento" items={[
+            { kind: "image", cls: "bento__a", src: "/images/dock-bougainvillea.jpg", alt: "Bougainvillea over the trampoline and dock, riders sitting at the water’s edge, the boat moored", caption: "The dock and the trampoline", sizes: "(max-width: 900px) 100vw, 50vw", position: "50% 62%" },
+            { kind: "video", cls: "bento__b", src: "/video/stay-walkthrough.mp4", poster: "/video/stay-walkthrough-poster.jpg", alt: "The open kitchen and lounge upstairs at O’Town", caption: "Inside the house", portrait: true },
+            { kind: "image", cls: "bento__c", src: "/images/tubing.jpg", alt: "Two friends laughing on a tube on the lake", caption: "Tubing off the back of the boat", sizes: "(max-width: 900px) 50vw, 25vw", position: "50% 45%" },
+            { kind: "image", cls: "bento__d", src: "/images/games-room.jpg", alt: "The downstairs lounge with a table-tennis table and board racks", caption: "Downstairs lounge", sizes: "(max-width: 900px) 50vw, 25vw" },
+            { kind: "video", cls: "bento__e", src: "/video/clip-dock.mp4", poster: "/video/clip-dock-poster.jpg", alt: "Palm trees opening onto the dock and Lake Barton", caption: "Out the back door" },
+            { kind: "image", cls: "bento__f", src: "/images/dock-guitar.jpg", alt: "An acoustic guitar on the dock at sunrise, the trampoline and boat beyond", caption: "Mornings on the dock", sizes: "(max-width: 900px) 50vw, 25vw", position: "50% 50%" },
+            { kind: "video", cls: "bento__g", src: "/video/clip-riding-2.mp4", poster: "/video/clip-riding-2-poster.jpg", alt: "A rider grabbing the board high above the wake", caption: "Another set", position: "50% 70%" },
+          ]} />
         </div>
       </section>
 

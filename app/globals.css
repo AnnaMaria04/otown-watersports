@@ -1059,3 +1059,28 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 
 .sg__h { grid-column: span 2; }
 @media (max-width: 700px) { .sg__h { grid-column: 1 / -1; } .sg__i, .sg__j { grid-row: span 2; } }
+
+/* Stay gallery layout (8 tiles, no boat shots): a 2x2, b tall, c/d stacked; h 2x2, e, i tall, f */
+.sg { grid-auto-flow: dense; }
+.sg__h { grid-column: span 2; grid-row: span 2; }
+.sg__i { grid-row: span 2; }
+@media (max-width: 700px) { .sg__h { grid-column: 1 / -1; grid-row: span 1; } .sg__i { grid-row: span 2; } }
+
+/* Shared gallery viewer: arrows, counter */
+.media-dialog--gallery { width: min(94vw, 1200px); }
+.media-dialog--gallery.is-portrait { width: min(92vw, 560px); }
+.gal__stage { position: relative; display: grid; place-items: center; }
+.gal__count { margin-left: 10px; font-weight: 500; color: rgba(244,242,238,.55); font-size: 13px; }
+.gal__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); background: rgba(11,17,22,.55); color: #fff; display: grid; place-items: center; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background .2s; }
+.gal__nav:hover, .gal__nav:focus-visible { background: var(--cyan); color: var(--ink); }
+.gal__nav--prev { left: 10px; } .gal__nav--next { right: 10px; }
+@media (max-width: 600px) { .gal__nav { width: 40px; height: 40px; } .gal__nav--prev { left: 6px; } .gal__nav--next { right: 6px; } }
+
+/* Polaroid progress: one pill per photo, the active one fills (replaces the single bar) */
+.pola__bar { display: none; }
+.pola__dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+.pola__dots span { position: relative; width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,.22); overflow: hidden; transition: width .35s var(--ease); }
+.pola__dots span.is-on { width: 34px; background: rgba(255,255,255,.22); }
+.pola__dots span.is-on::after { content: ""; position: absolute; inset: 0; background: var(--cyan); transform-origin: left; transform: scaleX(1); }
+.pola__dots span.is-run::after { animation: pola-dot linear forwards; animation-duration: inherit; transform: scaleX(0); }
+@keyframes pola-dot { to { transform: scaleX(1); } }
