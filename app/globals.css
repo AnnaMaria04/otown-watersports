@@ -1120,3 +1120,6 @@ a:hover > .flip .flip__b, a:focus-visible > .flip .flip__b { transform: translat
 /* Active nav: keep the text colour, mark it with a cyan dot underneath (readable on photos and on solid header) */
 .site-nav__link[aria-current="page"] { color: inherit; position: relative; }
 .site-nav__link[aria-current="page"]::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+/* Header labels, editorial version: short cyan rule + white text, soft shadow for legibility (replaces the glass pill) */
+.page-hero .eyebrow { display: inline-flex; align-items: center; gap: 12px; padding: 0; border: 0; border-radius: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; font-size: 14px; letter-spacing: .18em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,.55); }
+.page-hero .eyebrow::before { width: 28px; height: 2px; border-radius: 0; background: var(--cyan); box-shadow: none; }
